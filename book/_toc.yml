@@ -1,6 +1,8 @@
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
-    - file: orgdemo
+- part: Simple
+  chapters:
+    - file: notebook
+- part: Gridstack
+  chapters:
+- part: Reveal
+  chapters:

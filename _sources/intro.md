@@ -1,5 +1,4 @@
-Welcome to Org Book
+Welcome to Viola Apps
 ============================
 
-
-This is a template repository to work with org mode and jupyterbook
+This repository will contain list of all the Mini Apps and Dashboards made by using voila

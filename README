@@ -1,12 +1,11 @@
 # Introduction
+This is the repository for my voila apps
 
-This is a template repository for automating book creation 
 
-# Idea
-Idea is simple 
+# To launch this repository on binderhub 
 
-1. Using this repo as a template will setup all the things in your repository
-    - Automate book build using github actions 
-    - Deploy book to netlify 
-    - Build org files alongwith md/notebook or rst
+[![Binder](https://mybinder.org/badge_logo.svg)]()
 
+# Documentation 
+
+[![Github](https://rahuketu86.github.io/voila_apps)]()

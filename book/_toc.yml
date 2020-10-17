@@ -1,8 +1,10 @@
 - file: intro
 - part: Simple
   chapters:
-    - file: notebook
+    - file: notebooks
 - part: Gridstack
   chapters:
+    - file: notebooks
 - part: Reveal
   chapters:
+    - file: notebooks

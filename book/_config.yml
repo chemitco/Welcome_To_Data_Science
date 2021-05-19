@@ -10,7 +10,7 @@ latex:
     
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/rahuketu86/voila_apps
+  url:https://chemitco.github.io/Welcome_To_Data_Science/intro.html
   path_to_book: book
 
 html:

@@ -11,7 +11,7 @@ latex:
     
 # Information about where the book exists on the web
 repository:
-  url:"https://github.com/chemitco/Welcome_To_Data_Science"
+  url: https://github.com/chemitco/Welcome_To_Data_Science
   path_to_book: book
 
 html:

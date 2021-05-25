@@ -1,8 +1,8 @@
 - file: intro
-- part: Simple
+- part: Python 
   chapters:
-    - file: Simple/Basic
-    - file: Simple/Doppelganger
+    - file: Python/Pandas
+    - file: Python/Numpy
 - part: Gridstack
   chapters:
     - file: notebooks

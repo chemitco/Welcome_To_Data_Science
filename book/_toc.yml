@@ -1,8 +1,8 @@
 - file: intro
-- part: Book 
+- part: Python
   chapters:
-    - file: Book/Numpy
-    - file: Book/Numpy
+    - file: Numpy
+    - file: Numpy
 - part: Gridstack
   chapters:
     - file: notebooks

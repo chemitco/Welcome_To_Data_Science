@@ -1,5 +1,5 @@
 - file: intro
-- part: Python 
+- part: Simple 
   chapters:
     - file: Pandas
     - file: Numpy

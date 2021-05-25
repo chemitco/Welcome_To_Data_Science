@@ -1,11 +1,11 @@
 - file: intro
-- part: Numpy Concepts
-  chapters:
-    - file: Numpy
-    - file: Numpy
 - part: Python
   chapters:
-    - file: Python Basics
+    - file: Simple/Basic
+    - file: Simple/Doppelganger
+- part: Gridstack
+  chapters:
+    - file: notebooks
 - part: Reveal
   chapters:
     - file: notebooks

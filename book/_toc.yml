@@ -5,7 +5,7 @@
     - file: Numpy
 - part: Gridstack
   chapters:
-    - file: notebooks
+    - file: Numpy
 - part: Reveal
   chapters:
     - file: notebooks

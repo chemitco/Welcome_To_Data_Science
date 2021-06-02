@@ -1,0 +1,3135 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaggle Bike Demand Prediction &#8212; Learning</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Data Science
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reveal
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Machine Leaning/Kaggle Bike Demand Prediction/Kaggle Bike Demand Prediction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/chemitco/Welcome_To_Data_Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Leaning/Kaggle Bike Demand Prediction/Kaggle Bike Demand Prediction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Leaning/Kaggle Bike Demand Prediction/Kaggle Bike Demand Prediction.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="kaggle-bike-demand-prediction">
+<h1>Kaggle Bike Demand Prediction<a class="headerlink" href="#kaggle-bike-demand-prediction" title="Permalink to this headline">¶</a></h1>
+<p>Statement of the Problem- To predict the demand of bikes of Capital BikesShare Works(<a class="reference external" href="https://www.capitalbikeshare.com/">https://www.capitalbikeshare.com/</a>)</p>
+<p>To download the data, Please follow the link(<a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset">https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import Library</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#STEP1</span>
+<span class="n">dataset</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;hour.csv&#39;</span><span class="p">)</span>
+<span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>date</th>
+      <th>season</th>
+      <th>year</th>
+      <th>month</th>
+      <th>hour</th>
+      <th>holiday</th>
+      <th>weekday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>01-01-2011</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.81</td>
+      <td>0.0000</td>
+      <td>3</td>
+      <td>13</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>01-01-2011</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.2727</td>
+      <td>0.80</td>
+      <td>0.0000</td>
+      <td>8</td>
+      <td>32</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>01-01-2011</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.2727</td>
+      <td>0.80</td>
+      <td>0.0000</td>
+      <td>5</td>
+      <td>27</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>01-01-2011</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.75</td>
+      <td>0.0000</td>
+      <td>3</td>
+      <td>10</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>01-01-2011</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.75</td>
+      <td>0.0000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>17375</td>
+      <td>31-12-2012</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>19</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.2576</td>
+      <td>0.60</td>
+      <td>0.1642</td>
+      <td>11</td>
+      <td>108</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>17376</td>
+      <td>31-12-2012</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>20</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.2576</td>
+      <td>0.60</td>
+      <td>0.1642</td>
+      <td>8</td>
+      <td>81</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>17377</td>
+      <td>31-12-2012</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.2576</td>
+      <td>0.60</td>
+      <td>0.1642</td>
+      <td>7</td>
+      <td>83</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>17378</td>
+      <td>31-12-2012</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.2727</td>
+      <td>0.56</td>
+      <td>0.1343</td>
+      <td>13</td>
+      <td>48</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>17379</td>
+      <td>31-12-2012</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.2727</td>
+      <td>0.65</td>
+      <td>0.1343</td>
+      <td>12</td>
+      <td>37</td>
+      <td>49</td>
+    </tr>
+  </tbody>
+</table>
+<p>17379 rows × 17 columns</p>
+</div></div></div>
+</div>
+<p>Description about the data set and features</p>
+<ol class="simple">
+<li><p>Index- It is serial number to identify the right car.</p></li>
+<li><p>Date - Date of the rental</p></li>
+<li><p>Season- Season has four value as 1,2,3,4
+1-Spring 2-Summer 3-Fall 4-Winter</p></li>
+<li><p>Year-
+0-2011 1-2012</p></li>
+<li><p>Month- It goes from January to December</p></li>
+<li><p>Hours- It goes from 0 to 23</p></li>
+<li><p>Holiday- It is a binary value
+1-Yes 0-No</p></li>
+</ol>
+<p>8)Weekdays- 0 to 6 for Sunday to Saturday</p>
+<p>9)Working Day-
+0-No 1-Yes</p>
+<p>10)Weather-
+1-Clear, Few clods, Partly Clouds
+2-Mist+Cloudy, Mist+broken clouds, Mist+Fewclouds, Mist
+3-Light Snow, Light Rain, Thunderstrom+scattered clods, Light Rain+scattered clouds
+4- Heavy Rain+ice pallets, Thunderstorm+Mist, Snow+Fog</p>
+<ol class="simple">
+<li><p>Temp- Normalised temperature in Celsius</p></li>
+<li><p>atenp- It is described as feeling like temperature.</p></li>
+<li><p>Humidity- It is a normalised humidity.</p></li>
+<li><p>windspeed- wind speed on your day</p></li>
+<li><p>casual- it is a type of user i.e. casual= non registered</p></li>
+<li><p>registered- It is a type of user  i.e. registered user</p></li>
+<li><p>cnt- total  of casual and registered</p></li>
+</ol>
+<p>Steps requied to solve the bike sharing prediction problem</p>
+<ol class="simple">
+<li><p>Read the data</p></li>
+<li><p>Preliminary analysis of the data and features selection.</p></li>
+<li><p>Visualise the data</p></li>
+<li><p>Check Multiple Linear Regression Assumption</p>
+<ol class="simple">
+<li><p>Normality</p></li>
+<li><p>Linear correlation</p></li>
+<li><p>Multicollinearity</p></li>
+<li><p>Autocorrelation</p></li>
+<li><p>sample size</p></li>
+</ol>
+</li>
+<li><p>drop irrelevant features</p></li>
+<li><p>Create/modify more features</p></li>
+<li><p>Create Dummy variables</p></li>
+</ol>
+<p>8)Train and Test Split</p>
+<p>9)Fit and score the model</p>
+<ol class="simple">
+<li><p>present the results</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>index         0
+date          0
+season        0
+year          0
+month         0
+hour          0
+holiday       0
+weekday       0
+workingday    0
+weather       0
+temp          0
+atemp         0
+humidity      0
+windspeed     0
+casual        0
+registered    0
+demand        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#STEP2</span>
+<span class="n">bikes_prep_data</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">bikes_prep</span><span class="o">=</span><span class="n">bikes_prep_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;casual&#39;</span><span class="p">,</span><span class="s1">&#39;registered&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>year</th>
+      <th>month</th>
+      <th>hour</th>
+      <th>holiday</th>
+      <th>weekday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.81</td>
+      <td>0.0000</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.2727</td>
+      <td>0.80</td>
+      <td>0.0000</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.2727</td>
+      <td>0.80</td>
+      <td>0.0000</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.75</td>
+      <td>0.0000</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.75</td>
+      <td>0.0000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>19</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.2576</td>
+      <td>0.60</td>
+      <td>0.1642</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>20</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.2576</td>
+      <td>0.60</td>
+      <td>0.1642</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.2576</td>
+      <td>0.60</td>
+      <td>0.1642</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.2727</td>
+      <td>0.56</td>
+      <td>0.1343</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.2727</td>
+      <td>0.65</td>
+      <td>0.1343</td>
+      <td>49</td>
+    </tr>
+  </tbody>
+</table>
+<p>17379 rows × 13 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="c1">#Basic Check of missing value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>season        0
+year          0
+month         0
+hour          0
+holiday       0
+weekday       0
+workingday    0
+weather       0
+temp          0
+atemp         0
+humidity      0
+windspeed     0
+demand        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Visualise the data</span>
+<span class="n">bikes_prep</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Kaggle Bike Demand Prediction_13_0.png" src="../../_images/Kaggle Bike Demand Prediction_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Visualise the continuous features V/S  demand</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temp v/s demand&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;atemp v/s demand&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;atemp&#39;</span><span class="p">],</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Humidity v/s demand&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">],</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Windspeed v/s demand&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;windspeed&#39;</span><span class="p">],</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Kaggle Bike Demand Prediction_17_0.png" src="../../_images/Kaggle Bike Demand Prediction_17_0.png" />
+</div>
+</div>
+<p>After visualising the plot of temp and atemp, there would be high chances for the colrelation as in the both graphdemand increase when temp and temp increse.</p>
+<p>Data visualisation for catogerical variable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot visualisation for catogerical variable</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;season&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="c1">#create a list of unique season&#39;s values</span>
+<span class="n">cat_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span> <span class="c1">#Created average demand per season using groupby</span>
+<span class="n">cat_average</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>season
+1    111.114569
+2    208.344069
+3    236.016237
+4    198.868856
+Name: demand, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 4 artists&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Kaggle Bike Demand Prediction_23_1.png" src="../../_images/Kaggle Bike Demand Prediction_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create a 3 * 3 subplot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colours</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Season&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;season&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Month&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Holiday&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;holiday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;holiday&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Weekday&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;weekday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;weekday&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Year&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per hour&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;hour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Workingday&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;workingday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;workingday&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per Weather&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;weather&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Kaggle Bike Demand Prediction_25_0.png" src="../../_images/Kaggle Bike Demand Prediction_25_0.png" />
+</div>
+</div>
+<p>Features to be dropped-</p>
+<p>1)weekday- There is no significant change in demand. It won’t affect the prediction of bike so we can drop it.</p>
+<p>2)year</p>
+<p>3)working day</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colours</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Demand per hour&#39;</span><span class="p">)</span>
+<span class="n">cat_list</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">cat_average</span><span class="o">=</span><span class="n">bikes_prep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;hour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cat_list</span><span class="p">,</span><span class="n">cat_average</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Kaggle Bike Demand Prediction_27_0.png" src="../../_images/Kaggle Bike Demand Prediction_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check for outliers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    17379.000000
+mean       189.463088
+std        181.387599
+min          1.000000
+25%         40.000000
+50%        142.000000
+75%        281.000000
+max        977.000000
+Name: demand, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.95</span><span class="p">,</span><span class="mf">0.99</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05      5.00
+0.10      9.00
+0.15     16.00
+0.90    451.20
+0.95    563.10
+0.99    782.22
+Name: demand, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step-4 Check Multiple Linear Regression Assumptions</p>
+<ol class="simple">
+<li><p>Linearity using coorelation coefficient matrix using corr</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlation</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[[</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span><span class="s1">&#39;atemp&#39;</span><span class="p">,</span><span class="s1">&#39;humidity&#39;</span><span class="p">,</span><span class="s1">&#39;windspeed&#39;</span><span class="p">,</span><span class="s1">&#39;demand&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>temp</th>
+      <td>1.000000</td>
+      <td>0.987672</td>
+      <td>-0.069881</td>
+      <td>-0.023125</td>
+      <td>0.404772</td>
+    </tr>
+    <tr>
+      <th>atemp</th>
+      <td>0.987672</td>
+      <td>1.000000</td>
+      <td>-0.051918</td>
+      <td>-0.062336</td>
+      <td>0.400929</td>
+    </tr>
+    <tr>
+      <th>humidity</th>
+      <td>-0.069881</td>
+      <td>-0.051918</td>
+      <td>1.000000</td>
+      <td>-0.290105</td>
+      <td>-0.322911</td>
+    </tr>
+    <tr>
+      <th>windspeed</th>
+      <td>-0.023125</td>
+      <td>-0.062336</td>
+      <td>-0.290105</td>
+      <td>1.000000</td>
+      <td>0.093234</td>
+    </tr>
+    <tr>
+      <th>demand</th>
+      <td>0.404772</td>
+      <td>0.400929</td>
+      <td>-0.322911</td>
+      <td>0.093234</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Features to be dropped-</p>
+<p>1)weekday- There is no significant change in demand. It won’t affect the prediction of bike so we can drop it.</p>
+<p>2)year</p>
+<p>3)working day</p>
+<p>4)atemp</p>
+<p>5)windspeed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_data</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">bikes_prep</span><span class="o">=</span><span class="n">bikes_prep_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;casual&#39;</span><span class="p">,</span><span class="s1">&#39;registered&#39;</span><span class="p">,</span><span class="s1">&#39;weekday&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;workingday&#39;</span><span class="p">,</span><span class="s1">&#39;atemp&#39;</span><span class="p">,</span><span class="s1">&#39;windspeed&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>month</th>
+      <th>hour</th>
+      <th>holiday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>humidity</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.81</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>1</td>
+      <td>12</td>
+      <td>19</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>1</td>
+      <td>12</td>
+      <td>20</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>1</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.56</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>1</td>
+      <td>12</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.65</td>
+      <td>49</td>
+    </tr>
+  </tbody>
+</table>
+<p>17379 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check the autocorrelation in demand using acorr</span>
+<span class="c1">#For acorr, the data should be in float so we will define a float function to convert integer in float.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">],</span><span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         16.0
+1         40.0
+2         32.0
+3         13.0
+4          1.0
+         ...  
+17374    119.0
+17375     89.0
+17376     90.0
+17377     61.0
+17378     49.0
+Name: demand, Length: 17379, dtype: float32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">acorr</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">maxlags</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-12, -11, -10,  -9,  -8,  -7,  -6,  -5,  -4,  -3,  -2,  -1,   0,
+          1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12]),
+ array([0.45474717, 0.4704956 , 0.49622816, 0.49404055, 0.46795937,
+        0.47732046, 0.5267577 , 0.5914575 , 0.6520158 , 0.71519554,
+        0.8059103 , 0.9253097 , 1.        , 0.9253097 , 0.8059103 ,
+        0.71519554, 0.6520158 , 0.5914575 , 0.5267577 , 0.47732046,
+        0.46795937, 0.49404055, 0.49622816, 0.4704956 , 0.45474717],
+       dtype=float32),
+ &lt;matplotlib.collections.LineCollection at 0x7ff553643390&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7ff553643850&gt;)
+</pre></div>
+</div>
+<img alt="../../_images/Kaggle Bike Demand Prediction_41_1.png" src="../../_images/Kaggle Bike Demand Prediction_41_1.png" />
+</div>
+</div>
+<p>There is high autocorrelation for the demand feature</p>
+<p>After also visualising the demand curve, demand is not normally distributed. So we normalise the feature’demand’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Log normalise the feature &#39;Demand&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+<span class="n">df2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Kaggle Bike Demand Prediction_46_1.png" src="../../_images/Kaggle Bike Demand Prediction_46_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Kaggle Bike Demand Prediction_47_1.png" src="../../_images/Kaggle Bike Demand Prediction_47_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span> <span class="c1">#Log normalised value the feature &#39;Demand&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        2.772589
+1        3.688879
+2        3.465736
+3        2.564949
+4        0.000000
+           ...   
+17374    4.779123
+17375    4.488636
+17376    4.499810
+17377    4.110874
+17378    3.891820
+Name: demand, Length: 17379, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Autocorrelation in the ddemand cpolumn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_1</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">t_1</span><span class="o">.</span><span class="n">coulmn</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+
+<span class="n">t_2</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">t_2</span><span class="o">.</span><span class="n">coulmn</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span>
+
+<span class="n">t_3</span><span class="o">=</span><span class="n">bikes_prep</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">t_3</span><span class="o">.</span><span class="n">coulmn</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: UserWarning: Pandas doesn&#39;t allow columns to be created via a new attribute name - see https://pandas.pydata.org/pandas-docs/stable/indexing.html#attribute-access
+  
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:5: UserWarning: Pandas doesn&#39;t allow columns to be created via a new attribute name - see https://pandas.pydata.org/pandas-docs/stable/indexing.html#attribute-access
+  &quot;&quot;&quot;
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:8: UserWarning: Pandas doesn&#39;t allow columns to be created via a new attribute name - see https://pandas.pydata.org/pandas-docs/stable/indexing.html#attribute-access
+  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_lag</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bikes_prep</span><span class="p">,</span><span class="n">t_1</span><span class="p">,</span><span class="n">t_2</span><span class="p">,</span><span class="n">t_3</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bikes_prep_lag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>month</th>
+      <th>hour</th>
+      <th>holiday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>humidity</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.81</td>
+      <td>2.772589</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>1</td>
+      <td>12</td>
+      <td>19</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+      <td>5.365976</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>1</td>
+      <td>12</td>
+      <td>20</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>1</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.56</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>1</td>
+      <td>12</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.65</td>
+      <td>3.891820</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+    </tr>
+  </tbody>
+</table>
+<p>17379 rows × 11 columns</p>
+</div></div></div>
+</div>
+<p>As per autocorrelation principle, we need three more column(t_1,t_2,t_3) as well, along with these various independent feaures to predict the demand for a particular hour.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_lag</span> <span class="o">=</span> <span class="n">bikes_prep_lag</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">bikes_prep_lag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>month</th>
+      <th>hour</th>
+      <th>holiday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>humidity</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>1</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>1</td>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.20</td>
+      <td>0.86</td>
+      <td>1.098612</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>1</td>
+      <td>12</td>
+      <td>19</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+      <td>5.365976</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>1</td>
+      <td>12</td>
+      <td>20</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>1</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.56</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>1</td>
+      <td>12</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.65</td>
+      <td>3.891820</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+    </tr>
+  </tbody>
+</table>
+<p>17376 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_lag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>month</th>
+      <th>hour</th>
+      <th>holiday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>humidity</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>1</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>1</td>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.20</td>
+      <td>0.86</td>
+      <td>1.098612</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>1</td>
+      <td>12</td>
+      <td>19</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+      <td>5.365976</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>1</td>
+      <td>12</td>
+      <td>20</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>1</td>
+      <td>12</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>1</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.56</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>1</td>
+      <td>12</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.26</td>
+      <td>0.65</td>
+      <td>3.891820</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+    </tr>
+  </tbody>
+</table>
+<p>17376 rows × 11 columns</p>
+</div></div></div>
+</div>
+<p>Step 7 - Create Dummy Variables and drop first to avoid dummy variables trap using get_dummies.</p>
+<p>season,holiday,weather,month,hour</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_lag</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>season        int64
+month         int64
+hour          int64
+holiday       int64
+weather       int64
+temp        float64
+humidity    float64
+demand      float64
+demand      float64
+demand      float64
+demand      float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;season&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;season&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;holiday&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;holiday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="n">bikes_prep_lag</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bikes_prep_lag</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:4: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  after removing the cwd from sys.path.
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:5: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  &quot;&quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes_prep_lag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>humidity</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>season_2</th>
+      <th>season_3</th>
+      <th>season_4</th>
+      <th>month_2</th>
+      <th>...</th>
+      <th>hour_18</th>
+      <th>hour_19</th>
+      <th>hour_20</th>
+      <th>hour_21</th>
+      <th>hour_22</th>
+      <th>hour_23</th>
+      <th>holiday_1</th>
+      <th>weather_2</th>
+      <th>weather_3</th>
+      <th>weather_4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20</td>
+      <td>0.86</td>
+      <td>1.098612</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+      <td>5.365976</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>0.26</td>
+      <td>0.56</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>0.26</td>
+      <td>0.65</td>
+      <td>3.891820</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>17376 rows × 47 columns</p>
+</div></div></div>
+</div>
+<p>Step-8 Create Train and test split</p>
+<p>Split the X and Y dataset into training and testing set</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from sklearn.model_selection import train_test_split</span>
+<span class="c1">#X_train, X_test, Y_train, Y_test= train_test_split(X,Y, test_size=0.4, random_state=1234)</span>
+<span class="c1">#It will take data randomly for train and test data set</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we randomly select the data for training and in that case, our data will lose the autocorelation, which we are using to create additional columns and also to predict the future values. The same thing will happen with test data also. So in such cases, we take part of the data either at the start or at the end  or even in the middle as long as we take the complete data for a particular time period. In this our train data will be 0.7* total row data and remaining will go in the test data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#demand is the time dependent or time series</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="p">[[</span><span class="s1">&#39;demand&#39;</span><span class="p">]]</span>
+<span class="n">X</span><span class="o">=</span><span class="n">bikes_prep_lag</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;demand&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>humidity</th>
+      <th>season_2</th>
+      <th>season_3</th>
+      <th>season_4</th>
+      <th>month_2</th>
+      <th>month_3</th>
+      <th>month_4</th>
+      <th>month_5</th>
+      <th>month_6</th>
+      <th>...</th>
+      <th>hour_18</th>
+      <th>hour_19</th>
+      <th>hour_20</th>
+      <th>hour_21</th>
+      <th>hour_22</th>
+      <th>hour_23</th>
+      <th>holiday_1</th>
+      <th>weather_2</th>
+      <th>weather_3</th>
+      <th>weather_4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.24</td>
+      <td>0.75</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.22</td>
+      <td>0.80</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20</td>
+      <td>0.86</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>0.26</td>
+      <td>0.56</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>0.26</td>
+      <td>0.65</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>17376 rows × 43 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+      <th>demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+      <td>2.772589</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+      <td>3.688879</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+      <td>3.465736</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.564949</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.098612</td>
+      <td>0.693147</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17374</th>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+      <td>5.365976</td>
+    </tr>
+    <tr>
+      <th>17375</th>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+      <td>5.099866</td>
+    </tr>
+    <tr>
+      <th>17376</th>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+      <td>4.804021</td>
+    </tr>
+    <tr>
+      <th>17377</th>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+      <td>4.779123</td>
+    </tr>
+    <tr>
+      <th>17378</th>
+      <td>3.891820</td>
+      <td>4.110874</td>
+      <td>4.499810</td>
+      <td>4.488636</td>
+    </tr>
+  </tbody>
+</table>
+<p>17376 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create the size for 70% of the total row data in order to maintain the autocolinearity. If we will not do in this way, we will lose the autocorrealation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr_size</span><span class="o">=</span><span class="mf">0.7</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">tr_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr_size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">tr_size</span><span class="p">)</span> <span class="c1">#converted the tr_size into integer type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">tr_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">tr_size</span><span class="p">]</span>
+<span class="n">X_test</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">tr_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)]</span>
+
+<span class="n">Y_train</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">tr_size</span><span class="p">]</span>
+<span class="n">Y_test</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">tr_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step-9 Fit and score the model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_reg</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2_train</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span> <span class="c1">#Calculated R square value</span>
+<span class="n">r2_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7902082553500301
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2_test</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span> <span class="c1">#Calculated R square value</span>
+<span class="n">r2_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7394613123807773
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_predict</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1">#Created Y prediction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rmse</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span><span class="n">Y_predict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rmse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7283467420438178
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Machine Leaning/Kaggle Bike Demand Prediction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Shivam Gupta<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

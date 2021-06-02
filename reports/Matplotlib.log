@@ -1,0 +1,99 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 554, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+plt.axis("off")
+plt.imshow(img, cmap="mc")
+plt.colorbar()
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-47-bd08e95bd3f6>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0mplt[0m[0;34m.[0m[0maxis[0m[0;34m([0m[0;34m"off"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mplt[0m[0;34m.[0m[0mimshow[0m[0;34m([0m[0mimg[0m[0;34m,[0m [0mcmap[0m[0;34m=[0m[0;34m"mc"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0mplt[0m[0;34m.[0m[0mcolorbar[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mplt[0m[0;34m.[0m[0mshow[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/pyplot.py[0m in [0;36mimshow[0;34m(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, data, **kwargs)[0m
+[1;32m   2907[0m         [0mfilternorm[0m[0;34m=[0m[0mfilternorm[0m[0;34m,[0m [0mfilterrad[0m[0;34m=[0m[0mfilterrad[0m[0;34m,[0m [0mresample[0m[0;34m=[0m[0mresample[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2908[0m         [0murl[0m[0;34m=[0m[0murl[0m[0;34m,[0m [0;34m**[0m[0;34m([0m[0;34m{[0m[0;34m"data"[0m[0;34m:[0m [0mdata[0m[0;34m}[0m [0;32mif[0m [0mdata[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m [0;32melse[0m [0;34m{[0m[0;34m}[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2909[0;31m         **kwargs)
+[0m[1;32m   2910[0m     [0msci[0m[0;34m([0m[0m__ret[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2911[0m     [0;32mreturn[0m [0m__ret[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/__init__.py[0m in [0;36minner[0;34m(ax, data, *args, **kwargs)[0m
+[1;32m   1359[0m     [0;32mdef[0m [0minner[0m[0;34m([0m[0max[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0mdata[0m[0;34m=[0m[0;32mNone[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1360[0m         [0;32mif[0m [0mdata[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1361[0;31m             [0;32mreturn[0m [0mfunc[0m[0;34m([0m[0max[0m[0;34m,[0m [0;34m*[0m[0mmap[0m[0;34m([0m[0msanitize_sequence[0m[0;34m,[0m [0margs[0m[0;34m)[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1362[0m [0;34m[0m[0m
+[1;32m   1363[0m         [0mbound[0m [0;34m=[0m [0mnew_sig[0m[0;34m.[0m[0mbind[0m[0;34m([0m[0max[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/axes/_axes.py[0m in [0;36mimshow[0;34m(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, **kwargs)[0m
+[1;32m   5605[0m         im = mimage.AxesImage(self, cmap, norm, interpolation, origin, extent,
+[1;32m   5606[0m                               [0mfilternorm[0m[0;34m=[0m[0mfilternorm[0m[0;34m,[0m [0mfilterrad[0m[0;34m=[0m[0mfilterrad[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 5607[0;31m                               resample=resample, **kwargs)
+[0m[1;32m   5608[0m [0;34m[0m[0m
+[1;32m   5609[0m         [0mim[0m[0;34m.[0m[0mset_data[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/image.py[0m in [0;36m__init__[0;34m(self, ax, cmap, norm, interpolation, origin, extent, filternorm, filterrad, resample, **kwargs)[0m
+[1;32m    907[0m             [0mfilterrad[0m[0;34m=[0m[0mfilterrad[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    908[0m             [0mresample[0m[0;34m=[0m[0mresample[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 909[0;31m             [0;34m**[0m[0mkwargs[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    910[0m         )
+[1;32m    911[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/image.py[0m in [0;36m__init__[0;34m(self, ax, cmap, norm, interpolation, origin, filternorm, filterrad, resample, **kwargs)[0m
+[1;32m    242[0m                  ):
+[1;32m    243[0m         [0mmartist[0m[0;34m.[0m[0mArtist[0m[0;34m.[0m[0m__init__[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 244[0;31m         [0mcm[0m[0;34m.[0m[0mScalarMappable[0m[0;34m.[0m[0m__init__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mnorm[0m[0;34m,[0m [0mcmap[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    245[0m         [0;32mif[0m [0morigin[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    246[0m             [0morigin[0m [0;34m=[0m [0mmpl[0m[0;34m.[0m[0mrcParams[0m[0;34m[[0m[0;34m'image.origin'[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/cm.py[0m in [0;36m__init__[0;34m(self, norm, cmap)[0m
+[1;32m    261[0m         [0mself[0m[0;34m.[0m[0mset_norm[0m[0;34m([0m[0mnorm[0m[0;34m)[0m  [0;31m# The Normalize instance of this ScalarMappable.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    262[0m         [0mself[0m[0;34m.[0m[0mcmap[0m [0;34m=[0m [0;32mNone[0m  [0;31m# So that the setter knows we're initializing.[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 263[0;31m         [0mself[0m[0;34m.[0m[0mset_cmap[0m[0;34m([0m[0mcmap[0m[0;34m)[0m  [0;31m# The Colormap instance of this ScalarMappable.[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    264[0m         [0;31m#: The last colorbar associated with this ScalarMappable. May be None.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    265[0m         [0mself[0m[0;34m.[0m[0mcolorbar[0m [0;34m=[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/cm.py[0m in [0;36mset_cmap[0;34m(self, cmap)[0m
+[1;32m    430[0m         """
+[1;32m    431[0m         [0min_init[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mcmap[0m [0;32mis[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 432[0;31m         [0mcmap[0m [0;34m=[0m [0mget_cmap[0m[0;34m([0m[0mcmap[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    433[0m         [0mself[0m[0;34m.[0m[0mcmap[0m [0;34m=[0m [0mcmap[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    434[0m         [0;32mif[0m [0;32mnot[0m [0min_init[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/cm.py[0m in [0;36mget_cmap[0;34m(name, lut)[0m
+[1;32m    188[0m     [0;32mif[0m [0misinstance[0m[0;34m([0m[0mname[0m[0;34m,[0m [0mcolors[0m[0;34m.[0m[0mColormap[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    189[0m         [0;32mreturn[0m [0mname[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 190[0;31m     [0m_api[0m[0;34m.[0m[0mcheck_in_list[0m[0;34m([0m[0msorted[0m[0;34m([0m[0m_cmap_registry[0m[0;34m)[0m[0;34m,[0m [0mname[0m[0;34m=[0m[0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    191[0m     [0;32mif[0m [0mlut[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    192[0m         [0;32mreturn[0m [0m_cmap_registry[0m[0;34m[[0m[0mname[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/_api/__init__.py[0m in [0;36mcheck_in_list[0;34m(_values, _print_supported_values, **kwargs)[0m
+[1;32m    125[0m             [0;32mif[0m [0m_print_supported_values[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    126[0m                 raise ValueError(
+[0;32m--> 127[0;31m                     [0;34mf"{val!r} is not a valid value for {key}; "[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    128[0m                     f"supported values are {', '.join(map(repr, values))}")
+[1;32m    129[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: 'mc' is not a valid value for name; supported values are 'Accent', 'Accent_r', 'Blues', 'Blues_r', 'BrBG', 'BrBG_r', 'BuGn', 'BuGn_r', 'BuPu', 'BuPu_r', 'CMRmap', 'CMRmap_r', 'Dark2', 'Dark2_r', 'GnBu', 'GnBu_r', 'Greens', 'Greens_r', 'Greys', 'Greys_r', 'OrRd', 'OrRd_r', 'Oranges', 'Oranges_r', 'PRGn', 'PRGn_r', 'Paired', 'Paired_r', 'Pastel1', 'Pastel1_r', 'Pastel2', 'Pastel2_r', 'PiYG', 'PiYG_r', 'PuBu', 'PuBuGn', 'PuBuGn_r', 'PuBu_r', 'PuOr', 'PuOr_r', 'PuRd', 'PuRd_r', 'Purples', 'Purples_r', 'RdBu', 'RdBu_r', 'RdGy', 'RdGy_r', 'RdPu', 'RdPu_r', 'RdYlBu', 'RdYlBu_r', 'RdYlGn', 'RdYlGn_r', 'Reds', 'Reds_r', 'Set1', 'Set1_r', 'Set2', 'Set2_r', 'Set3', 'Set3_r', 'Spectral', 'Spectral_r', 'Wistia', 'Wistia_r', 'YlGn', 'YlGnBu', 'YlGnBu_r', 'YlGn_r', 'YlOrBr', 'YlOrBr_r', 'YlOrRd', 'YlOrRd_r', 'afmhot', 'afmhot_r', 'autumn', 'autumn_r', 'binary', 'binary_r', 'bone', 'bone_r', 'brg', 'brg_r', 'bwr', 'bwr_r', 'cividis', 'cividis_r', 'cool', 'cool_r', 'coolwarm', 'coolwarm_r', 'copper', 'copper_r', 'cubehelix', 'cubehelix_r', 'flag', 'flag_r', 'gist_earth', 'gist_earth_r', 'gist_gray', 'gist_gray_r', 'gist_heat', 'gist_heat_r', 'gist_ncar', 'gist_ncar_r', 'gist_rainbow', 'gist_rainbow_r', 'gist_stern', 'gist_stern_r', 'gist_yarg', 'gist_yarg_r', 'gnuplot', 'gnuplot2', 'gnuplot2_r', 'gnuplot_r', 'gray', 'gray_r', 'hot', 'hot_r', 'hsv', 'hsv_r', 'inferno', 'inferno_r', 'jet', 'jet_r', 'magma', 'magma_r', 'nipy_spectral', 'nipy_spectral_r', 'ocean', 'ocean_r', 'pink', 'pink_r', 'plasma', 'plasma_r', 'prism', 'prism_r', 'rainbow', 'rainbow_r', 'seismic', 'seismic_r', 'spring', 'spring_r', 'summer', 'summer_r', 'tab10', 'tab10_r', 'tab20', 'tab20_r', 'tab20b', 'tab20b_r', 'tab20c', 'tab20c_r', 'terrain', 'terrain_r', 'turbo', 'turbo_r', 'twilight', 'twilight_r', 'twilight_shifted', 'twilight_shifted_r', 'viridis', 'viridis_r', 'winter', 'winter_r'
+ValueError: 'mc' is not a valid value for name; supported values are 'Accent', 'Accent_r', 'Blues', 'Blues_r', 'BrBG', 'BrBG_r', 'BuGn', 'BuGn_r', 'BuPu', 'BuPu_r', 'CMRmap', 'CMRmap_r', 'Dark2', 'Dark2_r', 'GnBu', 'GnBu_r', 'Greens', 'Greens_r', 'Greys', 'Greys_r', 'OrRd', 'OrRd_r', 'Oranges', 'Oranges_r', 'PRGn', 'PRGn_r', 'Paired', 'Paired_r', 'Pastel1', 'Pastel1_r', 'Pastel2', 'Pastel2_r', 'PiYG', 'PiYG_r', 'PuBu', 'PuBuGn', 'PuBuGn_r', 'PuBu_r', 'PuOr', 'PuOr_r', 'PuRd', 'PuRd_r', 'Purples', 'Purples_r', 'RdBu', 'RdBu_r', 'RdGy', 'RdGy_r', 'RdPu', 'RdPu_r', 'RdYlBu', 'RdYlBu_r', 'RdYlGn', 'RdYlGn_r', 'Reds', 'Reds_r', 'Set1', 'Set1_r', 'Set2', 'Set2_r', 'Set3', 'Set3_r', 'Spectral', 'Spectral_r', 'Wistia', 'Wistia_r', 'YlGn', 'YlGnBu', 'YlGnBu_r', 'YlGn_r', 'YlOrBr', 'YlOrBr_r', 'YlOrRd', 'YlOrRd_r', 'afmhot', 'afmhot_r', 'autumn', 'autumn_r', 'binary', 'binary_r', 'bone', 'bone_r', 'brg', 'brg_r', 'bwr', 'bwr_r', 'cividis', 'cividis_r', 'cool', 'cool_r', 'coolwarm', 'coolwarm_r', 'copper', 'copper_r', 'cubehelix', 'cubehelix_r', 'flag', 'flag_r', 'gist_earth', 'gist_earth_r', 'gist_gray', 'gist_gray_r', 'gist_heat', 'gist_heat_r', 'gist_ncar', 'gist_ncar_r', 'gist_rainbow', 'gist_rainbow_r', 'gist_stern', 'gist_stern_r', 'gist_yarg', 'gist_yarg_r', 'gnuplot', 'gnuplot2', 'gnuplot2_r', 'gnuplot_r', 'gray', 'gray_r', 'hot', 'hot_r', 'hsv', 'hsv_r', 'inferno', 'inferno_r', 'jet', 'jet_r', 'magma', 'magma_r', 'nipy_spectral', 'nipy_spectral_r', 'ocean', 'ocean_r', 'pink', 'pink_r', 'plasma', 'plasma_r', 'prism', 'prism_r', 'rainbow', 'rainbow_r', 'seismic', 'seismic_r', 'spring', 'spring_r', 'summer', 'summer_r', 'tab10', 'tab10_r', 'tab20', 'tab20_r', 'tab20b', 'tab20b_r', 'tab20c', 'tab20c_r', 'terrain', 'terrain_r', 'turbo', 'turbo_r', 'twilight', 'twilight_r', 'twilight_shifted', 'twilight_shifted_r', 'viridis', 'viridis_r', 'winter', 'winter_r'
+

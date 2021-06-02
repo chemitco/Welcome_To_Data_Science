@@ -1,0 +1,1407 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matplotlib &#8212; Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to Data Science
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reveal
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Data Visualisation/Matplotlib.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/chemitco/Welcome_To_Data_Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Data Visualisation/Matplotlib.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Data Visualisation/Matplotlib.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Matplotlib
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#line-plot">
+   Line Plot
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogram">
+   Histogram
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#barchart">
+   Barchart
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#piechart">
+   Piechart
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subplot">
+   Subplot
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matplotlib-savefig">
+   Matplotlib Savefig
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matplotlib-imshow-read-show-image-using-imread-plt-imshow">
+   Matplotlib Imshow – Read &amp; Show Image Using Imread() &amp; Plt.Imshow()
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="matplotlib">
+<h1>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="line-plot">
+<h1>Line Plot<a class="headerlink" href="#line-plot" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">temperature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_4_0.png" src="../_images/Matplotlib_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">temperature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_5_0.png" src="../_images/Matplotlib_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">temperature</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_6_0.png" src="../_images/Matplotlib_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">temperature</span><span class="p">,</span> <span class="s2">&quot;o--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Temp Line&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_7_0.png" src="../_images/Matplotlib_7_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">style</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+<span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">temperature</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Temp Line&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_9_0.png" src="../_images/Matplotlib_9_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">delhi_temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+<span class="n">mumbai_temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">37</span><span class="p">]</span>
+<span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">delhi_temperature</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Delhi_Temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">mumbai_temperature</span><span class="p">,</span><span class="s2">&quot;g--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mumbai_temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_10_0.png" src="../_images/Matplotlib_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="histogram">
+<h1>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ml_student_age</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">py_student_age</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">440</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ml_student_age</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">py_student_age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[18 18 29 24 24 41 43 40 43 22 42 35 36 20 44 42 34 41 33 36 27 32 39 41
+ 20 25 38 19 30 25 25 21 27 34 29 34 25 24 25 41 25 24 44 31 19 32 38 18
+ 28 34 42 26 37 26 43 27 18 23 29 23 28 34 22 29 24 42 30 27 31 39 29 39
+ 22 43 39 23 38 40 33 28 32 39 27 44 26 21 43 31 31 31 29 42 29 38 25 32
+ 23 31 23 32]
+[388 363 145 386 185 397  71 134 379  59 314  27 308 310 255 386 243 116
+  71 114 300  24 277 116  60  77 402 243 286  55 214  18  83 177 265 282
+ 130 276 134  27 128 255  29 294 341 432  43 260 323 193 294 106 386 259
+ 200 401 414 322  43 178 346  35 413 408 376 318 328  82  97 219 353 144
+ 164 305 170  38 280 435  46 238  70 140  44 263  98 103 103 197 376 284
+  73 246  70 184 139 204 311 125  31 348]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ml_student_age</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ml_Student Age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;student_age_catagory&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_14_0.png" src="../_images/Matplotlib_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ml_student_age</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ml_Student Age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;student_age_catagory&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_15_0.png" src="../_images/Matplotlib_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">([</span><span class="n">ml_student_age</span><span class="p">,</span><span class="n">py_student_age</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ML_Student&quot;</span><span class="p">,</span><span class="s2">&quot;Py_Student&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ml_Student Age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;student_age_catagory&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_16_0.png" src="../_images/Matplotlib_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">style</span>
+<span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+<span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">([</span><span class="n">ml_student_age</span><span class="p">,</span><span class="n">py_student_age</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ML_Student&quot;</span><span class="p">,</span><span class="s2">&quot;Py_Student&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ml_Student Age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;student_age_catagory&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_17_0.png" src="../_images/Matplotlib_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="barchart">
+<h1>Barchart<a class="headerlink" href="#barchart" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">style</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset of &#39;Indian Artificial Intelligence Production (IAIP) Class&quot;</span>
+ 
+<span class="c1">#classes = [&quot;Python&quot;, &quot;R&quot;, &quot;Artificial Intelligence&quot;, &quot;Machine Learning&quot;, &quot;Data Science&quot;]</span>
+ 
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;AI&quot;</span><span class="p">,</span> <span class="s2">&quot;ML&quot;</span><span class="p">,</span> <span class="s2">&quot;DS&quot;</span><span class="p">]</span>
+<span class="n">class1_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="c1"># out of 100 student in each class</span>
+<span class="n">class2_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">class3_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 5 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/Matplotlib_21_1.png" src="../_images/Matplotlib_21_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;class1 students&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 5 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/Matplotlib_22_1.png" src="../_images/Matplotlib_22_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span> <span class="c1"># figure size with ratio 16:9</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span>
+       <span class="n">edgecolor</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span>
+       <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 5 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/Matplotlib_23_1.png" src="../_images/Matplotlib_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span>  <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span>
+       <span class="n">edgecolor</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span>
+       <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 5 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/Matplotlib_24_1.png" src="../_images/Matplotlib_24_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span>
+       <span class="n">edgecolor</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span>
+       <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar Chart of IAIP Class&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Classes&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;No. of Students&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_25_0.png" src="../_images/Matplotlib_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class2_students</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 2 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar Chart of IAIP Class&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Classes&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;No. of Students&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_26_0.png" src="../_images/Matplotlib_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+ 
+<span class="n">classes_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+ 
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes_index</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span> <span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes_index</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">class2_students</span><span class="p">,</span> <span class="n">width</span> <span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 2 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes_index</span> <span class="o">+</span> <span class="n">width</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">class3_students</span><span class="p">,</span> <span class="n">width</span> <span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 2 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">classes_index</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar Chart of IAIP Class&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Classes&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;No. of Students&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_27_0.png" src="../_images/Matplotlib_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+ 
+<span class="n">classes_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+ 
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">classes_index</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span> <span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">classes_index</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">class2_students</span><span class="p">,</span> <span class="n">width</span> <span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 2 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">classes_index</span> <span class="o">+</span> <span class="n">width</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">class3_students</span><span class="p">,</span> <span class="n">width</span> <span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 3 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">classes_index</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar Chart of IAIP Class&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Classes&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;No. of Students&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_28_0.png" src="../_images/Matplotlib_28_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="piechart">
+<h1>Piechart<a class="headerlink" href="#piechart" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine Learning&#39;</span><span class="p">,</span> <span class="s1">&#39;Artificial Intelligence&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Data Science&#39;</span><span class="p">]</span>
+<span class="n">class1_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_31_0.png" src="../_images/Matplotlib_31_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine Learning&#39;</span><span class="p">,</span> <span class="s1">&#39;Artificial Intelligence&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Data Science&#39;</span><span class="p">]</span>
+<span class="n">class1_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">class1_students</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_32_0.png" src="../_images/Matplotlib_32_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;plt.pie(</span>
+<span class="sd">    x,</span>
+<span class="sd">    explode=None,</span>
+<span class="sd">    labels=None,</span>
+<span class="sd">    colors=None,</span>
+<span class="sd">    autopct=None,</span>
+<span class="sd">    pctdistance=0.6,</span>
+<span class="sd">    shadow=False,</span>
+<span class="sd">    labeldistance=1.1,</span>
+<span class="sd">    startangle=0,</span>
+<span class="sd">    radius=1,</span>
+<span class="sd">    counterclock=True,</span>
+<span class="sd">    wedgeprops=None,</span>
+<span class="sd">    textprops=None,</span>
+<span class="sd">    center=(0, 0),</span>
+<span class="sd">    frame=False,</span>
+<span class="sd">    rotatelabels=False,</span>
+<span class="sd">    *,</span>
+<span class="sd">    normalize=None,</span>
+<span class="sd">    data=None,</span>
+<span class="sd">)</span>
+<span class="sd">Docstring:</span>
+<span class="sd">Plot a pie chart.</span>
+
+<span class="sd">Make a pie chart of array *x*.  The fractional area of each wedge is</span>
+<span class="sd">given by ``x/sum(x)``.  If ``sum(x) &lt; 1``, then the values of *x* give</span>
+<span class="sd">the fractional area directly and the array will not be normalized. The</span>
+<span class="sd">resulting pie will have an empty wedge of size ``1 - sum(x)``.</span>
+
+<span class="sd">The wedges are plotted counterclockwise, by default starting from the</span>
+<span class="sd">x-axis.</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">x : 1D array-like</span>
+<span class="sd">    The wedge sizes.</span>
+
+<span class="sd">explode : array-like, default: None</span>
+<span class="sd">    If not *None*, is a ``len(x)`` array which specifies the fraction</span>
+<span class="sd">    of the radius with which to offset each wedge.</span>
+
+<span class="sd">labels : list, default: None</span>
+<span class="sd">    A sequence of strings providing the labels for each wedge</span>
+
+<span class="sd">colors : array-like, default: None</span>
+<span class="sd">    A sequence of colors through which the pie chart will cycle.  If</span>
+<span class="sd">    *None*, will use the colors in the currently active cycle.</span>
+
+<span class="sd">autopct : None or str or callable, default: None</span>
+<span class="sd">    If not *None*, is a string or function used to label the wedges</span>
+<span class="sd">    with their numeric value.  The label will be placed inside the</span>
+<span class="sd">    wedge.  If it is a format string, the label will be ``fmt % pct``.</span>
+<span class="sd">    If it is a function, it will be called.</span>
+
+<span class="sd">pctdistance : float, default: 0.6</span>
+<span class="sd">    The ratio between the center of each pie slice and the start of</span>
+<span class="sd">    the text generated by *autopct*.  Ignored if *autopct* is *None*.</span>
+
+<span class="sd">shadow : bool, default: False</span>
+<span class="sd">    Draw a shadow beneath the pie.</span>
+
+<span class="sd">normalize: None or bool, default: None</span>
+<span class="sd">    When *True*, always make a full pie by normalizing x so that</span>
+<span class="sd">    ``sum(x) == 1``. *False* makes a partial pie if ``sum(x) &lt;= 1``</span>
+<span class="sd">    and raises a `ValueError` for ``sum(x) &gt; 1``.</span>
+
+<span class="sd">    When *None*, defaults to *True* if ``sum(x) &gt;= 1`` and *False* if</span>
+<span class="sd">    ``sum(x) &lt; 1``.</span>
+
+<span class="sd">    Please note that the previous default value of *None* is now</span>
+<span class="sd">    deprecated, and the default will change to *True* in the next</span>
+<span class="sd">    release. Please pass ``normalize=False`` explicitly if you want to</span>
+<span class="sd">    draw a partial pie.</span>
+
+<span class="sd">labeldistance : float or None, default: 1.1</span>
+<span class="sd">    The radial distance at which the pie labels are drawn.</span>
+<span class="sd">    If set to ``None``, label are not drawn, but are stored for use in</span>
+<span class="sd">    ``legend()``</span>
+
+<span class="sd">startangle : float, default: 0 degrees</span>
+<span class="sd">    The angle by which the start of the pie is rotated,</span>
+<span class="sd">    counterclockwise from the x-axis.</span>
+
+<span class="sd">radius : float, default: 1</span>
+<span class="sd">    The radius of the pie.</span>
+
+<span class="sd">counterclock : bool, default: True</span>
+<span class="sd">    Specify fractions direction, clockwise or counterclockwise.</span>
+
+<span class="sd">wedgeprops : dict, default: None</span>
+<span class="sd">    Dict of arguments passed to the wedge objects making the pie.</span>
+<span class="sd">    For example, you can pass in ``wedgeprops = {&#39;linewidth&#39;: 3}``</span>
+<span class="sd">    to set the width of the wedge border lines equal to 3.</span>
+<span class="sd">    For more details, look at the doc/arguments of the wedge object.</span>
+<span class="sd">    By default ``clip_on=False``.</span>
+
+<span class="sd">textprops : dict, default: None</span>
+<span class="sd">    Dict of arguments to pass to the text objects.</span>
+
+<span class="sd">center : (float, float), default: (0, 0)</span>
+<span class="sd">    The coordinates of the center of the chart.</span>
+
+<span class="sd">frame : bool, default: False</span>
+<span class="sd">    Plot axes frame with the chart if true.</span>
+
+<span class="sd">rotatelabels : bool, default: False</span>
+<span class="sd">    Rotate each label to the angle of the corresponding slice if true.</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">patches : list</span>
+<span class="sd">    A sequence of `matplotlib.patches.Wedge` instances</span>
+
+<span class="sd">texts : list</span>
+<span class="sd">    A list of the label `.Text` instances.</span>
+
+<span class="sd">autotexts : list</span>
+<span class="sd">    A list of `.Text` instances for the numeric labels. This will only</span>
+<span class="sd">    be returned if the parameter *autopct* is not *None*.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">The pie chart will probably look best if the figure and axes are</span>
+<span class="sd">square, or the Axes aspect is equal.</span>
+<span class="sd">This method sets the aspect ratio of the axis to &quot;equal&quot;.</span>
+<span class="sd">The axes aspect ratio can be controlled with `.Axes.set_aspect`.</span>
+
+<span class="sd">.. note::</span>
+<span class="sd">    In addition to the above described arguments, this function can take</span>
+<span class="sd">    a *data* keyword argument. If such a *data* argument is given,</span>
+<span class="sd">    the following arguments can also be string ``s``, which is</span>
+<span class="sd">    interpreted as ``data[s]`` (unless this raises an exception):</span>
+<span class="sd">    *x*, *explode*, *labels*, *colors*.&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;plt.pie(\n    x,\n    explode=None,\n    labels=None,\n    colors=None,\n    autopct=None,\n    pctdistance=0.6,\n    shadow=False,\n    labeldistance=1.1,\n    startangle=0,\n    radius=1,\n    counterclock=True,\n    wedgeprops=None,\n    textprops=None,\n    center=(0, 0),\n    frame=False,\n    rotatelabels=False,\n    *,\n    normalize=None,\n    data=None,\n)\nDocstring:\nPlot a pie chart.\n\nMake a pie chart of array *x*.  The fractional area of each wedge is\ngiven by ``x/sum(x)``.  If ``sum(x) &lt; 1``, then the values of *x* give\nthe fractional area directly and the array will not be normalized. The\nresulting pie will have an empty wedge of size ``1 - sum(x)``.\n\nThe wedges are plotted counterclockwise, by default starting from the\nx-axis.\n\nParameters\n----------\nx : 1D array-like\n    The wedge sizes.\n\nexplode : array-like, default: None\n    If not *None*, is a ``len(x)`` array which specifies the fraction\n    of the radius with which to offset each wedge.\n\nlabels : list, default: None\n    A sequence of strings providing the labels for each wedge\n\ncolors : array-like, default: None\n    A sequence of colors through which the pie chart will cycle.  If\n    *None*, will use the colors in the currently active cycle.\n\nautopct : None or str or callable, default: None\n    If not *None*, is a string or function used to label the wedges\n    with their numeric value.  The label will be placed inside the\n    wedge.  If it is a format string, the label will be ``fmt % pct``.\n    If it is a function, it will be called.\n\npctdistance : float, default: 0.6\n    The ratio between the center of each pie slice and the start of\n    the text generated by *autopct*.  Ignored if *autopct* is *None*.\n\nshadow : bool, default: False\n    Draw a shadow beneath the pie.\n\nnormalize: None or bool, default: None\n    When *True*, always make a full pie by normalizing x so that\n    ``sum(x) == 1``. *False* makes a partial pie if ``sum(x) &lt;= 1``\n    and raises a `ValueError` for ``sum(x) &gt; 1``.\n\n    When *None*, defaults to *True* if ``sum(x) &gt;= 1`` and *False* if\n    ``sum(x) &lt; 1``.\n\n    Please note that the previous default value of *None* is now\n    deprecated, and the default will change to *True* in the next\n    release. Please pass ``normalize=False`` explicitly if you want to\n    draw a partial pie.\n\nlabeldistance : float or None, default: 1.1\n    The radial distance at which the pie labels are drawn.\n    If set to ``None``, label are not drawn, but are stored for use in\n    ``legend()``\n\nstartangle : float, default: 0 degrees\n    The angle by which the start of the pie is rotated,\n    counterclockwise from the x-axis.\n\nradius : float, default: 1\n    The radius of the pie.\n\ncounterclock : bool, default: True\n    Specify fractions direction, clockwise or counterclockwise.\n\nwedgeprops : dict, default: None\n    Dict of arguments passed to the wedge objects making the pie.\n    For example, you can pass in ``wedgeprops = {\&#39;linewidth\&#39;: 3}``\n    to set the width of the wedge border lines equal to 3.\n    For more details, look at the doc/arguments of the wedge object.\n    By default ``clip_on=False``.\n\ntextprops : dict, default: None\n    Dict of arguments to pass to the text objects.\n\ncenter : (float, float), default: (0, 0)\n    The coordinates of the center of the chart.\n\nframe : bool, default: False\n    Plot axes frame with the chart if true.\n\nrotatelabels : bool, default: False\n    Rotate each label to the angle of the corresponding slice if true.\n\nReturns\n-------\npatches : list\n    A sequence of `matplotlib.patches.Wedge` instances\n\ntexts : list\n    A list of the label `.Text` instances.\n\nautotexts : list\n    A list of `.Text` instances for the numeric labels. This will only\n    be returned if the parameter *autopct* is not *None*.\n\nNotes\n-----\nThe pie chart will probably look best if the figure and axes are\nsquare, or the Axes aspect is equal.\nThis method sets the aspect ratio of the axis to &quot;equal&quot;.\nThe axes aspect ratio can be controlled with `.Axes.set_aspect`.\n\n.. note::\n    In addition to the above described arguments, this function can take\n    a *data* keyword argument. If such a *data* argument is given,\n    the following arguments can also be string ``s``, which is\n    interpreted as ``data[s]`` (unless this raises an exception):\n    *x*, *explode*, *labels*, *colors*.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine Learning&#39;</span><span class="p">,</span> <span class="s1">&#39;Artificial Intelligence&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Data Science&#39;</span><span class="p">]</span>
+<span class="n">class1_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">explode</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># To slice the perticuler section</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">]</span> <span class="c1"># Color of each section</span>
+<span class="n">textprops</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">}</span> <span class="c1"># Font size of text in pie chart</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">class1_students</span><span class="p">,</span> <span class="c1"># Values</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">classes</span><span class="p">,</span> <span class="c1"># Labels for each sections</span>
+        <span class="n">explode</span> <span class="o">=</span> <span class="n">explode</span><span class="p">,</span> <span class="c1"># To slice the perticuler section</span>
+        <span class="n">colors</span> <span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="c1"># Color of each section</span>
+        <span class="n">autopct</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%0.2f%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="c1"># Show data in persentage for with 2 decimal point</span>
+        <span class="n">shadow</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># Showing shadow of pie chart</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="c1"># Radius to increase or decrease the size of pie chart </span>
+       <span class="n">startangle</span> <span class="o">=</span> <span class="mi">270</span><span class="p">,</span> <span class="c1"># Start angle of first section</span>
+        <span class="n">textprops</span> <span class="o">=</span><span class="n">textprops</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># To show pie chart only</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_34_0.png" src="../_images/Matplotlib_34_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">wedgeprops</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span><span class="s2">&quot;k&quot;</span><span class="p">}</span> <span class="c1"># Width = 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span>
+        <span class="n">class1_students</span><span class="p">,</span> 
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">classes</span><span class="p">,</span> 
+        <span class="n">explode</span> <span class="o">=</span> <span class="n">explode</span><span class="p">,</span> 
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">,</span> 
+        <span class="n">autopct</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%0.2f%%</span><span class="s2">&quot;</span><span class="p">,</span> 
+        <span class="n">pctdistance</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> 
+        <span class="n">shadow</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">labeldistance</span> <span class="o">=</span> <span class="mf">1.6</span><span class="p">,</span> 
+        <span class="n">startangle</span> <span class="o">=</span> <span class="mi">270</span><span class="p">,</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
+        <span class="n">counterclock</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+        <span class="n">wedgeprops</span> <span class="o">=</span> <span class="n">wedgeprops</span><span class="p">,</span>
+        <span class="n">textprops</span> <span class="o">=</span> <span class="n">textprops</span><span class="p">,</span>
+        <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="n">frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">rotatelabels</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_35_0.png" src="../_images/Matplotlib_35_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine Learning&#39;</span><span class="p">,</span> <span class="s1">&#39;Artificial Intelligence&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Data Science&#39;</span><span class="p">]</span>
+<span class="n">class1_students</span> <span class="o">=</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">explode</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># To slice the perticuler section</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">]</span> <span class="c1"># Color of each section</span>
+<span class="n">textprops</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">}</span> <span class="c1"># Font size of text in pie chart</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">class1_students</span><span class="p">,</span> <span class="c1"># Values</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">classes</span><span class="p">,</span> <span class="c1"># Labels for each sections</span>
+        <span class="n">explode</span> <span class="o">=</span> <span class="n">explode</span><span class="p">,</span> <span class="c1"># To slice the perticuler section</span>
+        <span class="n">colors</span> <span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="c1"># Color of each section</span>
+        <span class="n">autopct</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%0.2f%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="c1"># Show data in persentage for with 2 decimal point</span>
+        <span class="n">shadow</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># Showing shadow of pie chart</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="c1"># Radius to increase or decrease the size of pie chart </span>
+       <span class="n">startangle</span> <span class="o">=</span> <span class="mi">270</span><span class="p">,</span> <span class="c1"># Start angle of first section</span>
+        <span class="n">textprops</span> <span class="o">=</span><span class="n">textprops</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># To show pie chart only</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_36_0.png" src="../_images/Matplotlib_36_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="subplot">
+<h1>Subplot<a class="headerlink" href="#subplot" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">style</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_39_0.png" src="../_images/Matplotlib_39_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="c1">#plt.subplot(3,2,1)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">321</span><span class="p">)</span>
+<span class="n">days</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">delhi_temperature</span><span class="o">=</span><span class="p">[</span><span class="mf">34.5</span><span class="p">,</span><span class="mf">34.2</span><span class="p">,</span><span class="mf">28.6</span><span class="p">,</span><span class="mf">35.7</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">34</span><span class="p">]</span>
+<span class="n">mumbai_temperature</span><span class="o">=</span><span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">37</span><span class="p">]</span>
+<span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">delhi_temperature</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Delhi_Temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">mumbai_temperature</span><span class="p">,</span><span class="s2">&quot;g--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mumbai_temp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delhi Temp&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Days&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class1_students</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 1 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">class2_students</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span><span class="s2">&quot; Class 2 Students&quot;</span><span class="p">)</span> 
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar Chart of IAIP Class&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Classes&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;No. of Students&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_40_0.png" src="../_images/Matplotlib_40_0.png" />
+<img alt="../_images/Matplotlib_40_1.png" src="../_images/Matplotlib_40_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="matplotlib-savefig">
+<h1>Matplotlib Savefig<a class="headerlink" href="#matplotlib-savefig" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;piechart&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_43_0.png" src="../_images/Matplotlib_43_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;piechart&quot;</span><span class="p">,</span> <span class="c1"># file name</span>
+            <span class="n">dpi</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1"># dot per inch for resolution increase value for more resolution</span>
+            <span class="n">quality</span> <span class="o">=</span> <span class="mi">99</span><span class="p">,</span> <span class="c1"># &quot;1 &lt;= value &lt;= 100&quot; 100 for best qulity</span>
+            <span class="n">facecolor</span> <span class="o">=</span> <span class="s2">&quot;g&quot;</span> <span class="c1"># image background color</span>
+           <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel_launcher.py:5: MatplotlibDeprecationWarning: savefig() got unexpected keyword argument &quot;quality&quot; which is no longer supported as of 3.3 and will become an error two minor releases later
+  &quot;&quot;&quot;
+</pre></div>
+</div>
+<img alt="../_images/Matplotlib_44_1.png" src="../_images/Matplotlib_44_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="matplotlib-imshow-read-show-image-using-imread-plt-imshow">
+<h1>Matplotlib Imshow – Read &amp; Show Image Using Imread() &amp; Plt.Imshow()<a class="headerlink" href="#matplotlib-imshow-read-show-image-using-imread-plt-imshow" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;piechart.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        ...,
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ]],
+
+       [[0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        ...,
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ]],
+
+       [[0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        ...,
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ]],
+
+       ...,
+
+       [[0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        ...,
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ]],
+
+       [[0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        ...,
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ]],
+
+       [[0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        ...,
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ],
+        [0.       , 0.5019608, 0.       , 1.       ]]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(400, 600, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_52_0.png" src="../_images/Matplotlib_52_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_53_0.png" src="../_images/Matplotlib_53_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;mc&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">47</span><span class="o">-</span><span class="n">bd08e95bd3f6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;mc&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ni">imshow</span><span class="nt">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, data, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2907</span>         <span class="n">filternorm</span><span class="o">=</span><span class="n">filternorm</span><span class="p">,</span> <span class="n">filterrad</span><span class="o">=</span><span class="n">filterrad</span><span class="p">,</span> <span class="n">resample</span><span class="o">=</span><span class="n">resample</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2908</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}),</span>
+<span class="ne">-&gt; </span><span class="mi">2909</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2910</span>     <span class="n">sci</span><span class="p">(</span><span class="n">__ret</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2911</span>     <span class="k">return</span> <span class="n">__ret</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/__init__.py</span> in <span class="ni">inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1359</span>     <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1360</span>         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1361</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1362</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1363</span>         <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/axes/_axes.py</span> in <span class="ni">imshow</span><span class="nt">(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5605</span>         <span class="n">im</span> <span class="o">=</span> <span class="n">mimage</span><span class="o">.</span><span class="n">AxesImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">5606</span>                               <span class="n">filternorm</span><span class="o">=</span><span class="n">filternorm</span><span class="p">,</span> <span class="n">filterrad</span><span class="o">=</span><span class="n">filterrad</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">5607</span>                               <span class="n">resample</span><span class="o">=</span><span class="n">resample</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5608</span> 
+<span class="g g-Whitespace">   </span><span class="mi">5609</span>         <span class="n">im</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ni">__init__</span><span class="nt">(self, ax, cmap, norm, interpolation, origin, extent, filternorm, filterrad, resample, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">907</span>             <span class="n">filterrad</span><span class="o">=</span><span class="n">filterrad</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">908</span>             <span class="n">resample</span><span class="o">=</span><span class="n">resample</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">909</span>             <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">910</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">911</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ni">__init__</span><span class="nt">(self, ax, cmap, norm, interpolation, origin, filternorm, filterrad, resample, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span>                  <span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>         <span class="n">martist</span><span class="o">.</span><span class="n">Artist</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">244</span>         <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span>         <span class="k">if</span> <span class="n">origin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>             <span class="n">origin</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.origin&#39;</span><span class="p">]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/cm.py</span> in <span class="ni">__init__</span><span class="nt">(self, norm, cmap)</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span>         <span class="bp">self</span><span class="o">.</span><span class="n">set_norm</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>  <span class="c1"># The Normalize instance of this ScalarMappable.</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>         <span class="bp">self</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># So that the setter knows we&#39;re initializing.</span>
+<span class="ne">--&gt; </span><span class="mi">263</span>         <span class="bp">self</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>  <span class="c1"># The Colormap instance of this ScalarMappable.</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span>         <span class="c1">#: The last colorbar associated with this ScalarMappable. May be None.</span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span>         <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/cm.py</span> in <span class="ni">set_cmap</span><span class="nt">(self, cmap)</span>
+<span class="g g-Whitespace">    </span><span class="mi">430</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="s2">         in_init = self.cmap is None</span>
+<span class="ne">--&gt; </span><span class="mi">432</span><span class="s2">         cmap = get_cmap(cmap)</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span><span class="s2">         self.cmap = cmap</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span><span class="s2">         if not in_init:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/cm.py</span> in <span class="ni">get_cmap</span><span class="nt">(name, lut)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span><span class="s2">     if isinstance(name, colors.Colormap):</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="s2">         return name</span>
+<span class="ne">--&gt; </span><span class="mi">190</span><span class="s2">     _api.check_in_list(sorted(_cmap_registry), name=name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span><span class="s2">     if lut is None:</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span><span class="s2">         return _cmap_registry[name]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/matplotlib/_api/__init__.py</span> in <span class="ni">check_in_list</span><span class="nt">(_values, _print_supported_values, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span><span class="s2">             if _print_supported_values:</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span><span class="s2">                 raise ValueError(</span>
+<span class="ne">--&gt; </span><span class="mi">127</span><span class="s2">                     f&quot;</span><span class="si">{val!r}</span><span class="s2"> is not a valid value for </span><span class="si">{key}</span><span class="s2">; &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span><span class="s2">                     f&quot;supported values are {&#39;, &#39;.join(map(repr, values))}&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span><span class="s2">             else:</span>
+
+<span class="ne">ValueError</span>: &#39;mc&#39; is not a valid value for name; supported values are &#39;Accent&#39;, &#39;Accent_r&#39;, &#39;Blues&#39;, &#39;Blues_r&#39;, &#39;BrBG&#39;, &#39;BrBG_r&#39;, &#39;BuGn&#39;, &#39;BuGn_r&#39;, &#39;BuPu&#39;, &#39;BuPu_r&#39;, &#39;CMRmap&#39;, &#39;CMRmap_r&#39;, &#39;Dark2&#39;, &#39;Dark2_r&#39;, &#39;GnBu&#39;, &#39;GnBu_r&#39;, &#39;Greens&#39;, &#39;Greens_r&#39;, &#39;Greys&#39;, &#39;Greys_r&#39;, &#39;OrRd&#39;, &#39;OrRd_r&#39;, &#39;Oranges&#39;, &#39;Oranges_r&#39;, &#39;PRGn&#39;, &#39;PRGn_r&#39;, &#39;Paired&#39;, &#39;Paired_r&#39;, &#39;Pastel1&#39;, &#39;Pastel1_r&#39;, &#39;Pastel2&#39;, &#39;Pastel2_r&#39;, &#39;PiYG&#39;, &#39;PiYG_r&#39;, &#39;PuBu&#39;, &#39;PuBuGn&#39;, &#39;PuBuGn_r&#39;, &#39;PuBu_r&#39;, &#39;PuOr&#39;, &#39;PuOr_r&#39;, &#39;PuRd&#39;, &#39;PuRd_r&#39;, &#39;Purples&#39;, &#39;Purples_r&#39;, &#39;RdBu&#39;, &#39;RdBu_r&#39;, &#39;RdGy&#39;, &#39;RdGy_r&#39;, &#39;RdPu&#39;, &#39;RdPu_r&#39;, &#39;RdYlBu&#39;, &#39;RdYlBu_r&#39;, &#39;RdYlGn&#39;, &#39;RdYlGn_r&#39;, &#39;Reds&#39;, &#39;Reds_r&#39;, &#39;Set1&#39;, &#39;Set1_r&#39;, &#39;Set2&#39;, &#39;Set2_r&#39;, &#39;Set3&#39;, &#39;Set3_r&#39;, &#39;Spectral&#39;, &#39;Spectral_r&#39;, &#39;Wistia&#39;, &#39;Wistia_r&#39;, &#39;YlGn&#39;, &#39;YlGnBu&#39;, &#39;YlGnBu_r&#39;, &#39;YlGn_r&#39;, &#39;YlOrBr&#39;, &#39;YlOrBr_r&#39;, &#39;YlOrRd&#39;, &#39;YlOrRd_r&#39;, &#39;afmhot&#39;, &#39;afmhot_r&#39;, &#39;autumn&#39;, &#39;autumn_r&#39;, &#39;binary&#39;, &#39;binary_r&#39;, &#39;bone&#39;, &#39;bone_r&#39;, &#39;brg&#39;, &#39;brg_r&#39;, &#39;bwr&#39;, &#39;bwr_r&#39;, &#39;cividis&#39;, &#39;cividis_r&#39;, &#39;cool&#39;, &#39;cool_r&#39;, &#39;coolwarm&#39;, &#39;coolwarm_r&#39;, &#39;copper&#39;, &#39;copper_r&#39;, &#39;cubehelix&#39;, &#39;cubehelix_r&#39;, &#39;flag&#39;, &#39;flag_r&#39;, &#39;gist_earth&#39;, &#39;gist_earth_r&#39;, &#39;gist_gray&#39;, &#39;gist_gray_r&#39;, &#39;gist_heat&#39;, &#39;gist_heat_r&#39;, &#39;gist_ncar&#39;, &#39;gist_ncar_r&#39;, &#39;gist_rainbow&#39;, &#39;gist_rainbow_r&#39;, &#39;gist_stern&#39;, &#39;gist_stern_r&#39;, &#39;gist_yarg&#39;, &#39;gist_yarg_r&#39;, &#39;gnuplot&#39;, &#39;gnuplot2&#39;, &#39;gnuplot2_r&#39;, &#39;gnuplot_r&#39;, &#39;gray&#39;, &#39;gray_r&#39;, &#39;hot&#39;, &#39;hot_r&#39;, &#39;hsv&#39;, &#39;hsv_r&#39;, &#39;inferno&#39;, &#39;inferno_r&#39;, &#39;jet&#39;, &#39;jet_r&#39;, &#39;magma&#39;, &#39;magma_r&#39;, &#39;nipy_spectral&#39;, &#39;nipy_spectral_r&#39;, &#39;ocean&#39;, &#39;ocean_r&#39;, &#39;pink&#39;, &#39;pink_r&#39;, &#39;plasma&#39;, &#39;plasma_r&#39;, &#39;prism&#39;, &#39;prism_r&#39;, &#39;rainbow&#39;, &#39;rainbow_r&#39;, &#39;seismic&#39;, &#39;seismic_r&#39;, &#39;spring&#39;, &#39;spring_r&#39;, &#39;summer&#39;, &#39;summer_r&#39;, &#39;tab10&#39;, &#39;tab10_r&#39;, &#39;tab20&#39;, &#39;tab20_r&#39;, &#39;tab20b&#39;, &#39;tab20b_r&#39;, &#39;tab20c&#39;, &#39;tab20c_r&#39;, &#39;terrain&#39;, &#39;terrain_r&#39;, &#39;turbo&#39;, &#39;turbo_r&#39;, &#39;twilight&#39;, &#39;twilight_r&#39;, &#39;twilight_shifted&#39;, &#39;twilight_shifted_r&#39;, &#39;viridis&#39;, &#39;viridis_r&#39;, &#39;winter&#39;, &#39;winter_r&#39;
+</pre></div>
+</div>
+<img alt="../_images/Matplotlib_54_1.png" src="../_images/Matplotlib_54_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Accent&#39;, &#39;Accent_r&#39;, &#39;Blues&#39;, &#39;Blues_r&#39;, &#39;BrBG&#39;, &#39;BrBG_r&#39;, &#39;BuGn&#39;, &#39;BuGn_r&#39;, &#39;BuPu&#39;, &#39;BuPu_r&#39;, &#39;CMRmap&#39;, &#39;CMRmap_r&#39;, &#39;Dark2&#39;, &#39;Dark2_r&#39;, &#39;GnBu&#39;, &#39;GnBu_r&#39;, &#39;Greens&#39;, &#39;Greens_r&#39;, &#39;Greys&#39;, &#39;Greys_r&#39;, &#39;OrRd&#39;, &#39;OrRd_r&#39;, &#39;Oranges&#39;, &#39;Oranges_r&#39;, &#39;PRGn&#39;, &#39;PRGn_r&#39;, &#39;Paired&#39;, &#39;Paired_r&#39;, &#39;Pastel1&#39;, &#39;Pastel1_r&#39;, &#39;Pastel2&#39;, &#39;Pastel2_r&#39;, &#39;PiYG&#39;, &#39;PiYG_r&#39;, &#39;PuBu&#39;, &#39;PuBuGn&#39;, &#39;PuBuGn_r&#39;, &#39;PuBu_r&#39;, &#39;PuOr&#39;, &#39;PuOr_r&#39;, &#39;PuRd&#39;, &#39;PuRd_r&#39;, &#39;Purples&#39;, &#39;Purples_r&#39;, &#39;RdBu&#39;, &#39;RdBu_r&#39;, &#39;RdGy&#39;, &#39;RdGy_r&#39;, &#39;RdPu&#39;, &#39;RdPu_r&#39;, &#39;RdYlBu&#39;, &#39;RdYlBu_r&#39;, &#39;RdYlGn&#39;, &#39;RdYlGn_r&#39;, &#39;Reds&#39;, &#39;Reds_r&#39;, &#39;Set1&#39;, &#39;Set1_r&#39;, &#39;Set2&#39;, &#39;Set2_r&#39;, &#39;Set3&#39;, &#39;Set3_r&#39;, &#39;Spectral&#39;, &#39;Spectral_r&#39;, &#39;Wistia&#39;, &#39;Wistia_r&#39;, &#39;YlGn&#39;, &#39;YlGnBu&#39;, &#39;YlGnBu_r&#39;, &#39;YlGn_r&#39;, &#39;YlOrBr&#39;, &#39;YlOrBr_r&#39;, &#39;YlOrRd&#39;, &#39;YlOrRd_r&#39;, &#39;afmhot&#39;, &#39;afmhot_r&#39;, &#39;autumn&#39;, &#39;autumn_r&#39;, &#39;binary&#39;, &#39;binary_r&#39;, &#39;bone&#39;, &#39;bone_r&#39;, &#39;brg&#39;, &#39;brg_r&#39;, &#39;bwr&#39;, &#39;bwr_r&#39;, &#39;cividis&#39;, &#39;cividis_r&#39;, &#39;cool&#39;, &#39;cool_r&#39;, &#39;coolwarm&#39;, &#39;coolwarm_r&#39;, &#39;copper&#39;, &#39;copper_r&#39;, &#39;cubehelix&#39;, &#39;cubehelix_r&#39;, &#39;flag&#39;, &#39;flag_r&#39;, &#39;gist_earth&#39;, &#39;gist_earth_r&#39;, &#39;gist_gray&#39;, &#39;gist_gray_r&#39;, &#39;gist_heat&#39;, &#39;gist_heat_r&#39;, &#39;gist_ncar&#39;, &#39;gist_ncar_r&#39;, &#39;gist_rainbow&#39;, &#39;gist_rainbow_r&#39;, &#39;gist_stern&#39;, &#39;gist_stern_r&#39;, &#39;gist_yarg&#39;, &#39;gist_yarg_r&#39;, &#39;gnuplot&#39;, &#39;gnuplot2&#39;, &#39;gnuplot2_r&#39;, &#39;gnuplot_r&#39;, &#39;gray&#39;, &#39;gray_r&#39;, &#39;hot&#39;, &#39;hot_r&#39;, &#39;hsv&#39;, &#39;hsv_r&#39;, &#39;inferno&#39;, &#39;inferno_r&#39;, &#39;jet&#39;, &#39;jet_r&#39;, &#39;magma&#39;, &#39;magma_r&#39;, &#39;nipy_spectral&#39;, &#39;nipy_spectral_r&#39;, &#39;ocean&#39;, &#39;ocean_r&#39;, &#39;pink&#39;, &#39;pink_r&#39;, &#39;plasma&#39;, &#39;plasma_r&#39;, &#39;prism&#39;, &#39;prism_r&#39;, &#39;rainbow&#39;, &#39;rainbow_r&#39;, &#39;seismic&#39;, &#39;seismic_r&#39;, &#39;spring&#39;, &#39;spring_r&#39;, &#39;summer&#39;, &#39;summer_r&#39;, &#39;tab10&#39;, &#39;tab10_r&#39;, &#39;tab20&#39;, &#39;tab20_r&#39;, &#39;tab20b&#39;, &#39;tab20b_r&#39;, &#39;tab20c&#39;, &#39;tab20c_r&#39;, &#39;terrain&#39;, &#39;terrain_r&#39;, &#39;turbo&#39;, &#39;turbo_r&#39;, &#39;twilight&#39;, &#39;twilight_r&#39;, &#39;twilight_shifted&#39;, &#39;twilight_shifted_r&#39;, &#39;viridis&#39;, &#39;viridis_r&#39;, &#39;winter&#39;, &#39;winter_r&#39;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Accent&#39;, &#39;Accent_r&#39;, &#39;Blues&#39;, &#39;Blues_r&#39;, &#39;BrBG&#39;, &#39;BrBG_r&#39;, &#39;BuGn&#39;, &#39;BuGn_r&#39;, &#39;BuPu&#39;, &#39;BuPu_r&#39;, &#39;CMRmap&#39;, &#39;CMRmap_r&#39;, &#39;Dark2&#39;, &#39;Dark2_r&#39;, &#39;GnBu&#39;, &#39;GnBu_r&#39;, &#39;Greens&#39;, &#39;Greens_r&#39;, &#39;Greys&#39;, &#39;Greys_r&#39;, &#39;OrRd&#39;, &#39;OrRd_r&#39;, &#39;Oranges&#39;, &#39;Oranges_r&#39;, &#39;PRGn&#39;, &#39;PRGn_r&#39;, &#39;Paired&#39;, &#39;Paired_r&#39;, &#39;Pastel1&#39;, &#39;Pastel1_r&#39;, &#39;Pastel2&#39;, &#39;Pastel2_r&#39;, &#39;PiYG&#39;, &#39;PiYG_r&#39;, &#39;PuBu&#39;, &#39;PuBuGn&#39;, &#39;PuBuGn_r&#39;, &#39;PuBu_r&#39;, &#39;PuOr&#39;, &#39;PuOr_r&#39;, &#39;PuRd&#39;, &#39;PuRd_r&#39;, &#39;Purples&#39;, &#39;Purples_r&#39;, &#39;RdBu&#39;, &#39;RdBu_r&#39;, &#39;RdGy&#39;, &#39;RdGy_r&#39;, &#39;RdPu&#39;, &#39;RdPu_r&#39;, &#39;RdYlBu&#39;, &#39;RdYlBu_r&#39;, &#39;RdYlGn&#39;, &#39;RdYlGn_r&#39;, &#39;Reds&#39;, &#39;Reds_r&#39;, &#39;Set1&#39;, &#39;Set1_r&#39;, &#39;Set2&#39;, &#39;Set2_r&#39;, &#39;Set3&#39;, &#39;Set3_r&#39;, &#39;Spectral&#39;, &#39;Spectral_r&#39;, &#39;Wistia&#39;, &#39;Wistia_r&#39;, &#39;YlGn&#39;, &#39;YlGnBu&#39;, &#39;YlGnBu_r&#39;, &#39;YlGn_r&#39;, &#39;YlOrBr&#39;, &#39;YlOrBr_r&#39;, &#39;YlOrRd&#39;, &#39;YlOrRd_r&#39;, &#39;afmhot&#39;, &#39;afmhot_r&#39;, &#39;autumn&#39;, &#39;autumn_r&#39;, &#39;binary&#39;, &#39;binary_r&#39;, &#39;bone&#39;, &#39;bone_r&#39;, &#39;brg&#39;, &#39;brg_r&#39;, &#39;bwr&#39;, &#39;bwr_r&#39;, &#39;cividis&#39;, &#39;cividis_r&#39;, &#39;cool&#39;, &#39;cool_r&#39;, &#39;coolwarm&#39;, &#39;coolwarm_r&#39;, &#39;copper&#39;, &#39;copper_r&#39;, &#39;cubehelix&#39;, &#39;cubehelix_r&#39;, &#39;flag&#39;, &#39;flag_r&#39;, &#39;gist_earth&#39;, &#39;gist_earth_r&#39;, &#39;gist_gray&#39;, &#39;gist_gray_r&#39;, &#39;gist_heat&#39;, &#39;gist_heat_r&#39;, &#39;gist_ncar&#39;, &#39;gist_ncar_r&#39;, &#39;gist_rainbow&#39;, &#39;gist_rainbow_r&#39;, &#39;gist_stern&#39;, &#39;gist_stern_r&#39;, &#39;gist_yarg&#39;, &#39;gist_yarg_r&#39;, &#39;gnuplot&#39;, &#39;gnuplot2&#39;, &#39;gnuplot2_r&#39;, &#39;gnuplot_r&#39;, &#39;gray&#39;, &#39;gray_r&#39;, &#39;hot&#39;, &#39;hot_r&#39;, &#39;hsv&#39;, &#39;hsv_r&#39;, &#39;inferno&#39;, &#39;inferno_r&#39;, &#39;jet&#39;, &#39;jet_r&#39;, &#39;magma&#39;, &#39;magma_r&#39;, &#39;nipy_spectral&#39;, &#39;nipy_spectral_r&#39;, &#39;ocean&#39;, &#39;ocean_r&#39;, &#39;pink&#39;, &#39;pink_r&#39;, &#39;plasma&#39;, &#39;plasma_r&#39;, &#39;prism&#39;, &#39;prism_r&#39;, &#39;rainbow&#39;, &#39;rainbow_r&#39;, &#39;seismic&#39;, &#39;seismic_r&#39;, &#39;spring&#39;, &#39;spring_r&#39;, &#39;summer&#39;, &#39;summer_r&#39;, &#39;tab10&#39;, &#39;tab10_r&#39;, &#39;tab20&#39;, &#39;tab20_r&#39;, &#39;tab20b&#39;, &#39;tab20b_r&#39;, &#39;tab20c&#39;, &#39;tab20c_r&#39;, &#39;terrain&#39;, &#39;terrain_r&#39;, &#39;turbo&#39;, &#39;turbo_r&#39;, &#39;twilight&#39;, &#39;twilight_r&#39;, &#39;twilight_shifted&#39;, &#39;twilight_shifted_r&#39;, &#39;viridis&#39;, &#39;viridis_r&#39;, &#39;winter&#39;, &#39;winter_r&#39;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;hot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_56_0.png" src="../_images/Matplotlib_56_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img2</span><span class="o">=</span><span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">H254743</span><span class="se">\\</span><span class="s2">Pictures</span><span class="se">\\</span><span class="s2">Picture1.jpg&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_57_0.png" src="../_images/Matplotlib_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_channel_img2</span><span class="o">=</span><span class="n">img2</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">single_channel_img2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;hot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Halli.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Matplotlib_58_0.png" src="../_images/Matplotlib_58_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Data Visualisation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Shivam Gupta<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

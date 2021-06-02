@@ -1,0 +1,2673 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Learning</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Data Science
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reveal
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Machine Leaning/Data Pre Processing/Data Pre Processing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/chemitco/Welcome_To_Data_Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Leaning/Data Pre Processing/Data Pre Processing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Leaning/Data Pre Processing/Data Pre Processing.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Data Processing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;loan_small.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID</th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Area</th>
+      <th>Loan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LP001002</td>
+      <td>NaN</td>
+      <td>5849.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LP001003</td>
+      <td>Male</td>
+      <td>4583.0</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LP001005</td>
+      <td>Male</td>
+      <td>3000.0</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LP001006</td>
+      <td>Female</td>
+      <td>2583.0</td>
+      <td>2358.0</td>
+      <td>120.0</td>
+      <td>semi</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LP001008</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LP001011</td>
+      <td>Male</td>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LP001013</td>
+      <td>Male</td>
+      <td>2333.0</td>
+      <td>1516.0</td>
+      <td>NaN</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014</td>
+      <td>Female</td>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018</td>
+      <td>Male</td>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020</td>
+      <td>Male</td>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LP001024</td>
+      <td>Female</td>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LP001027</td>
+      <td>Male</td>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>LP001028</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>8106.0</td>
+      <td>NaN</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LP001029</td>
+      <td>Male</td>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>urban</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LP001030</td>
+      <td>Male</td>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LP001032</td>
+      <td>Male</td>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">subset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>5849.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>4583.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Male</td>
+      <td>3000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfT</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;loan_small_tsv.txt&#39;</span><span class="p">)</span>
+<span class="n">dfT</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID\tGender\tApplicantIncome\tCoapplicantIncome\tLoanAmount\tArea\tLoan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LP001002\t\t5849\t0\t\turban\tY</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LP001003\tMale\t4583\t\t128\tsemi\tN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LP001005\tMale\t3000\t0\t66\t\tY</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LP001006\tFemale\t2583\t2358\t120\tsemi\tY</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LP001008\tMale\t\t0\t141\turban\tY</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LP001011\tMale\t5417\t4196\t267\tsemi\tY</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LP001013\tMale\t2333\t1516\t\tsemi\tY</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014\tFemale\t3036\t2504\t158\tsemi\tN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018\tMale\t4006\t1526\t168\trural\tY</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020\tMale\t12841\t10968\t349\tsemi\tN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LP001024\tFemale\t3200\t700\t70\turban\tY</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LP001027\tMale\t2500\t1840\t109\turban\tY</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>LP001028\tFemale\t\t8106\t\t\tY</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LP001029\tMale\t1853\t2840\t114\turban\tN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LP001030\tMale\t1299\t1086\t17\tsemi\tY</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LP001032\t\t4950\t0\t125\tsemi\tY</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfT</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;loan_small_tsv.txt&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">dfT</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID</th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Area</th>
+      <th>Loan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LP001002</td>
+      <td>NaN</td>
+      <td>5849.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LP001003</td>
+      <td>Male</td>
+      <td>4583.0</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LP001005</td>
+      <td>Male</td>
+      <td>3000.0</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LP001006</td>
+      <td>Female</td>
+      <td>2583.0</td>
+      <td>2358.0</td>
+      <td>120.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LP001008</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LP001011</td>
+      <td>Male</td>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LP001013</td>
+      <td>Male</td>
+      <td>2333.0</td>
+      <td>1516.0</td>
+      <td>NaN</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014</td>
+      <td>Female</td>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018</td>
+      <td>Male</td>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020</td>
+      <td>Male</td>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LP001024</td>
+      <td>Female</td>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LP001027</td>
+      <td>Male</td>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>LP001028</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>8106.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LP001029</td>
+      <td>Male</td>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>urban</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LP001030</td>
+      <td>Male</td>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LP001032</td>
+      <td>NaN</td>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID</th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Area</th>
+      <th>Loan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LP001002</td>
+      <td>NaN</td>
+      <td>5849.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LP001003</td>
+      <td>Male</td>
+      <td>4583.0</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LP001005</td>
+      <td>Male</td>
+      <td>3000.0</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LP001006</td>
+      <td>Female</td>
+      <td>2583.0</td>
+      <td>2358.0</td>
+      <td>120.0</td>
+      <td>semi</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LP001008</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LP001011</td>
+      <td>Male</td>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LP001013</td>
+      <td>Male</td>
+      <td>2333.0</td>
+      <td>1516.0</td>
+      <td>NaN</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014</td>
+      <td>Female</td>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018</td>
+      <td>Male</td>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020</td>
+      <td>Male</td>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Loan_ID&#39;, &#39;Gender&#39;, &#39;ApplicantIncome&#39;, &#39;CoapplicantIncome&#39;,
+       &#39;LoanAmount&#39;, &#39;Area&#39;, &#39;Loan_Status&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Find the column with Missing Value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loan_ID              0
+Gender               1
+ApplicantIncome      2
+CoapplicantIncome    1
+LoanAmount           3
+Area                 1
+Loan_Status          1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Data PreProcessing by replacing the missing value---Important Step</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleandata</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">cleandata</span>
+<span class="c1">#This is not best method. We will loss data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID</th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Area</th>
+      <th>Loan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>LP001011</td>
+      <td>Male</td>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014</td>
+      <td>Female</td>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018</td>
+      <td>Male</td>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020</td>
+      <td>Male</td>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LP001024</td>
+      <td>Female</td>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LP001027</td>
+      <td>Male</td>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LP001029</td>
+      <td>Male</td>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>urban</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LP001030</td>
+      <td>Male</td>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LP001032</td>
+      <td>Male</td>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleandata</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Loan_Status&quot;</span><span class="p">])</span>
+<span class="n">cleandata</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1">#copy the data set</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span><span class="s1">&#39;Area&#39;</span><span class="p">,</span><span class="s1">&#39;Loan_Status&#39;</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">=</span><span class="n">dt</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">dt</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1">#Replace categorical value with mode</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gender         0
+Area           0
+Loan_Status    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols2</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ApplicantIncome&#39;</span><span class="p">,</span><span class="s1">&#39;CoapplicantIncome&#39;</span><span class="p">,</span><span class="s1">&#39;LoanAmount&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="p">[</span><span class="n">cols2</span><span class="p">]</span><span class="o">=</span><span class="n">dt</span><span class="p">[</span><span class="n">cols2</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">dt</span><span class="p">[</span><span class="n">cols2</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="p">[</span><span class="n">cols2</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ApplicantIncome      0
+CoapplicantIncome    0
+LoanAmount           0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID</th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Area</th>
+      <th>Loan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LP001002</td>
+      <td>Male</td>
+      <td>5849.000000</td>
+      <td>0.000000</td>
+      <td>140.923077</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LP001003</td>
+      <td>Male</td>
+      <td>4583.000000</td>
+      <td>2509.333333</td>
+      <td>128.000000</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LP001005</td>
+      <td>Male</td>
+      <td>3000.000000</td>
+      <td>0.000000</td>
+      <td>66.000000</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LP001006</td>
+      <td>Female</td>
+      <td>2583.000000</td>
+      <td>2358.000000</td>
+      <td>120.000000</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LP001008</td>
+      <td>Male</td>
+      <td>4103.571429</td>
+      <td>0.000000</td>
+      <td>141.000000</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LP001011</td>
+      <td>Male</td>
+      <td>5417.000000</td>
+      <td>4196.000000</td>
+      <td>267.000000</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LP001013</td>
+      <td>Male</td>
+      <td>2333.000000</td>
+      <td>1516.000000</td>
+      <td>140.923077</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014</td>
+      <td>Female</td>
+      <td>3036.000000</td>
+      <td>2504.000000</td>
+      <td>158.000000</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018</td>
+      <td>Male</td>
+      <td>4006.000000</td>
+      <td>1526.000000</td>
+      <td>168.000000</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020</td>
+      <td>Male</td>
+      <td>12841.000000</td>
+      <td>10968.000000</td>
+      <td>349.000000</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LP001024</td>
+      <td>Female</td>
+      <td>3200.000000</td>
+      <td>700.000000</td>
+      <td>70.000000</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LP001027</td>
+      <td>Male</td>
+      <td>2500.000000</td>
+      <td>1840.000000</td>
+      <td>109.000000</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>LP001028</td>
+      <td>Female</td>
+      <td>4103.571429</td>
+      <td>8106.000000</td>
+      <td>140.923077</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LP001029</td>
+      <td>Male</td>
+      <td>1853.000000</td>
+      <td>2840.000000</td>
+      <td>114.000000</td>
+      <td>urban</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LP001030</td>
+      <td>Male</td>
+      <td>1299.000000</td>
+      <td>1086.000000</td>
+      <td>17.000000</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LP001032</td>
+      <td>Male</td>
+      <td>4950.000000</td>
+      <td>0.000000</td>
+      <td>125.000000</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Label Encoding</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loan_ID               object
+Gender                object
+ApplicantIncome      float64
+CoapplicantIncome    float64
+LoanAmount           float64
+Area                  object
+Loan_Status           object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Change the data Types</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">=</span><span class="n">dt</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">columns</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+    <span class="n">dt</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">=</span><span class="n">dt</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loan_ID               object
+Gender                  int8
+ApplicantIncome      float64
+CoapplicantIncome    float64
+LoanAmount           float64
+Area                    int8
+Loan_Status             int8
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Loan_ID&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Gender_Female</th>
+      <th>Gender_Male</th>
+      <th>Area_rural</th>
+      <th>Area_semi</th>
+      <th>Area_urban</th>
+      <th>Loan_Status_N</th>
+      <th>Loan_Status_Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5849.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4583.0</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3000.0</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2583.0</td>
+      <td>2358.0</td>
+      <td>120.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2333.0</td>
+      <td>1516.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NaN</td>
+      <td>8106.0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Data Normalisation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;loan_small.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleandata</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">cleandata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Loan_ID</th>
+      <th>Gender</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Area</th>
+      <th>Loan_Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>LP001011</td>
+      <td>Male</td>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>LP001014</td>
+      <td>Female</td>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LP001018</td>
+      <td>Male</td>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>rural</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LP001020</td>
+      <td>Male</td>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>semi</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LP001024</td>
+      <td>Female</td>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LP001027</td>
+      <td>Male</td>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>urban</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LP001029</td>
+      <td>Male</td>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>urban</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LP001030</td>
+      <td>Male</td>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LP001032</td>
+      <td>Male</td>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>semi</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleandata</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_to_scale</span><span class="o">=</span><span class="n">cleandata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">#extract the three numerical coulmns</span>
+<span class="n">data_to_scale</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import standar scaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss_scaler</span><span class="o">=</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_to_scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss_scaler</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.32879835,  0.43390231,  1.1995349 ],
+       [-0.40126276, -0.11198867,  0.05261118],
+       [-0.10384182, -0.4275214 ,  0.15783354],
+       [ 2.60514177,  2.61875676,  2.06235824],
+       [-0.35097716, -0.69401428, -0.87334558],
+       [-0.56561083, -0.32621539, -0.46297838],
+       [-0.76399367, -0.00358478, -0.4103672 ],
+       [-0.9338609 , -0.56947886, -1.43102409],
+       [ 0.18560703, -0.9198557 , -0.29462261]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#MinMax Sacler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">minmax_scale</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm_scaler</span><span class="o">=</span><span class="n">minmax_scale</span><span class="p">(</span><span class="n">data_to_scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm_scaler</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.35678392, 0.38256747, 0.75301205],
+       [0.15049385, 0.22830051, 0.4246988 ],
+       [0.23453474, 0.13913202, 0.45481928],
+       [1.        , 1.        , 1.        ],
+       [0.16470282, 0.06382203, 0.15963855],
+       [0.10405476, 0.16776076, 0.27710843],
+       [0.04799861, 0.25893508, 0.29216867],
+       [0.        , 0.09901532, 0.        ],
+       [0.31632299, 0.        , 0.3253012 ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Train and test Data Set</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Gender_Female</th>
+      <th>Gender_Male</th>
+      <th>Area_rural</th>
+      <th>Area_semi</th>
+      <th>Area_urban</th>
+      <th>Loan_Status_N</th>
+      <th>Loan_Status_Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5849.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4583.0</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3000.0</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2583.0</td>
+      <td>2358.0</td>
+      <td>120.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2333.0</td>
+      <td>1516.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NaN</td>
+      <td>8106.0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the data vertically into X and Y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#Select all the column except Loan_Status</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">df2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#Select only the Loan_status</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#split the dataset by row.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span><span class="p">,</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Gender_Female</th>
+      <th>Gender_Male</th>
+      <th>Area_rural</th>
+      <th>Area_semi</th>
+      <th>Area_urban</th>
+      <th>Loan_Status_N</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14</th>
+      <td>1299.0</td>
+      <td>1086.0</td>
+      <td>17.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3000.0</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3200.0</td>
+      <td>700.0</td>
+      <td>70.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3036.0</td>
+      <td>2504.0</td>
+      <td>158.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4583.0</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12841.0</td>
+      <td>10968.0</td>
+      <td>349.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4006.0</td>
+      <td>1526.0</td>
+      <td>168.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5417.0</td>
+      <td>4196.0</td>
+      <td>267.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2333.0</td>
+      <td>1516.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2583.0</td>
+      <td>2358.0</td>
+      <td>120.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4950.0</td>
+      <td>0.0</td>
+      <td>125.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Gender_Female</th>
+      <th>Gender_Male</th>
+      <th>Area_rural</th>
+      <th>Area_semi</th>
+      <th>Area_urban</th>
+      <th>Loan_Status_N</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13</th>
+      <td>1853.0</td>
+      <td>2840.0</td>
+      <td>114.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2500.0</td>
+      <td>1840.0</td>
+      <td>109.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>5849.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NaN</td>
+      <td>8106.0</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Machine Leaning/Data Pre Processing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Shivam Gupta<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

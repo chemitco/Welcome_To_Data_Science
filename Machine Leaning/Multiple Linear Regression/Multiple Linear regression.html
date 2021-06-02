@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Linear Regression &#8212; Learning</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Data Science
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reveal
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Machine Leaning/Multiple Linear Regression/Multiple Linear regression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/chemitco/Welcome_To_Data_Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Leaning/Multiple Linear Regression/Multiple Linear regression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Leaning/Multiple Linear Regression/Multiple Linear regression.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="multiple-linear-regression">
+<h1>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
+<p>In multiple linear regression, there are many independent variable i.e. features. y=b0+b1x1+b2x2+b3x3+……..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read CSV file using pandas</span>
+<span class="n">dataset</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;02Students.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>X= Number of hours studied in a week(Hours)</p>
+<p>X=Number of Sleep hours by the student(shours)</p>
+<p>Y= Marks obtained by a student Problem</p>
+<p>To predict the marks if the student will study and sleep a definite hours</p>
+<p>y=b0+b1x1+b2x2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hours</th>
+      <th>sHours</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>6</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>7</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>6</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>8</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>8</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>8</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>6</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3</td>
+      <td>6</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3</td>
+      <td>7</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3</td>
+      <td>7</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>8</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>4</td>
+      <td>8</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4</td>
+      <td>7</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4</td>
+      <td>7</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5</td>
+      <td>8</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>5</td>
+      <td>6</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>6</td>
+      <td>6</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6</td>
+      <td>7</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7</td>
+      <td>8</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7</td>
+      <td>8</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7</td>
+      <td>6</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7</td>
+      <td>6</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>8</td>
+      <td>7</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>8</td>
+      <td>8</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>9</td>
+      <td>8</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>9</td>
+      <td>5</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>9</td>
+      <td>8</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>10</td>
+      <td>8</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>10</td>
+      <td>8</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>11</td>
+      <td>7</td>
+      <td>79</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the data vertically into X and Y</span>
+<span class="n">X</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the dataset by rows into training and test datasets.</span>
+<span class="n">x_train</span><span class="p">,</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create and train the simple multiple regression model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create Regressor</span>
+<span class="n">std_reg</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#train and fit the traininng data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#predict Y value from test data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predict</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([45.21343163, 55.94885949, 46.14934227, 40.78162834, 90.24716978,
+       50.58114556])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7     45
+10    56
+4     42
+1     36
+28    82
+8     53
+Name: Marks, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>R-square and equation of the line</p>
+<p>mlr=multiple linear regression</p>
+<p>R should be tends to 1 then your model will be good.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#calculate R Square</span>
+<span class="n">mlr_score</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlr_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9137266559172474
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#coefficient of the line</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlr_coefficient</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">mlr_coefficient</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.89975861, 5.36771393])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#intercept of the line</span>
+<span class="n">slr_intercept</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">intercept_</span>
+<span class="n">slr_intercept</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.6921277670701969
+</pre></div>
+</div>
+</div>
+</div>
+<p>Equation of the line</p>
+<p>y= -1.69 + 4.8<em>Hours + 5.3</em>shours</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#How much error our model has made</span>
+<span class="c1">#RMSE= Root mean Squared Error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlr_rmse</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_predict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlr_rmse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.358819513635106
+</pre></div>
+</div>
+</div>
+</div>
+<p>Degree Of Freedom- The number of values in the final calculation of a statistic that are free to vary.</p>
+<p>df=n-p-1</p>
+<p>n=sample size or number of observations</p>
+<p>p=number of independent variable.</p>
+<p>Degree of freedom will increase then R-Squared will be reduced. Adding more variable increases value of R-Squared. Higher the value of R-Squared, variation in Y is better explained by variation in X.</p>
+<p>If we increase the varibale, the we can get a good r square value but it will also give us a noise in data set. Then Adjusted R square has come in the picture.</p>
+<p>Adjusted R Square= When We will add the variable, we can increase the Rsquare value but if we keep adding the value to get a higher Rsquare,
+then We will reach a point where the adjusted Rsquare will decrease the, we can identify upto which point, we can add the variable.</p>
+<p>Multiple Linear regression assumption-</p>
+<p>1)Linear relationship- Dependent and Independent Feature have linear relationship.
+Can be Postive or Negative Coorelation.
+Can be checked using Pearson Correlation Coefficient as well as visualisation by ploting scatter plot. After visulaization, if the data is linear then it is good. If the data is non linear then we will tansform the data by log or exponantial Transformation.</p>
+<ol class="simple">
+<li><p>Multicollinearity- No Multicollinearity should be there after visualisation and pearson corelation coefficient..</p></li>
+</ol>
+<ol class="simple">
+<li><p>AutoCorrelation- The value of one record for the same variable or feature is dependent on the value from the same column but of diffrent record.</p></li>
+</ol>
+<p>We can plot autocorrelation to check.</p>
+<p>Autocorrelation Plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import Libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read CSV file</span>
+<span class="n">f</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;03 - corr.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot autocorrelation</span>
+<span class="n">f</span><span class="p">[</span><span class="s1">&#39;t0&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;t0&#39;</span><span class="p">],</span><span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="c1">#Changed the column f[&#39;t0&#39;] to float format.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">acorr</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;t0&#39;</span><span class="p">],</span><span class="n">maxlags</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-10,  -9,  -8,  -7,  -6,  -5,  -4,  -3,  -2,  -1,   0,   1,   2,
+          3,   4,   5,   6,   7,   8,   9,  10]),
+ array([0.18266407, 0.24523169, 0.3102569 , 0.37862065, 0.4524715 ,
+        0.5446227 , 0.65713006, 0.7718786 , 0.879378  , 0.96169895,
+        1.        , 0.96169895, 0.879378  , 0.7718786 , 0.65713006,
+        0.5446227 , 0.4524715 , 0.37862065, 0.3102569 , 0.24523169,
+        0.18266407], dtype=float32),
+ &lt;matplotlib.collections.LineCollection at 0x7f0bf48f3cd0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f0bf4cb2490&gt;)
+</pre></div>
+</div>
+<img alt="../../_images/Multiple Linear regression_40_1.png" src="../../_images/Multiple Linear regression_40_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Use Pandas Shift function to create a timelag dataset as t_1 and t_2</span>
+<span class="n">t_1</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;t0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">t_2</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;t0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>56.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>94.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>106.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>93.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>67.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>34.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>39.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>56.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>94.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>106.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>93.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>67.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>34.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>28.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>Endogenity- Situations in which an explanatory/independent variable is correalted with the error term. No endogenity should be there.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Normality of Residual-</p></li>
+</ol>
+<ol class="simple">
+<li><p>Presence of Homoscedasticity-</p></li>
+</ol>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Machine Leaning/Multiple Linear Regression"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Shivam Gupta<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

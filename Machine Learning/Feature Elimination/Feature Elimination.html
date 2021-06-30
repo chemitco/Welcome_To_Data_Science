@@ -51,8 +51,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Cross Validations" href="../Cross%20validations/Cross%20Validations.html" />
-    <link rel="prev" title="Feature Selection" href="../Feature%20Selection/Feature%20Selection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -91,68 +89,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Machine Learning
+  Data Visualisation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Data%20Pre%20Processing/Data%20Pre%20Processing.html">
-   Data Processing
+  <a class="reference internal" href="../../Data%20Visualisation/Matplotlib.html">
+   Matplotlib
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Simple%20Linear%20Regression/Simple%20Linear%20Regression.html">
-   Simple Linear  Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
-   Multiple Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
-   Kaggle Bike Demand Prediction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Logistic%20Regression/Logistics%20Regression.html">
-   Logistics Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Support%20Vector%20Machine/Support%20Vector%20Machine.html">
-   Support Vector Machine
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Decision%20Tree/Decision%20Tree.html">
-   Decision Tree
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Random%20forest/Random%20Forest.html">
-   Ensemble Learning and Random Forest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Feature%20Selection/Feature%20Selection.html">
-   Feature Selection
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Recursive Feature Eliminations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Cross%20validations/Cross%20Validations.html">
-   Cross Validations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Hyperparameter%20Tuning/Hyperparameter%20Tuning.html">
-   Hyperparameter Tuning
+  <a class="reference internal" href="../../Data%20Visualisation/Seaborn.html">
+   Seaborn
   </a>
  </li>
 </ul>
@@ -1130,9 +1078,13 @@
   estimator.fit(X[:, features], y)
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/feature_selection/_rfe.py:241: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
+  estimator.fit(X[:, features], y)
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1937</span><span class="o">/</span><span class="mf">3118807827.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1903</span><span class="o">/</span><span class="mf">3118807827.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Fit the data to the rfe selector</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
@@ -1226,27 +1178,11 @@
 <span class="g g-Whitespace">    </span><span class="mi">909</span><span class="s2"> </span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/tree/_classes.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="s2">             for k in range(self.n_outputs_):</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span><span class="s2">                 classes_k, y_encoded[:, k] = np.unique(y[:, k],</span>
-<span class="ne">--&gt; </span><span class="mi">203</span><span class="s2">                                                        return_inverse=True)</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="s2">                 self.classes_.append(classes_k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">205</span><span class="s2">                 self.n_classes_.append(classes_k.shape[0])</span>
-
-<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">unique</span><span class="nt">(*args, **kwargs)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/lib/arraysetops.py</span> in <span class="ni">unique</span><span class="nt">(ar, return_index, return_inverse, return_counts, axis)</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="s2">     ar = np.asanyarray(ar)</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span><span class="s2">     if axis is None:</span>
-<span class="ne">--&gt; </span><span class="mi">272</span><span class="s2">         ret = _unique1d(ar, return_index, return_inverse, return_counts)</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span><span class="s2">         return _unpack_tuple(ret)</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span><span class="s2"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/lib/arraysetops.py</span> in <span class="ni">_unique1d</span><span class="nt">(ar, return_index, return_inverse, return_counts)</span>
-<span class="g g-Whitespace">    </span><span class="mi">328</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span><span class="s2">     if optional_indices:</span>
-<span class="ne">--&gt; </span><span class="mi">330</span><span class="s2">         perm = ar.argsort(kind=&#39;mergesort&#39; if return_index else &#39;quicksort&#39;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span><span class="s2">         aux = ar[perm]</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span><span class="s2">     else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span><span class="s2">                                            min_impurity_split)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">394</span><span class="s2">         builder.build(self.tree_, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">396</span><span class="s2">         if self.n_outputs_ == 1 and is_classifier(self):</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1867,8 +1803,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../Feature%20Selection/Feature%20Selection.html" title="previous page">Feature Selection</a>
-    <a class='right-next' id="next-link" href="../Cross%20validations/Cross%20Validations.html" title="next page">Cross Validations</a>
 
         </div>
         

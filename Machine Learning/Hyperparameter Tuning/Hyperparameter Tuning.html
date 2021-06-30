@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hyperparameter Tuning &#8212; Learning</title>
+    <title>18. Hyperparameter Tuning &#8212; Learning</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,6 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="17. Cross Validations" href="../Cross%20validations/Cross%20Validations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -89,13 +90,68 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Get started
+  Machine Learning
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../Python/Python%20Basics.html">
-   1. Python Basics
+  <a class="reference internal" href="../Data%20Pre%20Processing/Data%20Pre%20Processing.html">
+   1. Data Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Simple%20Linear%20Regression/Simple%20Linear%20Regression.html">
+   2. Simple Linear  Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
+   3. Multiple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
+   4. Kaggle Bike Demand Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Logistic%20Regression/Logistics%20Regression.html">
+   5. Logistics Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Support%20Vector%20Machine/Support%20Vector%20Machine.html">
+   7. Support Vector Machine
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Decision%20Tree/Decision%20Tree.html">
+   10. Decision Tree
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Random%20forest/Random%20Forest.html">
+   11. Ensemble Learning and Random Forest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Feature%20Selection/Feature%20Selection.html">
+   12. Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Feature%20Elimination/Feature%20Elimination.html">
+   16. Recursive Feature Eliminations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cross%20validations/Cross%20Validations.html">
+   17. Cross Validations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   18. Hyperparameter Tuning
   </a>
  </li>
 </ul>
@@ -206,12 +262,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Hyperparameter Tuning
+   18. Hyperparameter Tuning
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-randomizedsearchcv-for-hyperparameter-tuning">
-   Perform RandomizedSearchCV for hyperparameter tuning
+   19. Perform RandomizedSearchCV for hyperparameter tuning
   </a>
  </li>
 </ul>
@@ -226,7 +282,7 @@
               <div>
                 
   <div class="section" id="hyperparameter-tuning">
-<h1>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">18. </span>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
 <p>What are hyperparameters and its tuning?</p>
 <p><img alt="" src="../../_images/14.png" /></p>
 <p><img alt="" src="../../_images/26.png" /></p>
@@ -661,79 +717,6 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1981</span><span class="o">/</span><span class="mf">2305250972.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rfc_grid_fit</span><span class="o">=</span><span class="n">rfc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">extra_args</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_args</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>             <span class="k">if</span> <span class="n">extra_args</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">63</span>                 <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> 
-<span class="g g-Whitespace">     </span><span class="mi">65</span>             <span class="c1"># extra_args &gt; 0</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">839</span>                 <span class="k">return</span> <span class="n">results</span>
-<span class="g g-Whitespace">    </span><span class="mi">840</span> 
-<span class="ne">--&gt; </span><span class="mi">841</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">842</span> 
-<span class="g g-Whitespace">    </span><span class="mi">843</span>             <span class="c1"># multimetric is determined here because in the case of a callable</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">_run_search</span><span class="nt">(self, evaluate_candidates)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1294</span>     <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1295</span>         <span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1296</span>         <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1297</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1298</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
-<span class="g g-Whitespace">    </span><span class="mi">807</span>                                    <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">808</span>                                    <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span>
-<span class="ne">--&gt; </span><span class="mi">809</span>                                    <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">))))</span>
-<span class="g g-Whitespace">    </span><span class="mi">810</span> 
-<span class="g g-Whitespace">    </span><span class="mi">811</span>                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1052</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1053</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
-<span class="ne">-&gt; </span><span class="mi">1054</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1055</span>             <span class="c1"># Make sure that we get a last message telling us we are done</span>
-<span class="g g-Whitespace">   </span><span class="mi">1056</span>             <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/parallel.py</span> in <span class="ni">retrieve</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">931</span>             <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">932</span>                 <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="s1">&#39;supports_timeout&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">933</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>                 <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/_parallel_backends.py</span> in <span class="ni">wrap_future_result</span><span class="nt">(future, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="n">AsyncResults</span><span class="o">.</span><span class="n">get</span> <span class="kn">from</span> <span class="nn">multiprocessing.</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="s2">         try:</span>
-<span class="ne">--&gt; </span><span class="mi">542</span><span class="s2">             return future.result(timeout=timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">         except CfTimeoutError as e:</span>
-<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="s2">             raise TimeoutError from e</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/concurrent/futures/_base.py</span> in <span class="ni">result</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">428</span><span class="s2">                 return self.__get_result()</span>
-<span class="g g-Whitespace">    </span><span class="mi">429</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">430</span><span class="s2">             self._condition.wait(timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">432</span><span class="s2">             if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span><span class="s2">         try:    # restore state no matter what (e.g., KeyboardInterrupt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span><span class="s2">             if timeout is None:</span>
-<span class="ne">--&gt; </span><span class="mi">296</span><span class="s2">                 waiter.acquire()</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span><span class="s2">                 gotit = True</span>
-<span class="g g-Whitespace">    </span><span class="mi">298</span><span class="s2">             else:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -756,30 +739,32 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.45668049, 0.66292915, 0.81433065, 0.45361254, 0.60140274,
-        0.82010536, 0.39444685, 0.57964857, 0.66115172, 0.44950752,
-        0.86538608, 0.79417508, 0.38945613, 0.49168406, 0.64916961,
-        0.37311504, 0.51233435, 0.68502252, 0.34607711, 0.53447428,
-        0.67422717, 0.34477339, 0.48221769, 0.68746185, 0.47283773,
-        0.72615461, 0.91873999, 0.42735655, 0.6708653 , 0.77842727]),
- &#39;std_fit_time&#39;: array([0.11297166, 0.15059306, 0.09597708, 0.04941699, 0.05503439,
-        0.08481615, 0.05022412, 0.04823105, 0.0960839 , 0.13203082,
-        0.23014196, 0.14076624, 0.06592218, 0.07724044, 0.08649928,
-        0.0666882 , 0.07205434, 0.09178141, 0.05774798, 0.07067668,
-        0.09762898, 0.05930529, 0.0712308 , 0.20757168, 0.14407306,
-        0.17313657, 0.14960031, 0.05085416, 0.14994126, 0.14702281]),
- &#39;mean_score_time&#39;: array([0.01994457, 0.03131347, 0.04906604, 0.02234087, 0.0290211 ,
-        0.03819802, 0.0256314 , 0.02533505, 0.03425844, 0.02842512,
-        0.04767184, 0.03820243, 0.01974602, 0.02323782, 0.02871995,
-        0.0213491 , 0.02423475, 0.04069264, 0.01724999, 0.02213829,
-        0.0330076 , 0.01635542, 0.02483401, 0.0432843 , 0.02663076,
-        0.03540444, 0.04198842, 0.03062236, 0.03650258, 0.02892225]),
- &#39;std_score_time&#39;: array([0.00583392, 0.009652  , 0.01613903, 0.00722157, 0.00830288,
-        0.01029839, 0.00793733, 0.00441959, 0.01157891, 0.01359405,
-        0.02399362, 0.0127475 , 0.00652221, 0.00490722, 0.00751597,
-        0.00791497, 0.00647899, 0.01130773, 0.0050291 , 0.00480601,
-        0.01114229, 0.00127759, 0.00779575, 0.02353866, 0.01271567,
-        0.01504149, 0.01460585, 0.01752109, 0.01369085, 0.00751497]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.09820554, 0.14139247, 0.187973  , 0.0949379 , 0.1357913 ,
+        0.17659407, 0.09176681, 0.12874544, 0.16961861, 0.08895051,
+        0.12585778, 0.16414881, 0.08454242, 0.12376373, 0.16165307,
+        0.08298199, 0.12042086, 0.15805433, 0.08160551, 0.12095225,
+        0.1566772 , 0.08005567, 0.11661713, 0.15414565, 0.08029854,
+        0.11665056, 0.15284741, 0.08090174, 0.11480319, 0.14969518]),
+ &#39;std_fit_time&#39;: array([0.00186844, 0.00150874, 0.00310269, 0.01107049, 0.00319143,
+        0.00328934, 0.00492765, 0.00209954, 0.00376481, 0.00337801,
+        0.00270734, 0.00368875, 0.0016561 , 0.00276407, 0.00407207,
+        0.00230813, 0.00217373, 0.00379426, 0.00225462, 0.00393748,
+        0.00187012, 0.00179928, 0.00286   , 0.00364167, 0.00248473,
+        0.00250252, 0.00385672, 0.00292969, 0.00496338, 0.00288489]),
+ &#39;mean_score_time&#39;: array([0.00723093, 0.0096112 , 0.01195836, 0.00745251, 0.00913582,
+        0.01135011, 0.00684693, 0.00862851, 0.01086085, 0.00657568,
+        0.00846219, 0.01047151, 0.00680513, 0.00840397, 0.0101841 ,
+        0.00668111, 0.00803466, 0.01005964, 0.00666416, 0.00808864,
+        0.00987139, 0.00597367, 0.00780818, 0.00981057, 0.006005  ,
+        0.00786107, 0.00951023, 0.00603447, 0.00770652, 0.01004024]),
+ &#39;std_score_time&#39;: array([1.22003800e-04, 1.34569497e-04, 1.91183992e-04, 1.63330966e-03,
+        1.19311584e-04, 1.65251761e-04, 6.74824383e-04, 1.01421212e-04,
+        4.74578444e-04, 1.30772936e-04, 1.22258853e-04, 1.62462907e-04,
+        1.51237473e-03, 4.55047324e-04, 1.17455591e-04, 1.64495588e-03,
+        8.41449256e-05, 1.06675133e-04, 1.59888142e-03, 3.08344506e-04,
+        1.01788607e-04, 9.79742678e-05, 9.84936238e-05, 7.77605220e-05,
+        9.28284996e-05, 9.69132696e-05, 1.02948016e-04, 1.58451567e-04,
+        1.64326631e-04, 1.57691140e-03]),
  &#39;param_min_samples_leaf&#39;: masked_array(data=[1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3,
                     4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5],
               mask=[False, False, False, False, False, False, False, False,
@@ -910,7 +895,7 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
         0.0080553 , 0.00705384, 0.00713982, 0.00601929, 0.0074978 ,
         0.00763007, 0.00722798, 0.00708029, 0.00688028, 0.00699908]),
  &#39;rank_test_score&#39;: array([30, 28, 29, 26, 27, 25, 24, 23, 22, 21, 14,  5, 16,  9,  3, 19, 18,
-        13, 17, 11,  6, 12, 15,  7, 20,  4, 10,  1,  2,  8]),
+        13, 17, 11,  6, 12, 15,  7, 20,  4, 10,  1,  2,  8], dtype=int32),
  &#39;split0_train_score&#39;: array([0.87146226, 0.87230458, 0.87365229, 0.85601977, 0.85877134,
         0.85899596, 0.85882749, 0.86011905, 0.8607929 , 0.84798967,
         0.8484389 , 0.85017969, 0.84737197, 0.84956199, 0.85017969,
@@ -1052,10 +1037,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.456680</td>
-      <td>0.112972</td>
-      <td>0.019945</td>
-      <td>0.005834</td>
+      <td>0.098206</td>
+      <td>0.001868</td>
+      <td>0.007231</td>
+      <td>0.000122</td>
       <td>1</td>
       <td>8</td>
       <td>10</td>
@@ -1076,10 +1061,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>1</th>
-      <td>0.662929</td>
-      <td>0.150593</td>
-      <td>0.031313</td>
-      <td>0.009652</td>
+      <td>0.141392</td>
+      <td>0.001509</td>
+      <td>0.009611</td>
+      <td>0.000135</td>
       <td>1</td>
       <td>8</td>
       <td>15</td>
@@ -1100,10 +1085,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>2</th>
-      <td>0.814331</td>
-      <td>0.095977</td>
-      <td>0.049066</td>
-      <td>0.016139</td>
+      <td>0.187973</td>
+      <td>0.003103</td>
+      <td>0.011958</td>
+      <td>0.000191</td>
       <td>1</td>
       <td>8</td>
       <td>20</td>
@@ -1124,10 +1109,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>3</th>
-      <td>0.453613</td>
-      <td>0.049417</td>
-      <td>0.022341</td>
-      <td>0.007222</td>
+      <td>0.094938</td>
+      <td>0.011070</td>
+      <td>0.007453</td>
+      <td>0.001633</td>
       <td>1</td>
       <td>16</td>
       <td>10</td>
@@ -1148,10 +1133,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>4</th>
-      <td>0.601403</td>
-      <td>0.055034</td>
-      <td>0.029021</td>
-      <td>0.008303</td>
+      <td>0.135791</td>
+      <td>0.003191</td>
+      <td>0.009136</td>
+      <td>0.000119</td>
       <td>1</td>
       <td>16</td>
       <td>15</td>
@@ -1172,10 +1157,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>5</th>
-      <td>0.820105</td>
-      <td>0.084816</td>
-      <td>0.038198</td>
-      <td>0.010298</td>
+      <td>0.176594</td>
+      <td>0.003289</td>
+      <td>0.011350</td>
+      <td>0.000165</td>
       <td>1</td>
       <td>16</td>
       <td>20</td>
@@ -1196,10 +1181,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>6</th>
-      <td>0.394447</td>
-      <td>0.050224</td>
-      <td>0.025631</td>
-      <td>0.007937</td>
+      <td>0.091767</td>
+      <td>0.004928</td>
+      <td>0.006847</td>
+      <td>0.000675</td>
       <td>2</td>
       <td>8</td>
       <td>10</td>
@@ -1220,10 +1205,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>7</th>
-      <td>0.579649</td>
-      <td>0.048231</td>
-      <td>0.025335</td>
-      <td>0.004420</td>
+      <td>0.128745</td>
+      <td>0.002100</td>
+      <td>0.008629</td>
+      <td>0.000101</td>
       <td>2</td>
       <td>8</td>
       <td>15</td>
@@ -1244,10 +1229,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>8</th>
-      <td>0.661152</td>
-      <td>0.096084</td>
-      <td>0.034258</td>
-      <td>0.011579</td>
+      <td>0.169619</td>
+      <td>0.003765</td>
+      <td>0.010861</td>
+      <td>0.000475</td>
       <td>2</td>
       <td>8</td>
       <td>20</td>
@@ -1268,10 +1253,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>9</th>
-      <td>0.449508</td>
-      <td>0.132031</td>
-      <td>0.028425</td>
-      <td>0.013594</td>
+      <td>0.088951</td>
+      <td>0.003378</td>
+      <td>0.006576</td>
+      <td>0.000131</td>
       <td>2</td>
       <td>16</td>
       <td>10</td>
@@ -1292,10 +1277,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>10</th>
-      <td>0.865386</td>
-      <td>0.230142</td>
-      <td>0.047672</td>
-      <td>0.023994</td>
+      <td>0.125858</td>
+      <td>0.002707</td>
+      <td>0.008462</td>
+      <td>0.000122</td>
       <td>2</td>
       <td>16</td>
       <td>15</td>
@@ -1316,10 +1301,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>11</th>
-      <td>0.794175</td>
-      <td>0.140766</td>
-      <td>0.038202</td>
-      <td>0.012747</td>
+      <td>0.164149</td>
+      <td>0.003689</td>
+      <td>0.010472</td>
+      <td>0.000162</td>
       <td>2</td>
       <td>16</td>
       <td>20</td>
@@ -1340,10 +1325,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>12</th>
-      <td>0.389456</td>
-      <td>0.065922</td>
-      <td>0.019746</td>
-      <td>0.006522</td>
+      <td>0.084542</td>
+      <td>0.001656</td>
+      <td>0.006805</td>
+      <td>0.001512</td>
       <td>3</td>
       <td>8</td>
       <td>10</td>
@@ -1364,10 +1349,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>13</th>
-      <td>0.491684</td>
-      <td>0.077240</td>
-      <td>0.023238</td>
-      <td>0.004907</td>
+      <td>0.123764</td>
+      <td>0.002764</td>
+      <td>0.008404</td>
+      <td>0.000455</td>
       <td>3</td>
       <td>8</td>
       <td>15</td>
@@ -1388,10 +1373,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>14</th>
-      <td>0.649170</td>
-      <td>0.086499</td>
-      <td>0.028720</td>
-      <td>0.007516</td>
+      <td>0.161653</td>
+      <td>0.004072</td>
+      <td>0.010184</td>
+      <td>0.000117</td>
       <td>3</td>
       <td>8</td>
       <td>20</td>
@@ -1412,10 +1397,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>15</th>
-      <td>0.373115</td>
-      <td>0.066688</td>
-      <td>0.021349</td>
-      <td>0.007915</td>
+      <td>0.082982</td>
+      <td>0.002308</td>
+      <td>0.006681</td>
+      <td>0.001645</td>
       <td>3</td>
       <td>16</td>
       <td>10</td>
@@ -1436,10 +1421,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>16</th>
-      <td>0.512334</td>
-      <td>0.072054</td>
-      <td>0.024235</td>
-      <td>0.006479</td>
+      <td>0.120421</td>
+      <td>0.002174</td>
+      <td>0.008035</td>
+      <td>0.000084</td>
       <td>3</td>
       <td>16</td>
       <td>15</td>
@@ -1460,10 +1445,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>17</th>
-      <td>0.685023</td>
-      <td>0.091781</td>
-      <td>0.040693</td>
-      <td>0.011308</td>
+      <td>0.158054</td>
+      <td>0.003794</td>
+      <td>0.010060</td>
+      <td>0.000107</td>
       <td>3</td>
       <td>16</td>
       <td>20</td>
@@ -1484,10 +1469,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>18</th>
-      <td>0.346077</td>
-      <td>0.057748</td>
-      <td>0.017250</td>
-      <td>0.005029</td>
+      <td>0.081606</td>
+      <td>0.002255</td>
+      <td>0.006664</td>
+      <td>0.001599</td>
       <td>4</td>
       <td>8</td>
       <td>10</td>
@@ -1508,10 +1493,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>19</th>
-      <td>0.534474</td>
-      <td>0.070677</td>
-      <td>0.022138</td>
-      <td>0.004806</td>
+      <td>0.120952</td>
+      <td>0.003937</td>
+      <td>0.008089</td>
+      <td>0.000308</td>
       <td>4</td>
       <td>8</td>
       <td>15</td>
@@ -1532,10 +1517,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>20</th>
-      <td>0.674227</td>
-      <td>0.097629</td>
-      <td>0.033008</td>
-      <td>0.011142</td>
+      <td>0.156677</td>
+      <td>0.001870</td>
+      <td>0.009871</td>
+      <td>0.000102</td>
       <td>4</td>
       <td>8</td>
       <td>20</td>
@@ -1556,10 +1541,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>21</th>
-      <td>0.344773</td>
-      <td>0.059305</td>
-      <td>0.016355</td>
-      <td>0.001278</td>
+      <td>0.080056</td>
+      <td>0.001799</td>
+      <td>0.005974</td>
+      <td>0.000098</td>
       <td>4</td>
       <td>16</td>
       <td>10</td>
@@ -1580,10 +1565,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>22</th>
-      <td>0.482218</td>
-      <td>0.071231</td>
-      <td>0.024834</td>
-      <td>0.007796</td>
+      <td>0.116617</td>
+      <td>0.002860</td>
+      <td>0.007808</td>
+      <td>0.000098</td>
       <td>4</td>
       <td>16</td>
       <td>15</td>
@@ -1604,10 +1589,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>23</th>
-      <td>0.687462</td>
-      <td>0.207572</td>
-      <td>0.043284</td>
-      <td>0.023539</td>
+      <td>0.154146</td>
+      <td>0.003642</td>
+      <td>0.009811</td>
+      <td>0.000078</td>
       <td>4</td>
       <td>16</td>
       <td>20</td>
@@ -1628,10 +1613,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>24</th>
-      <td>0.472838</td>
-      <td>0.144073</td>
-      <td>0.026631</td>
-      <td>0.012716</td>
+      <td>0.080299</td>
+      <td>0.002485</td>
+      <td>0.006005</td>
+      <td>0.000093</td>
       <td>5</td>
       <td>8</td>
       <td>10</td>
@@ -1652,10 +1637,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>25</th>
-      <td>0.726155</td>
-      <td>0.173137</td>
-      <td>0.035404</td>
-      <td>0.015041</td>
+      <td>0.116651</td>
+      <td>0.002503</td>
+      <td>0.007861</td>
+      <td>0.000097</td>
       <td>5</td>
       <td>8</td>
       <td>15</td>
@@ -1676,10 +1661,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>26</th>
-      <td>0.918740</td>
-      <td>0.149600</td>
-      <td>0.041988</td>
-      <td>0.014606</td>
+      <td>0.152847</td>
+      <td>0.003857</td>
+      <td>0.009510</td>
+      <td>0.000103</td>
       <td>5</td>
       <td>8</td>
       <td>20</td>
@@ -1700,10 +1685,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>27</th>
-      <td>0.427357</td>
-      <td>0.050854</td>
-      <td>0.030622</td>
-      <td>0.017521</td>
+      <td>0.080902</td>
+      <td>0.002930</td>
+      <td>0.006034</td>
+      <td>0.000158</td>
       <td>5</td>
       <td>16</td>
       <td>10</td>
@@ -1724,10 +1709,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>28</th>
-      <td>0.670865</td>
-      <td>0.149941</td>
-      <td>0.036503</td>
-      <td>0.013691</td>
+      <td>0.114803</td>
+      <td>0.004963</td>
+      <td>0.007707</td>
+      <td>0.000164</td>
       <td>5</td>
       <td>16</td>
       <td>15</td>
@@ -1748,10 +1733,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>29</th>
-      <td>0.778427</td>
-      <td>0.147023</td>
-      <td>0.028922</td>
-      <td>0.007515</td>
+      <td>0.149695</td>
+      <td>0.002885</td>
+      <td>0.010040</td>
+      <td>0.001577</td>
       <td>5</td>
       <td>16</td>
       <td>20</td>
@@ -1853,6 +1838,668 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_sag.py:329: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &quot;the coef_ did not converge&quot;, ConvergenceWarning)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:765: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1868,26 +2515,27 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.28104825, 0.69414241, 2.01503353, 0.27067676, 0.7547797 ,
-        2.12504284, 0.42716384, 0.81452684, 2.61601517, 0.50085835,
-        0.88180466, 2.09092236, 0.41401324, 0.5605083 , 1.74503152,
-        0.38527086, 0.56552169, 1.80409346, 0.36981058, 0.57176945,
-        1.63814776]),
- &#39;std_fit_time&#39;: array([0.02768776, 0.08957076, 0.32239874, 0.0336067 , 0.06334647,
-        0.37392686, 0.1516348 , 0.1749037 , 0.34654121, 0.12150061,
-        0.11714403, 0.19616348, 0.07532369, 0.03307782, 0.227293  ,
-        0.05832584, 0.03427507, 0.24272811, 0.0469753 , 0.03715675,
-        0.29424509]),
- &#39;mean_score_time&#39;: array([0.02094481, 0.00618327, 0.00668273, 0.00658424, 0.00698123,
-        0.00598278, 0.01136973, 0.00927484, 0.0109709 , 0.0117681 ,
-        0.00997198, 0.00578675, 0.00638223, 0.00538528, 0.0053853 ,
-        0.00628402, 0.00614898, 0.00528724, 0.00678375, 0.00588677,
-        0.005088  ]),
- &#39;std_score_time&#39;: array([0.01505338, 0.00116371, 0.0033692 , 0.00260808, 0.00413625,
-        0.00204101, 0.00552065, 0.00401376, 0.00948289, 0.00527498,
-        0.00614812, 0.00198096, 0.00127762, 0.00101729, 0.001277  ,
-        0.0006372 , 0.00208578, 0.00077984, 0.00132173, 0.00129836,
-        0.00246027]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.05045583, 0.15123456, 0.49376414, 0.05910757, 0.15080733,
+        0.49314628, 0.06558833, 0.15209136, 0.49083424, 0.06787314,
+        0.14931457, 0.49436226, 0.07839842, 0.15485218, 0.49162645,
+        0.07871785, 0.14993372, 0.4952985 , 0.0813827 , 0.15489845,
+        0.49320562]),
+ &#39;std_fit_time&#39;: array([0.00353967, 0.00402847, 0.0042831 , 0.00332757, 0.0032793 ,
+        0.00409951, 0.00270884, 0.0044679 , 0.00329257, 0.00384624,
+        0.00419533, 0.00873798, 0.00466025, 0.00510697, 0.00391562,
+        0.00704452, 0.00330534, 0.00507679, 0.0035524 , 0.00463484,
+        0.00272594]),
+ &#39;mean_score_time&#39;: array([0.00221064, 0.00221057, 0.00240557, 0.00226998, 0.00231922,
+        0.00244157, 0.00223811, 0.00256491, 0.00239968, 0.00229466,
+        0.00232947, 0.00240905, 0.00227196, 0.00230455, 0.00273678,
+        0.0023344 , 0.0023417 , 0.00240784, 0.00237448, 0.00227728,
+        0.00243106]),
+ &#39;std_score_time&#39;: array([1.34412117e-04, 3.99869682e-05, 2.94907592e-05, 1.55206759e-04,
+        6.76647931e-05, 2.26503825e-04, 1.49561100e-04, 6.49670846e-04,
+        3.94495943e-05, 7.28977233e-05, 2.12029095e-04, 4.30687243e-05,
+        1.12180745e-04, 4.05785340e-05, 1.03453142e-03, 1.18364334e-04,
+        2.40772236e-04, 4.58014191e-05, 1.07174073e-04, 4.61511124e-05,
+        6.69488710e-05]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.5, 0.5, 0.5, 1, 1,
                     1, 2, 2, 2, 5, 5, 5, 10, 10, 10],
               mask=[False, False, False, False, False, False, False, False,
@@ -1934,127 +2582,127 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
   {&#39;C&#39;: 10, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
   {&#39;C&#39;: 10, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
   {&#39;C&#39;: 10, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;}],
- &#39;split0_test_score&#39;: array([0.8054573 , 0.80899444, 0.80646791, 0.80899444, 0.80697322,
-        0.80697322, 0.80848914, 0.80899444, 0.80798383, 0.80848914,
+ &#39;split0_test_score&#39;: array([0.8054573 , 0.80949975, 0.80646791, 0.80899444, 0.80697322,
+        0.80697322, 0.80899444, 0.80899444, 0.80798383, 0.80848914,
         0.81051036, 0.80798383, 0.80899444, 0.81202628, 0.80798383,
-        0.80899444, 0.80899444, 0.80798383, 0.80899444, 0.81152097,
+        0.80899444, 0.80899444, 0.80798383, 0.80899444, 0.81101566,
         0.80798383]),
  &#39;split1_test_score&#39;: array([0.79181405, 0.80040424, 0.79029813, 0.79838302, 0.79737241,
-        0.79282466, 0.79888833, 0.79737241, 0.79231935, 0.79939363,
+        0.79282466, 0.79888833, 0.79888833, 0.79231935, 0.79939363,
         0.79939363, 0.79231935, 0.80040424, 0.79939363, 0.79231935,
-        0.79989894, 0.79838302, 0.79231935, 0.79888833, 0.79888833,
+        0.79989894, 0.79939363, 0.79231935, 0.79888833, 0.79888833,
         0.79231935]),
  &#39;split2_test_score&#39;: array([0.82162708, 0.81303689, 0.81960586, 0.81758464, 0.82011117,
-        0.81758464, 0.81657403, 0.81960586, 0.81808994, 0.81657403,
-        0.82162708, 0.81758464, 0.81707933, 0.82061647, 0.81758464,
+        0.81758464, 0.81657403, 0.82112178, 0.81808994, 0.81657403,
+        0.81859525, 0.81758464, 0.81707933, 0.82061647, 0.81758464,
         0.81758464, 0.82162708, 0.81758464, 0.81758464, 0.82162708,
         0.81758464]),
- &#39;split3_test_score&#39;: array([0.80141486, 0.79787772, 0.79838302, 0.79888833, 0.79939363,
-        0.7968671 , 0.79888833, 0.80141486, 0.79737241, 0.79989894,
+ &#39;split3_test_score&#39;: array([0.80141486, 0.79787772, 0.79838302, 0.79888833, 0.80040424,
+        0.7968671 , 0.79888833, 0.80090955, 0.79737241, 0.79989894,
         0.80040424, 0.79737241, 0.80090955, 0.80090955, 0.7968671 ,
-        0.80090955, 0.79939363, 0.7968671 , 0.80090955, 0.80090955,
+        0.80090955, 0.79888833, 0.7968671 , 0.80090955, 0.80090955,
         0.7968671 ]),
- &#39;split4_test_score&#39;: array([0.81707933, 0.82112178, 0.81808994, 0.82465892, 0.8226377 ,
+ &#39;split4_test_score&#39;: array([0.81707933, 0.8226377 , 0.81808994, 0.82465892, 0.8226377 ,
         0.81960586, 0.82011117, 0.823143  , 0.81910056, 0.82011117,
-        0.82516422, 0.81859525, 0.82011117, 0.8226377 , 0.81859525,
-        0.82162708, 0.823143  , 0.81859525, 0.82112178, 0.82011117,
+        0.82465892, 0.81859525, 0.82011117, 0.82213239, 0.81859525,
+        0.82162708, 0.823143  , 0.81859525, 0.82112178, 0.82061647,
         0.81859525]),
- &#39;split5_test_score&#39;: array([0.81606872, 0.81505811, 0.81707933, 0.81758464, 0.81505811,
+ &#39;split5_test_score&#39;: array([0.81606872, 0.81556342, 0.81707933, 0.81758464, 0.8145528 ,
         0.8145528 , 0.81606872, 0.81556342, 0.81505811, 0.81606872,
-        0.81556342, 0.81505811, 0.81606872, 0.8140475 , 0.81505811,
-        0.81657403, 0.8145528 , 0.81505811, 0.81707933, 0.81505811,
+        0.81606872, 0.81505811, 0.81657403, 0.81505811, 0.81505811,
+        0.81657403, 0.8145528 , 0.81505811, 0.81707933, 0.8145528 ,
         0.81505811]),
  &#39;split6_test_score&#39;: array([0.82061647, 0.81303689, 0.82213239, 0.82516422, 0.81859525,
         0.82364831, 0.82011117, 0.81758464, 0.8226377 , 0.81960586,
-        0.82011117, 0.8226377 , 0.82011117, 0.81808994, 0.8226377 ,
-        0.82011117, 0.82011117, 0.8226377 , 0.82011117, 0.81910056,
+        0.82011117, 0.8226377 , 0.82011117, 0.82061647, 0.8226377 ,
+        0.82011117, 0.81960586, 0.8226377 , 0.82011117, 0.81859525,
         0.8226377 ]),
  &#39;split7_test_score&#39;: array([0.81597573, 0.82153691, 0.81597573, 0.82608696, 0.82305359,
         0.81799798, 0.82406471, 0.82406471, 0.81799798, 0.82406471,
-        0.82457027, 0.81799798, 0.82406471, 0.82305359, 0.81799798,
-        0.82406471, 0.82608696, 0.81799798, 0.82406471, 0.82406471,
+        0.82406471, 0.81799798, 0.82406471, 0.8255814 , 0.81799798,
+        0.82406471, 0.82659252, 0.81799798, 0.82406471, 0.82355915,
         0.81799798]),
- &#39;split8_test_score&#39;: array([0.81193124, 0.81749242, 0.81294237, 0.81597573, 0.8190091 ,
-        0.81142568, 0.81799798, 0.81951466, 0.81193124, 0.8190091 ,
-        0.81799798, 0.81193124, 0.8190091 , 0.81951466, 0.81193124,
-        0.8190091 , 0.81951466, 0.81193124, 0.8190091 , 0.81648129,
+ &#39;split8_test_score&#39;: array([0.81193124, 0.81850354, 0.81294237, 0.81597573, 0.81850354,
+        0.81142568, 0.81799798, 0.81951466, 0.81193124, 0.81951466,
+        0.81799798, 0.81193124, 0.81850354, 0.81951466, 0.81193124,
+        0.81749242, 0.81951466, 0.81193124, 0.8190091 , 0.81648129,
         0.81193124]),
- &#39;split9_test_score&#39;: array([0.80738119, 0.80788675, 0.80839232, 0.8124368 , 0.80839232,
+ &#39;split9_test_score&#39;: array([0.80738119, 0.80889788, 0.80839232, 0.8124368 , 0.80889788,
         0.80535895, 0.81041456, 0.80889788, 0.80485339, 0.81041456,
-        0.80788675, 0.80485339, 0.809909  , 0.80738119, 0.80485339,
+        0.80788675, 0.80485339, 0.809909  , 0.80940344, 0.80485339,
         0.81041456, 0.80637007, 0.80485339, 0.81041456, 0.80889788,
         0.80485339]),
- &#39;mean_test_score&#39;: array([0.8109366 , 0.81164461, 0.8109367 , 0.81457577, 0.81305965,
-        0.81068392, 0.81316081, 0.81361559, 0.81073445, 0.81336299,
-        0.81432291, 0.81063339, 0.81366614, 0.81376705, 0.81058286,
-        0.81391882, 0.81381768, 0.81058286, 0.81381776, 0.81366596,
+ &#39;mean_test_score&#39;: array([0.8109366 , 0.81209949, 0.8109367 , 0.81457577, 0.81311018,
+        0.81068392, 0.81321134, 0.81386824, 0.81073445, 0.81341354,
+        0.81396917, 0.81063339, 0.81366612, 0.81452524, 0.81058286,
+        0.81376715, 0.81386824, 0.81058286, 0.81381776, 0.81351435,
         0.81058286]),
- &#39;std_test_score&#39;: array([0.00892995, 0.00757904, 0.00963744, 0.00954142, 0.00896132,
-        0.00957232, 0.00834139, 0.00864   , 0.00947882, 0.00810814,
-        0.00892757, 0.00939681, 0.00782129, 0.00824235, 0.00946906,
-        0.00805871, 0.00946626, 0.00946906, 0.00821029, 0.00812953,
+ &#39;std_test_score&#39;: array([0.00892995, 0.00781622, 0.00963744, 0.00954142, 0.00874322,
+        0.00957232, 0.00831443, 0.00855543, 0.00947882, 0.00814468,
+        0.00861027, 0.00939681, 0.00780553, 0.00852245, 0.00946906,
+        0.00797532, 0.00941959, 0.00946906, 0.00821029, 0.00808213,
         0.00946906]),
- &#39;rank_test_score&#39;: array([15, 13, 14,  1, 12, 17, 11,  9, 16, 10,  2, 18,  7,  6, 19,  3,  5,
-        19,  4,  8, 19]),
- &#39;split0_train_score&#39;: array([0.81165768, 0.81294924, 0.81092767, 0.81564465, 0.81396002,
-        0.81103998, 0.81519542, 0.81457772, 0.81070305, 0.81474618,
-        0.81480234, 0.81059075, 0.81519542, 0.81469003, 0.81059075,
+ &#39;rank_test_score&#39;: array([15, 13, 14,  1, 12, 17, 11,  4, 16, 10,  3, 18,  8,  2, 19,  7,  4,
+        19,  6,  9, 19], dtype=int32),
+ &#39;split0_train_score&#39;: array([0.81165768, 0.81289308, 0.81092767, 0.81564465, 0.81396002,
+        0.81103998, 0.81519542, 0.81463387, 0.81070305, 0.81474618,
+        0.81474618, 0.81059075, 0.81519542, 0.81474618, 0.81059075,
         0.81502695, 0.81469003, 0.81053459, 0.81525157, 0.81457772,
         0.81053459]),
  &#39;split1_train_score&#39;: array([0.81272462, 0.81345463, 0.81317385, 0.81676774, 0.81513926,
-        0.81238769, 0.8162062 , 0.81553235, 0.81255615, 0.81598158,
-        0.81575696, 0.81255615, 0.81536388, 0.81586927, 0.81255615,
-        0.81530773, 0.81530773, 0.81255615, 0.81536388, 0.81570081,
+        0.81238769, 0.8162062 , 0.81581312, 0.81255615, 0.81598158,
+        0.81570081, 0.81255615, 0.81536388, 0.81592543, 0.81255615,
+        0.81530773, 0.81570081, 0.81255615, 0.81536388, 0.81598158,
         0.81255615]),
  &#39;split2_train_score&#39;: array([0.81008535, 0.81154537, 0.80924304, 0.81452156, 0.81272462,
-        0.8100292 , 0.81412848, 0.81424079, 0.8100292 , 0.81429695,
-        0.81384771, 0.80997305, 0.81424079, 0.81317385, 0.8100292 ,
-        0.8143531 , 0.81356694, 0.8100292 , 0.81446541, 0.81384771,
+        0.8100292 , 0.81412848, 0.81396002, 0.8100292 , 0.81429695,
+        0.81283693, 0.80997305, 0.81424079, 0.81317385, 0.8100292 ,
+        0.81440925, 0.81356694, 0.8100292 , 0.81446541, 0.81384771,
         0.8100292 ]),
- &#39;split3_train_score&#39;: array([0.81244385, 0.81283693, 0.81193845, 0.81643082, 0.81491465,
-        0.81233154, 0.81553235, 0.81564465, 0.81233154, 0.81553235,
-        0.81542004, 0.81238769, 0.81530773, 0.8155885 , 0.81238769,
-        0.81598158, 0.81643082, 0.81238769, 0.81603774, 0.81609389,
+ &#39;split3_train_score&#39;: array([0.81244385, 0.81289308, 0.81193845, 0.81643082, 0.81519542,
+        0.81233154, 0.81553235, 0.81575696, 0.81233154, 0.81553235,
+        0.81542004, 0.81238769, 0.81536388, 0.8155885 , 0.81238769,
+        0.81598158, 0.81609389, 0.81238769, 0.81603774, 0.81609389,
         0.81238769]),
- &#39;split4_train_score&#39;: array([0.8106469 , 0.80884996, 0.80974843, 0.81345463, 0.81323001,
-        0.81014151, 0.81396002, 0.81283693, 0.81036613, 0.81362309,
-        0.81221923, 0.81036613, 0.81334232, 0.81266846, 0.81042228,
-        0.81367925, 0.81412848, 0.81053459, 0.81379155, 0.81199461,
+ &#39;split4_train_score&#39;: array([0.8106469 , 0.80924304, 0.80974843, 0.81345463, 0.81323001,
+        0.81014151, 0.81396002, 0.81283693, 0.81036613, 0.81367925,
+        0.81238769, 0.81036613, 0.81334232, 0.81334232, 0.81042228,
+        0.81379155, 0.81457772, 0.81053459, 0.81379155, 0.81238769,
         0.81053459]),
- &#39;split5_train_score&#39;: array([0.81070305, 0.80969227, 0.81014151, 0.81485849, 0.81351078,
-        0.81030997, 0.81379155, 0.81306155, 0.81030997, 0.81351078,
-        0.81384771, 0.81042228, 0.81356694, 0.81429695, 0.81047844,
-        0.81345463, 0.81255615, 0.81042228, 0.81339847, 0.81446541,
+ &#39;split5_train_score&#39;: array([0.81070305, 0.81070305, 0.81014151, 0.81485849, 0.8137354 ,
+        0.81030997, 0.8137354 , 0.81294924, 0.81030997, 0.81351078,
+        0.81384771, 0.81042228, 0.81351078, 0.81278077, 0.81047844,
+        0.81345463, 0.81255615, 0.81042228, 0.81339847, 0.81474618,
         0.81042228]),
  &#39;split6_train_score&#39;: array([0.80980458, 0.81210692, 0.80935535, 0.81356694, 0.81328616,
-        0.80952381, 0.81356694, 0.81345463, 0.80924304, 0.81339847,
-        0.81362309, 0.80924304, 0.81334232, 0.81306155, 0.80924304,
-        0.81334232, 0.81345463, 0.80924304, 0.8131177 , 0.81396002,
+        0.80952381, 0.81356694, 0.81323001, 0.80924304, 0.81339847,
+        0.8137354 , 0.80924304, 0.81334232, 0.81424079, 0.80924304,
+        0.81334232, 0.81351078, 0.80924304, 0.8131177 , 0.81356694,
         0.80929919]),
- &#39;split7_train_score&#39;: array([0.81020832, 0.8111629 , 0.81003987, 0.8133528 , 0.81110674,
-        0.80981526, 0.81307204, 0.81133135, 0.81003987, 0.81273513,
-        0.81312819, 0.81003987, 0.81301589, 0.81307204, 0.81003987,
-        0.8132405 , 0.81413892, 0.80998372, 0.8133528 , 0.81402662,
+ &#39;split7_train_score&#39;: array([0.81020832, 0.81032062, 0.81003987, 0.8133528 , 0.8111629 ,
+        0.80981526, 0.81301589, 0.81144365, 0.81003987, 0.81273513,
+        0.81312819, 0.81003987, 0.81301589, 0.8134651 , 0.81003987,
+        0.8132405 , 0.81419507, 0.80998372, 0.8133528 , 0.81402662,
         0.80998372]),
- &#39;split8_train_score&#39;: array([0.81082599, 0.81037678, 0.81043293, 0.81447583, 0.81312819,
-        0.81082599, 0.81397046, 0.81436352, 0.81071368, 0.81374586,
-        0.81402662, 0.81065753, 0.81295974, 0.8133528 , 0.81065753,
-        0.81301589, 0.81397046, 0.81071368, 0.81279129, 0.81340895,
+ &#39;split8_train_score&#39;: array([0.81082599, 0.80981526, 0.81043293, 0.81447583, 0.81312819,
+        0.81082599, 0.81391431, 0.81436352, 0.81071368, 0.81380201,
+        0.81402662, 0.81065753, 0.81290359, 0.81340895, 0.81065753,
+        0.81284744, 0.81408277, 0.81071368, 0.81279129, 0.81340895,
         0.81071368]),
- &#39;split9_train_score&#39;: array([0.8113875 , 0.81234207, 0.81133135, 0.81503734, 0.81464428,
+ &#39;split9_train_score&#39;: array([0.8113875 , 0.81211747, 0.81133135, 0.81509349, 0.81475658,
         0.81133135, 0.81447583, 0.81458813, 0.81133135, 0.81391431,
-        0.81503734, 0.8112752 , 0.81447583, 0.81413892, 0.8112752 ,
-        0.81520579, 0.81514964, 0.8111629 , 0.81503734, 0.81425122,
+        0.81503734, 0.8112752 , 0.81447583, 0.81391431, 0.8112752 ,
+        0.81520579, 0.81514964, 0.8111629 , 0.81503734, 0.81441968,
         0.8111629 ]),
- &#39;mean_train_score&#39;: array([0.81104878, 0.81153171, 0.81063324, 0.81481108, 0.81356447,
-        0.81077363, 0.81438993, 0.81396316, 0.8107624 , 0.81414847,
-        0.81417092, 0.81075117, 0.81408108, 0.81399124, 0.81076801,
-        0.81426077, 0.81433938, 0.81075678, 0.81426078, 0.81423269,
+ &#39;mean_train_score&#39;: array([0.81104878, 0.81150925, 0.81063324, 0.8148167 , 0.81363186,
+        0.81077363, 0.81437308, 0.81395754, 0.8107624 , 0.8141597 ,
+        0.81408669, 0.81075117, 0.81407547, 0.81405862, 0.81076801,
+        0.81426077, 0.81441238, 0.81075678, 0.81426078, 0.81430569,
         0.8107624 ]),
- &#39;std_train_score&#39;: array([0.0009356 , 0.00142981, 0.00117111, 0.00113627, 0.00112932,
-        0.00095217, 0.00091986, 0.00124747, 0.00098687, 0.00095469,
-        0.00103206, 0.00099436, 0.00091221, 0.00105908, 0.00098624,
-        0.00099841, 0.00104266, 0.00098455, 0.00106091, 0.00108377,
+ &#39;std_train_score&#39;: array([0.0009356 , 0.00135687, 0.00117111, 0.00113751, 0.00116421,
+        0.00095217, 0.00093437, 0.00129701, 0.00098687, 0.00094948,
+        0.00106175, 0.00099436, 0.00093015, 0.00100277, 0.00098624,
+        0.00101546, 0.00101314, 0.00098455, 0.00106091, 0.0010772 ,
         0.00097603])}
 </pre></div>
 </div>
@@ -2125,10 +2773,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.281048</td>
-      <td>0.027688</td>
-      <td>0.020945</td>
-      <td>0.015053</td>
+      <td>0.050456</td>
+      <td>0.003540</td>
+      <td>0.002211</td>
+      <td>0.000134</td>
       <td>0.01</td>
       <td>l2</td>
       <td>liblinear</td>
@@ -2149,34 +2797,34 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>1</th>
-      <td>0.694142</td>
-      <td>0.089571</td>
-      <td>0.006183</td>
-      <td>0.001164</td>
+      <td>0.151235</td>
+      <td>0.004028</td>
+      <td>0.002211</td>
+      <td>0.000040</td>
       <td>0.01</td>
       <td>l2</td>
       <td>lbfgs</td>
       <td>{'C': 0.01, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
-      <td>0.808994</td>
+      <td>0.809500</td>
       <td>0.800404</td>
       <td>...</td>
       <td>0.811545</td>
-      <td>0.812837</td>
-      <td>0.808850</td>
-      <td>0.809692</td>
+      <td>0.812893</td>
+      <td>0.809243</td>
+      <td>0.810703</td>
       <td>0.812107</td>
-      <td>0.811163</td>
-      <td>0.810377</td>
-      <td>0.812342</td>
-      <td>0.811532</td>
-      <td>0.001430</td>
+      <td>0.810321</td>
+      <td>0.809815</td>
+      <td>0.812117</td>
+      <td>0.811509</td>
+      <td>0.001357</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2.015034</td>
-      <td>0.322399</td>
-      <td>0.006683</td>
-      <td>0.003369</td>
+      <td>0.493764</td>
+      <td>0.004283</td>
+      <td>0.002406</td>
+      <td>0.000029</td>
       <td>0.01</td>
       <td>l2</td>
       <td>saga</td>
@@ -2197,10 +2845,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>3</th>
-      <td>0.270677</td>
-      <td>0.033607</td>
-      <td>0.006584</td>
-      <td>0.002608</td>
+      <td>0.059108</td>
+      <td>0.003328</td>
+      <td>0.002270</td>
+      <td>0.000155</td>
       <td>0.1</td>
       <td>l2</td>
       <td>liblinear</td>
@@ -2215,16 +2863,16 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>0.813567</td>
       <td>0.813353</td>
       <td>0.814476</td>
-      <td>0.815037</td>
-      <td>0.814811</td>
-      <td>0.001136</td>
+      <td>0.815093</td>
+      <td>0.814817</td>
+      <td>0.001138</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.754780</td>
-      <td>0.063346</td>
-      <td>0.006981</td>
-      <td>0.004136</td>
+      <td>0.150807</td>
+      <td>0.003279</td>
+      <td>0.002319</td>
+      <td>0.000068</td>
       <td>0.1</td>
       <td>l2</td>
       <td>lbfgs</td>
@@ -2233,22 +2881,22 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>0.797372</td>
       <td>...</td>
       <td>0.812725</td>
-      <td>0.814915</td>
+      <td>0.815195</td>
       <td>0.813230</td>
-      <td>0.813511</td>
+      <td>0.813735</td>
       <td>0.813286</td>
-      <td>0.811107</td>
+      <td>0.811163</td>
       <td>0.813128</td>
-      <td>0.814644</td>
-      <td>0.813564</td>
-      <td>0.001129</td>
+      <td>0.814757</td>
+      <td>0.813632</td>
+      <td>0.001164</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2.125043</td>
-      <td>0.373927</td>
-      <td>0.005983</td>
-      <td>0.002041</td>
+      <td>0.493146</td>
+      <td>0.004100</td>
+      <td>0.002442</td>
+      <td>0.000227</td>
       <td>0.1</td>
       <td>l2</td>
       <td>saga</td>
@@ -2269,58 +2917,58 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>6</th>
-      <td>0.427164</td>
-      <td>0.151635</td>
-      <td>0.011370</td>
-      <td>0.005521</td>
+      <td>0.065588</td>
+      <td>0.002709</td>
+      <td>0.002238</td>
+      <td>0.000150</td>
       <td>0.5</td>
       <td>l2</td>
       <td>liblinear</td>
       <td>{'C': 0.5, 'penalty': 'l2', 'solver': 'libline...</td>
-      <td>0.808489</td>
+      <td>0.808994</td>
       <td>0.798888</td>
       <td>...</td>
       <td>0.814128</td>
       <td>0.815532</td>
       <td>0.813960</td>
-      <td>0.813792</td>
+      <td>0.813735</td>
       <td>0.813567</td>
-      <td>0.813072</td>
-      <td>0.813970</td>
+      <td>0.813016</td>
+      <td>0.813914</td>
       <td>0.814476</td>
-      <td>0.814390</td>
-      <td>0.000920</td>
+      <td>0.814373</td>
+      <td>0.000934</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.814527</td>
-      <td>0.174904</td>
-      <td>0.009275</td>
-      <td>0.004014</td>
+      <td>0.152091</td>
+      <td>0.004468</td>
+      <td>0.002565</td>
+      <td>0.000650</td>
       <td>0.5</td>
       <td>l2</td>
       <td>lbfgs</td>
       <td>{'C': 0.5, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
       <td>0.808994</td>
-      <td>0.797372</td>
+      <td>0.798888</td>
       <td>...</td>
-      <td>0.814241</td>
-      <td>0.815645</td>
+      <td>0.813960</td>
+      <td>0.815757</td>
       <td>0.812837</td>
-      <td>0.813062</td>
-      <td>0.813455</td>
-      <td>0.811331</td>
+      <td>0.812949</td>
+      <td>0.813230</td>
+      <td>0.811444</td>
       <td>0.814364</td>
       <td>0.814588</td>
-      <td>0.813963</td>
-      <td>0.001247</td>
+      <td>0.813958</td>
+      <td>0.001297</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>2.616015</td>
-      <td>0.346541</td>
-      <td>0.010971</td>
-      <td>0.009483</td>
+      <td>0.490834</td>
+      <td>0.003293</td>
+      <td>0.002400</td>
+      <td>0.000039</td>
       <td>0.5</td>
       <td>l2</td>
       <td>saga</td>
@@ -2341,10 +2989,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>9</th>
-      <td>0.500858</td>
-      <td>0.121501</td>
-      <td>0.011768</td>
-      <td>0.005275</td>
+      <td>0.067873</td>
+      <td>0.003846</td>
+      <td>0.002295</td>
+      <td>0.000073</td>
       <td>1</td>
       <td>l2</td>
       <td>liblinear</td>
@@ -2354,21 +3002,21 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>...</td>
       <td>0.814297</td>
       <td>0.815532</td>
-      <td>0.813623</td>
+      <td>0.813679</td>
       <td>0.813511</td>
       <td>0.813398</td>
       <td>0.812735</td>
-      <td>0.813746</td>
+      <td>0.813802</td>
       <td>0.813914</td>
-      <td>0.814148</td>
-      <td>0.000955</td>
+      <td>0.814160</td>
+      <td>0.000949</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>0.881805</td>
-      <td>0.117144</td>
-      <td>0.009972</td>
-      <td>0.006148</td>
+      <td>0.149315</td>
+      <td>0.004195</td>
+      <td>0.002329</td>
+      <td>0.000212</td>
       <td>1</td>
       <td>l2</td>
       <td>lbfgs</td>
@@ -2376,23 +3024,23 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>0.810510</td>
       <td>0.799394</td>
       <td>...</td>
-      <td>0.813848</td>
+      <td>0.812837</td>
       <td>0.815420</td>
-      <td>0.812219</td>
+      <td>0.812388</td>
       <td>0.813848</td>
-      <td>0.813623</td>
+      <td>0.813735</td>
       <td>0.813128</td>
       <td>0.814027</td>
       <td>0.815037</td>
-      <td>0.814171</td>
-      <td>0.001032</td>
+      <td>0.814087</td>
+      <td>0.001062</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>2.090922</td>
-      <td>0.196163</td>
-      <td>0.005787</td>
-      <td>0.001981</td>
+      <td>0.494362</td>
+      <td>0.008738</td>
+      <td>0.002409</td>
+      <td>0.000043</td>
       <td>1</td>
       <td>l2</td>
       <td>saga</td>
@@ -2413,10 +3061,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>12</th>
-      <td>0.414013</td>
-      <td>0.075324</td>
-      <td>0.006382</td>
-      <td>0.001278</td>
+      <td>0.078398</td>
+      <td>0.004660</td>
+      <td>0.002272</td>
+      <td>0.000112</td>
       <td>2</td>
       <td>l2</td>
       <td>liblinear</td>
@@ -2425,22 +3073,22 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>0.800404</td>
       <td>...</td>
       <td>0.814241</td>
-      <td>0.815308</td>
+      <td>0.815364</td>
       <td>0.813342</td>
-      <td>0.813567</td>
+      <td>0.813511</td>
       <td>0.813342</td>
       <td>0.813016</td>
-      <td>0.812960</td>
+      <td>0.812904</td>
       <td>0.814476</td>
-      <td>0.814081</td>
-      <td>0.000912</td>
+      <td>0.814075</td>
+      <td>0.000930</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>0.560508</td>
-      <td>0.033078</td>
-      <td>0.005385</td>
-      <td>0.001017</td>
+      <td>0.154852</td>
+      <td>0.005107</td>
+      <td>0.002305</td>
+      <td>0.000041</td>
       <td>2</td>
       <td>l2</td>
       <td>lbfgs</td>
@@ -2450,21 +3098,21 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>...</td>
       <td>0.813174</td>
       <td>0.815588</td>
-      <td>0.812668</td>
-      <td>0.814297</td>
-      <td>0.813062</td>
-      <td>0.813072</td>
-      <td>0.813353</td>
-      <td>0.814139</td>
-      <td>0.813991</td>
-      <td>0.001059</td>
+      <td>0.813342</td>
+      <td>0.812781</td>
+      <td>0.814241</td>
+      <td>0.813465</td>
+      <td>0.813409</td>
+      <td>0.813914</td>
+      <td>0.814059</td>
+      <td>0.001003</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>1.745032</td>
-      <td>0.227293</td>
-      <td>0.005385</td>
-      <td>0.001277</td>
+      <td>0.491626</td>
+      <td>0.003916</td>
+      <td>0.002737</td>
+      <td>0.001035</td>
       <td>2</td>
       <td>l2</td>
       <td>saga</td>
@@ -2485,10 +3133,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>15</th>
-      <td>0.385271</td>
-      <td>0.058326</td>
-      <td>0.006284</td>
-      <td>0.000637</td>
+      <td>0.078718</td>
+      <td>0.007045</td>
+      <td>0.002334</td>
+      <td>0.000118</td>
       <td>5</td>
       <td>l2</td>
       <td>liblinear</td>
@@ -2496,47 +3144,47 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
       <td>0.808994</td>
       <td>0.799899</td>
       <td>...</td>
-      <td>0.814353</td>
+      <td>0.814409</td>
       <td>0.815982</td>
-      <td>0.813679</td>
+      <td>0.813792</td>
       <td>0.813455</td>
       <td>0.813342</td>
       <td>0.813240</td>
-      <td>0.813016</td>
+      <td>0.812847</td>
       <td>0.815206</td>
       <td>0.814261</td>
-      <td>0.000998</td>
+      <td>0.001015</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>0.565522</td>
-      <td>0.034275</td>
-      <td>0.006149</td>
-      <td>0.002086</td>
+      <td>0.149934</td>
+      <td>0.003305</td>
+      <td>0.002342</td>
+      <td>0.000241</td>
       <td>5</td>
       <td>l2</td>
       <td>lbfgs</td>
       <td>{'C': 5, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
       <td>0.808994</td>
-      <td>0.798383</td>
+      <td>0.799394</td>
       <td>...</td>
       <td>0.813567</td>
-      <td>0.816431</td>
-      <td>0.814128</td>
+      <td>0.816094</td>
+      <td>0.814578</td>
       <td>0.812556</td>
-      <td>0.813455</td>
-      <td>0.814139</td>
-      <td>0.813970</td>
+      <td>0.813511</td>
+      <td>0.814195</td>
+      <td>0.814083</td>
       <td>0.815150</td>
-      <td>0.814339</td>
-      <td>0.001043</td>
+      <td>0.814412</td>
+      <td>0.001013</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>1.804093</td>
-      <td>0.242728</td>
-      <td>0.005287</td>
-      <td>0.000780</td>
+      <td>0.495299</td>
+      <td>0.005077</td>
+      <td>0.002408</td>
+      <td>0.000046</td>
       <td>5</td>
       <td>l2</td>
       <td>saga</td>
@@ -2557,10 +3205,10 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>18</th>
-      <td>0.369811</td>
-      <td>0.046975</td>
-      <td>0.006784</td>
-      <td>0.001322</td>
+      <td>0.081383</td>
+      <td>0.003552</td>
+      <td>0.002374</td>
+      <td>0.000107</td>
       <td>10</td>
       <td>l2</td>
       <td>liblinear</td>
@@ -2581,34 +3229,34 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
     </tr>
     <tr>
       <th>19</th>
-      <td>0.571769</td>
-      <td>0.037157</td>
-      <td>0.005887</td>
-      <td>0.001298</td>
+      <td>0.154898</td>
+      <td>0.004635</td>
+      <td>0.002277</td>
+      <td>0.000046</td>
       <td>10</td>
       <td>l2</td>
       <td>lbfgs</td>
       <td>{'C': 10, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
-      <td>0.811521</td>
+      <td>0.811016</td>
       <td>0.798888</td>
       <td>...</td>
       <td>0.813848</td>
       <td>0.816094</td>
-      <td>0.811995</td>
-      <td>0.814465</td>
-      <td>0.813960</td>
+      <td>0.812388</td>
+      <td>0.814746</td>
+      <td>0.813567</td>
       <td>0.814027</td>
       <td>0.813409</td>
-      <td>0.814251</td>
-      <td>0.814233</td>
-      <td>0.001084</td>
+      <td>0.814420</td>
+      <td>0.814306</td>
+      <td>0.001077</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>1.638148</td>
-      <td>0.294245</td>
-      <td>0.005088</td>
-      <td>0.002460</td>
+      <td>0.493206</td>
+      <td>0.002726</td>
+      <td>0.002431</td>
+      <td>0.000067</td>
       <td>10</td>
       <td>l2</td>
       <td>saga</td>
@@ -2701,6 +3349,79 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc_grid_fit</span><span class="o">=</span><span class="n">svc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2140</span><span class="o">/</span><span class="mf">4265633873.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">svc_grid_fit</span><span class="o">=</span><span class="n">svc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">extra_args</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_args</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>             <span class="k">if</span> <span class="n">extra_args</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>                 <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span>             <span class="c1"># extra_args &gt; 0</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>                 <span class="k">return</span> <span class="n">results</span>
+<span class="g g-Whitespace">    </span><span class="mi">840</span> 
+<span class="ne">--&gt; </span><span class="mi">841</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">842</span> 
+<span class="g g-Whitespace">    </span><span class="mi">843</span>             <span class="c1"># multimetric is determined here because in the case of a callable</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">_run_search</span><span class="nt">(self, evaluate_candidates)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1294</span>     <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1295</span>         <span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1296</span>         <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1297</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1298</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span>                                    <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span>                                    <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span>
+<span class="ne">--&gt; </span><span class="mi">809</span>                                    <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">))))</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span> 
+<span class="g g-Whitespace">    </span><span class="mi">811</span>                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">1054</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span>             <span class="c1"># Make sure that we get a last message telling us we are done</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span>             <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/parallel.py</span> in <span class="ni">retrieve</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>             <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span>                 <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="s1">&#39;supports_timeout&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">933</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/_parallel_backends.py</span> in <span class="ni">wrap_future_result</span><span class="nt">(future, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="n">AsyncResults</span><span class="o">.</span><span class="n">get</span> <span class="kn">from</span> <span class="nn">multiprocessing.</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">542</span><span class="s2">             return future.result(timeout=timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">         except CfTimeoutError as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="s2">             raise TimeoutError from e</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/concurrent/futures/_base.py</span> in <span class="ni">result</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span><span class="s2">                 return self.__get_result()</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">430</span><span class="s2">             self._condition.wait(timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span><span class="s2">             if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span><span class="s2">         try:    # restore state no matter what (e.g., KeyboardInterrupt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span><span class="s2">             if timeout is None:</span>
+<span class="ne">--&gt; </span><span class="mi">296</span><span class="s2">                 waiter.acquire()</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span><span class="s2">                 gotit = True</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span><span class="s2">             else:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -3666,7 +4387,7 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
 </div>
 </div>
 <div class="section" id="perform-randomizedsearchcv-for-hyperparameter-tuning">
-<h1>Perform RandomizedSearchCV for hyperparameter tuning<a class="headerlink" href="#perform-randomizedsearchcv-for-hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">19. </span>Perform RandomizedSearchCV for hyperparameter tuning<a class="headerlink" href="#perform-randomizedsearchcv-for-hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
@@ -3815,6 +4536,7 @@ relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="../Cross%20validations/Cross%20Validations.html" title="previous page"><span class="section-number">17. </span>Cross Validations</a>
 
         </div>
         

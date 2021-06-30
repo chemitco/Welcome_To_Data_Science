@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recursive Feature Eliminations &#8212; Learning</title>
+    <title>16. Recursive Feature Eliminations &#8212; Learning</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="17. Cross Validations" href="../Cross%20validations/Cross%20Validations.html" />
+    <link rel="prev" title="12. Feature Selection" href="../Feature%20Selection/Feature%20Selection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -89,13 +91,68 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Get started
+  Machine Learning
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../Python/Python%20Basics.html">
-   1. Python Basics
+  <a class="reference internal" href="../Data%20Pre%20Processing/Data%20Pre%20Processing.html">
+   1. Data Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Simple%20Linear%20Regression/Simple%20Linear%20Regression.html">
+   2. Simple Linear  Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
+   3. Multiple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
+   4. Kaggle Bike Demand Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Logistic%20Regression/Logistics%20Regression.html">
+   5. Logistics Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Support%20Vector%20Machine/Support%20Vector%20Machine.html">
+   7. Support Vector Machine
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Decision%20Tree/Decision%20Tree.html">
+   10. Decision Tree
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Random%20forest/Random%20Forest.html">
+   11. Ensemble Learning and Random Forest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Feature%20Selection/Feature%20Selection.html">
+   12. Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   16. Recursive Feature Eliminations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cross%20validations/Cross%20Validations.html">
+   17. Cross Validations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Hyperparameter%20Tuning/Hyperparameter%20Tuning.html">
+   18. Hyperparameter Tuning
   </a>
  </li>
 </ul>
@@ -208,7 +265,7 @@
               <div>
                 
   <div class="section" id="recursive-feature-eliminations">
-<h1>Recursive Feature Eliminations<a class="headerlink" href="#recursive-feature-eliminations" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">16. </span>Recursive Feature Eliminations<a class="headerlink" href="#recursive-feature-eliminations" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="../../_images/11.png" /></p>
 <p><img alt="" src="../../_images/21.png" /></p>
 <p>To download the data, Please follow the link(<a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Bank+Marketing">https://archive.ics.uci.edu/ml/datasets/Bank+Marketing</a>)</p>
@@ -1077,9 +1134,13 @@
   estimator.fit(X[:, features], y)
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/feature_selection/_rfe.py:241: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
+  estimator.fit(X[:, features], y)
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1918</span><span class="o">/</span><span class="mf">3118807827.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2079</span><span class="o">/</span><span class="mf">3118807827.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Fit the data to the rfe selector</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
@@ -1798,6 +1859,8 @@
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="../Feature%20Selection/Feature%20Selection.html" title="previous page"><span class="section-number">12. </span>Feature Selection</a>
+    <a class='right-next' id="next-link" href="../Cross%20validations/Cross%20Validations.html" title="next page"><span class="section-number">17. </span>Cross Validations</a>
 
         </div>
         

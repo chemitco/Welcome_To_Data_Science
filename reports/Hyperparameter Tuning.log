@@ -32,6 +32,6 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-rfc_grid_fit=rfc_grid.fit(X,Y)
+svc_grid_fit=svc_grid.fit(X,Y)
 -------------------
 

@@ -22,7 +22,7 @@ Name=input("Enter your name")
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2332/1187641659.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2357/1187641659.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mName[0m[0;34m=[0m[0minput[0m[0;34m([0m[0;34m"Enter your name"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m

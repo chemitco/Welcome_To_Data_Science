@@ -1,0 +1,3843 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyperparameter Tuning &#8212; Learning</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Data Science
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Python/Python%20Basics.html">
+   1. Python Basics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/chemitco/Welcome_To_Data_Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Hyperparameter Tuning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-randomizedsearchcv-for-hyperparameter-tuning">
+   Perform RandomizedSearchCV for hyperparameter tuning
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="hyperparameter-tuning">
+<h1>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
+<p>What are hyperparameters and its tuning?</p>
+<p><img alt="" src="../../_images/14.png" /></p>
+<p><img alt="" src="../../_images/26.png" /></p>
+<p>These are the hyperparameters for their respective models.</p>
+<p><img alt="" src="../../_images/310.png" />
+<img alt="" src="../../_images/4.png" />
+<img alt="" src="../../_images/5.png" /></p>
+<p>Grid Search and Random Search Approach</p>
+<p><img alt="" src="../../_images/6.png" /></p>
+<p>There are two model as random forest classifier and support vector classifier. There are three creteria for random forest classifier as criteria, n_estimators and min_samples_leaf. Also, there are three creteria for support vector classifier as kernel, c and gamma.</p>
+<p><img alt="" src="../../_images/7.png" /></p>
+<p>These are the possible combinations for the creteria.</p>
+<p>Now, the poosile combinations can go upto 100. We have two approches to manage the combinations of hyperparameter tuning.</p>
+<p><img alt="" src="../../_images/8.png" />
+<img alt="" src="../../_images/9.png" />
+<img alt="" src="../../_images/10.png" />
+<img alt="" src="../../_images/111.png" /></p>
+<p>Statement of the Problem- Predict whether income exceeds $50K/yr based on census data. OR To determine whether a person makes over 50K a year or not.</p>
+<p>To download the data, Please follow the link(<a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/adult">https://archive.ics.uci.edu/ml/datasets/adult</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Compare multiple Classifiers for diffrent train and test values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read dataset</span>
+<span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;04+-+decisiontreeAdultIncome.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>wc</th>
+      <th>education</th>
+      <th>marital status</th>
+      <th>race</th>
+      <th>gender</th>
+      <th>hours per week</th>
+      <th>IncomeClass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>38</td>
+      <td>Private</td>
+      <td>HS-grad</td>
+      <td>Divorced</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>40</td>
+      <td>&lt;=50K</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>28</td>
+      <td>Private</td>
+      <td>Bachelors</td>
+      <td>Married</td>
+      <td>Black</td>
+      <td>Female</td>
+      <td>40</td>
+      <td>&lt;=50K</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>Private</td>
+      <td>Masters</td>
+      <td>Married</td>
+      <td>White</td>
+      <td>Female</td>
+      <td>40</td>
+      <td>&lt;=50K</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>31</td>
+      <td>Private</td>
+      <td>Masters</td>
+      <td>Never-married</td>
+      <td>White</td>
+      <td>Female</td>
+      <td>50</td>
+      <td>&gt;50K</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>42</td>
+      <td>Private</td>
+      <td>Bachelors</td>
+      <td>Married</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>40</td>
+      <td>&gt;50K</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19782</th>
+      <td>53</td>
+      <td>Private</td>
+      <td>Masters</td>
+      <td>Married</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>40</td>
+      <td>&gt;50K</td>
+    </tr>
+    <tr>
+      <th>19783</th>
+      <td>22</td>
+      <td>Private</td>
+      <td>Some-college</td>
+      <td>Never-married</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>40</td>
+      <td>&lt;=50K</td>
+    </tr>
+    <tr>
+      <th>19784</th>
+      <td>40</td>
+      <td>Private</td>
+      <td>HS-grad</td>
+      <td>Married</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>40</td>
+      <td>&gt;50K</td>
+    </tr>
+    <tr>
+      <th>19785</th>
+      <td>58</td>
+      <td>Private</td>
+      <td>HS-grad</td>
+      <td>Widowed</td>
+      <td>White</td>
+      <td>Female</td>
+      <td>40</td>
+      <td>&lt;=50K</td>
+    </tr>
+    <tr>
+      <th>19786</th>
+      <td>22</td>
+      <td>Private</td>
+      <td>HS-grad</td>
+      <td>Never-married</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>20</td>
+      <td>&lt;=50K</td>
+    </tr>
+  </tbody>
+</table>
+<p>19787 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>Description about the data set and features</p>
+<p>age: continuous.</p>
+<p>workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.</p>
+<p>fnlwgt: continuous.</p>
+<p>education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.</p>
+<p>education-num: continuous.</p>
+<p>marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.</p>
+<p>occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
+relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.</p>
+<p>race: White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black.</p>
+<p>sex: Female, Male.</p>
+<p>capital-gain: continuous.</p>
+<p>capital-loss: continuous.</p>
+<p>hours-per-week: continuous.</p>
+<p>native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&amp;Tobago, Peru, Hong, Holand-Netherlands.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create dummy variables</span>
+<span class="n">data_prep</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the X and Y variables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">data_prep</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">data_prep</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import Decision Tree classifier from sklearn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtc</span><span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import Random forest classifier from sklearn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfc</span><span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import and train Support Vector Classifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc</span><span class="o">=</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import and train Logistic Regression Classifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lrc</span><span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import gridsearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create parameter grid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfc_param</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
+          <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:[</span><span class="mi">8</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+          <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Different possibles combinations of parameter</span>
+<span class="c1">#(3*2*5=30)---&gt; models</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the grid search objects</span>
+<span class="n">rfc_grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfc</span><span class="p">,</span> 
+                        <span class="n">param_grid</span><span class="o">=</span><span class="n">rfc_param</span><span class="p">,</span>
+                        <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+                        <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Number of jobs=Models*fold=30*10=300</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfc_param</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_estimators&#39;: [10, 15, 20],
+ &#39;min_samples_split&#39;: [8, 16],
+ &#39;min_samples_leaf&#39;: [1, 2, 3, 4, 5]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfc_grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=10, estimator=RandomForestClassifier(random_state=1234),
+             n_jobs=-1,
+             param_grid={&#39;min_samples_leaf&#39;: [1, 2, 3, 4, 5],
+                         &#39;min_samples_split&#39;: [8, 16],
+                         &#39;n_estimators&#39;: [10, 15, 20]},
+             return_train_score=True, scoring=&#39;accuracy&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data to grid search</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfc_grid_fit</span><span class="o">=</span><span class="n">rfc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1981</span><span class="o">/</span><span class="mf">2305250972.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rfc_grid_fit</span><span class="o">=</span><span class="n">rfc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">extra_args</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_args</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>             <span class="k">if</span> <span class="n">extra_args</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>                 <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span>             <span class="c1"># extra_args &gt; 0</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>                 <span class="k">return</span> <span class="n">results</span>
+<span class="g g-Whitespace">    </span><span class="mi">840</span> 
+<span class="ne">--&gt; </span><span class="mi">841</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">842</span> 
+<span class="g g-Whitespace">    </span><span class="mi">843</span>             <span class="c1"># multimetric is determined here because in the case of a callable</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">_run_search</span><span class="nt">(self, evaluate_candidates)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1294</span>     <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1295</span>         <span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1296</span>         <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1297</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1298</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span>                                    <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span>                                    <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span>
+<span class="ne">--&gt; </span><span class="mi">809</span>                                    <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">))))</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span> 
+<span class="g g-Whitespace">    </span><span class="mi">811</span>                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">1054</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span>             <span class="c1"># Make sure that we get a last message telling us we are done</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span>             <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/parallel.py</span> in <span class="ni">retrieve</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>             <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span>                 <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="s1">&#39;supports_timeout&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">933</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/joblib/_parallel_backends.py</span> in <span class="ni">wrap_future_result</span><span class="nt">(future, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="n">AsyncResults</span><span class="o">.</span><span class="n">get</span> <span class="kn">from</span> <span class="nn">multiprocessing.</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">542</span><span class="s2">             return future.result(timeout=timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">         except CfTimeoutError as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="s2">             raise TimeoutError from e</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/concurrent/futures/_base.py</span> in <span class="ni">result</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span><span class="s2">                 return self.__get_result()</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">430</span><span class="s2">             self._condition.wait(timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span><span class="s2">             if self._state in [CANCELLED, CANCELLED_AND_NOTIFIED]:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span><span class="s2">         try:    # restore state no matter what (e.g., KeyboardInterrupt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span><span class="s2">             if timeout is None:</span>
+<span class="ne">--&gt; </span><span class="mi">296</span><span class="s2">                 waiter.acquire()</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span><span class="s2">                 gotit = True</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span><span class="s2">             else:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the result of gridsearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_rfc</span><span class="o">=</span><span class="n">rfc_grid_fit</span><span class="o">.</span><span class="n">cv_results_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_rfc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.45668049, 0.66292915, 0.81433065, 0.45361254, 0.60140274,
+        0.82010536, 0.39444685, 0.57964857, 0.66115172, 0.44950752,
+        0.86538608, 0.79417508, 0.38945613, 0.49168406, 0.64916961,
+        0.37311504, 0.51233435, 0.68502252, 0.34607711, 0.53447428,
+        0.67422717, 0.34477339, 0.48221769, 0.68746185, 0.47283773,
+        0.72615461, 0.91873999, 0.42735655, 0.6708653 , 0.77842727]),
+ &#39;std_fit_time&#39;: array([0.11297166, 0.15059306, 0.09597708, 0.04941699, 0.05503439,
+        0.08481615, 0.05022412, 0.04823105, 0.0960839 , 0.13203082,
+        0.23014196, 0.14076624, 0.06592218, 0.07724044, 0.08649928,
+        0.0666882 , 0.07205434, 0.09178141, 0.05774798, 0.07067668,
+        0.09762898, 0.05930529, 0.0712308 , 0.20757168, 0.14407306,
+        0.17313657, 0.14960031, 0.05085416, 0.14994126, 0.14702281]),
+ &#39;mean_score_time&#39;: array([0.01994457, 0.03131347, 0.04906604, 0.02234087, 0.0290211 ,
+        0.03819802, 0.0256314 , 0.02533505, 0.03425844, 0.02842512,
+        0.04767184, 0.03820243, 0.01974602, 0.02323782, 0.02871995,
+        0.0213491 , 0.02423475, 0.04069264, 0.01724999, 0.02213829,
+        0.0330076 , 0.01635542, 0.02483401, 0.0432843 , 0.02663076,
+        0.03540444, 0.04198842, 0.03062236, 0.03650258, 0.02892225]),
+ &#39;std_score_time&#39;: array([0.00583392, 0.009652  , 0.01613903, 0.00722157, 0.00830288,
+        0.01029839, 0.00793733, 0.00441959, 0.01157891, 0.01359405,
+        0.02399362, 0.0127475 , 0.00652221, 0.00490722, 0.00751597,
+        0.00791497, 0.00647899, 0.01130773, 0.0050291 , 0.00480601,
+        0.01114229, 0.00127759, 0.00779575, 0.02353866, 0.01271567,
+        0.01504149, 0.01460585, 0.01752109, 0.01369085, 0.00751497]),
+ &#39;param_min_samples_leaf&#39;: masked_array(data=[1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3,
+                    4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;param_min_samples_split&#39;: masked_array(data=[8, 8, 8, 16, 16, 16, 8, 8, 8, 16, 16, 16, 8, 8, 8, 16,
+                    16, 16, 8, 8, 8, 16, 16, 16, 8, 8, 8, 16, 16, 16],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;param_n_estimators&#39;: masked_array(data=[10, 15, 20, 10, 15, 20, 10, 15, 20, 10, 15, 20, 10, 15,
+                    20, 10, 15, 20, 10, 15, 20, 10, 15, 20, 10, 15, 20, 10,
+                    15, 20],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;params&#39;: [{&#39;min_samples_leaf&#39;: 1,
+   &#39;min_samples_split&#39;: 8,
+   &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 1, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 1, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 1, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 1, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 1, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 4, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 4, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 4, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 4, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 4, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 4, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 20},
+  {&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 10},
+  {&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 15},
+  {&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 20}],
+ &#39;split0_test_score&#39;: array([0.79080344, 0.79737241, 0.79888833, 0.80192016, 0.80343608,
+        0.80090955, 0.8054573 , 0.79989894, 0.804952  , 0.81303689,
+        0.8145528 , 0.81505811, 0.8145528 , 0.80798383, 0.81859525,
+        0.81051036, 0.80899444, 0.81202628, 0.81354219, 0.81505811,
+        0.81152097, 0.81758464, 0.81859525, 0.82061647, 0.81758464,
+        0.82112178, 0.81707933, 0.81707933, 0.81910056, 0.81556342]),
+ &#39;split1_test_score&#39;: array([0.79231935, 0.7963618 , 0.79181405, 0.79989894, 0.79888833,
+        0.80141486, 0.79838302, 0.80090955, 0.80394138, 0.79939363,
+        0.804952  , 0.80646791, 0.80192016, 0.80596261, 0.8054573 ,
+        0.80293077, 0.80646791, 0.80747852, 0.80242547, 0.80596261,
+        0.80646791, 0.80293077, 0.80394138, 0.80798383, 0.79939363,
+        0.80040424, 0.80141486, 0.80596261, 0.80697322, 0.804952  ]),
+ &#39;split2_test_score&#39;: array([0.81202628, 0.81960586, 0.81960586, 0.81910056, 0.82011117,
+        0.82112178, 0.81859525, 0.82112178, 0.8226377 , 0.8226377 ,
+        0.82162708, 0.82061647, 0.8226377 , 0.82668014, 0.82415361,
+        0.82718545, 0.82516422, 0.82364831, 0.8226377 , 0.8226377 ,
+        0.8226377 , 0.82112178, 0.82061647, 0.82061647, 0.81758464,
+        0.81556342, 0.81606872, 0.82465892, 0.82415361, 0.823143  ]),
+ &#39;split3_test_score&#39;: array([0.7877716 , 0.79029813, 0.79585649, 0.79181405, 0.79029813,
+        0.79332996, 0.79383527, 0.7963618 , 0.79737241, 0.80040424,
+        0.80242547, 0.8054573 , 0.80899444, 0.80848914, 0.80646791,
+        0.8054573 , 0.80293077, 0.80444669, 0.80646791, 0.80596261,
+        0.8054573 , 0.80697322, 0.80596261, 0.80747852, 0.80343608,
+        0.80899444, 0.80848914, 0.80747852, 0.8054573 , 0.804952  ]),
+ &#39;split4_test_score&#39;: array([0.81202628, 0.80949975, 0.81101566, 0.81808994, 0.81707933,
+        0.8145528 , 0.82566953, 0.823143  , 0.81910056, 0.8226377 ,
+        0.81960586, 0.82162708, 0.82566953, 0.823143  , 0.82566953,
+        0.82364831, 0.82516422, 0.82112178, 0.823143  , 0.82415361,
+        0.82415361, 0.82668014, 0.82516422, 0.82162708, 0.82415361,
+        0.82566953, 0.82566953, 0.82769075, 0.81910056, 0.81910056]),
+ &#39;split5_test_score&#39;: array([0.80697322, 0.81303689, 0.80444669, 0.81152097, 0.81152097,
+        0.81808994, 0.8226377 , 0.82617484, 0.81859525, 0.8145528 ,
+        0.81859525, 0.82819606, 0.8140475 , 0.8226377 , 0.8226377 ,
+        0.81859525, 0.81556342, 0.82112178, 0.82061647, 0.81960586,
+        0.82566953, 0.81707933, 0.81707933, 0.81960586, 0.81859525,
+        0.82364831, 0.82566953, 0.82011117, 0.82213239, 0.82011117]),
+ &#39;split6_test_score&#39;: array([0.81000505, 0.81202628, 0.81253158, 0.81202628, 0.80798383,
+        0.81051036, 0.81000505, 0.8145528 , 0.81859525, 0.82061647,
+        0.81707933, 0.81758464, 0.81354219, 0.81758464, 0.81758464,
+        0.81303689, 0.81606872, 0.81152097, 0.8140475 , 0.81101566,
+        0.81051036, 0.81556342, 0.81354219, 0.81354219, 0.81556342,
+        0.8226377 , 0.81707933, 0.81808994, 0.81859525, 0.81505811]),
+ &#39;split7_test_score&#39;: array([0.81648129, 0.82103134, 0.81951466, 0.82305359, 0.82355915,
+        0.82659252, 0.82861476, 0.82355915, 0.82760364, 0.82355915,
+        0.82962588, 0.83013145, 0.82608696, 0.82861476, 0.8255814 ,
+        0.81799798, 0.82608696, 0.82507583, 0.83013145, 0.8281092 ,
+        0.82962588, 0.82608696, 0.82760364, 0.82760364, 0.82153691,
+        0.8255814 , 0.82305359, 0.8281092 , 0.82962588, 0.8281092 ]),
+ &#39;split8_test_score&#39;: array([0.79575329, 0.80283114, 0.80283114, 0.80637007, 0.80940344,
+        0.80839232, 0.809909  , 0.81648129, 0.81698686, 0.81193124,
+        0.81547017, 0.81749242, 0.81294237, 0.81294237, 0.81648129,
+        0.81698686, 0.81395349, 0.81648129, 0.81193124, 0.81698686,
+        0.81951466, 0.81496461, 0.81698686, 0.82002022, 0.82002022,
+        0.81850354, 0.8190091 , 0.81698686, 0.81951466, 0.81850354]),
+ &#39;split9_test_score&#39;: array([0.80687563, 0.81597573, 0.81344793, 0.809909  , 0.80738119,
+        0.81142568, 0.809909  , 0.80637007, 0.81041456, 0.81496461,
+        0.8190091 , 0.81445905, 0.82103134, 0.81648129, 0.81749242,
+        0.81749242, 0.81951466, 0.82052578, 0.81597573, 0.81597573,
+        0.82052578, 0.81547017, 0.81294237, 0.81496461, 0.8124368 ,
+        0.81547017, 0.81294237, 0.81749242, 0.81799798, 0.82103134]),
+ &#39;mean_test_score&#39;: array([0.80310354, 0.80780393, 0.80699524, 0.80937036, 0.80896616,
+        0.81063398, 0.81230159, 0.81285732, 0.81401996, 0.81437344,
+        0.8162943 , 0.81770905, 0.8161425 , 0.81705195, 0.8180121 ,
+        0.81538416, 0.81599088, 0.81634472, 0.81609187, 0.81654679,
+        0.81760837, 0.8164455 , 0.81624343, 0.81740589, 0.81503052,
+        0.81775945, 0.81664755, 0.81836597, 0.81826514, 0.81705243]),
+ &#39;std_test_score&#39;: array([0.00985756, 0.01000018, 0.00921039, 0.0091233 , 0.00945423,
+        0.00959307, 0.01090672, 0.01052067, 0.0089956 , 0.00829225,
+        0.00745065, 0.00763032, 0.00730091, 0.00768587, 0.00684888,
+        0.00717367, 0.00772782, 0.00674393, 0.0078584 , 0.00703839,
+        0.0080553 , 0.00705384, 0.00713982, 0.00601929, 0.0074978 ,
+        0.00763007, 0.00722798, 0.00708029, 0.00688028, 0.00699908]),
+ &#39;rank_test_score&#39;: array([30, 28, 29, 26, 27, 25, 24, 23, 22, 21, 14,  5, 16,  9,  3, 19, 18,
+        13, 17, 11,  6, 12, 15,  7, 20,  4, 10,  1,  2,  8]),
+ &#39;split0_train_score&#39;: array([0.87146226, 0.87230458, 0.87365229, 0.85601977, 0.85877134,
+        0.85899596, 0.85882749, 0.86011905, 0.8607929 , 0.84798967,
+        0.8484389 , 0.85017969, 0.84737197, 0.84956199, 0.85017969,
+        0.84310422, 0.84467655, 0.8453504 , 0.84394654, 0.84624888,
+        0.84731581, 0.84035265, 0.84074573, 0.8415319 , 0.83956649,
+        0.83928571, 0.8402965 , 0.83878032, 0.83945418, 0.83951033]),
+ &#39;split1_train_score&#39;: array([0.87185535, 0.87410153, 0.87573001, 0.85820979, 0.86107367,
+        0.86230907, 0.85905211, 0.86073675, 0.86152291, 0.85023585,
+        0.85107817, 0.85169587, 0.84838275, 0.85135894, 0.8509097 ,
+        0.84417116, 0.84613657, 0.8464735 , 0.84428347, 0.84641734,
+        0.84703504, 0.84360961, 0.84383423, 0.84428347, 0.84007188,
+        0.84175651, 0.84186882, 0.84080189, 0.84136343, 0.84080189]),
+ &#39;split2_train_score&#39;: array([0.86983378, 0.87224843, 0.87264151, 0.85635669, 0.85714286,
+        0.85927673, 0.85753594, 0.8583221 , 0.85871518, 0.84832659,
+        0.84821429, 0.84787736, 0.85046047, 0.85068509, 0.8509097 ,
+        0.84433962, 0.8446204 , 0.84445193, 0.8434973 , 0.84372192,
+        0.8446204 , 0.83979111, 0.83894879, 0.84057727, 0.83866801,
+        0.8396788 , 0.83962264, 0.8384434 , 0.83962264, 0.84040881]),
+ &#39;split3_train_score&#39;: array([0.87264151, 0.87359614, 0.87544924, 0.85961366, 0.85989443,
+        0.86096137, 0.86039982, 0.86096137, 0.86062444, 0.84944969,
+        0.85158356, 0.85158356, 0.85119048, 0.85186433, 0.85265049,
+        0.84501348, 0.84742812, 0.84686658, 0.84574349, 0.84630503,
+        0.8478212 , 0.8421496 , 0.84175651, 0.84220575, 0.84052111,
+        0.84316038, 0.84372192, 0.83883648, 0.84085804, 0.84119497]),
+ &#39;split4_train_score&#39;: array([0.87084456, 0.87382075, 0.87477538, 0.85697439, 0.85882749,
+        0.8595575 , 0.85747978, 0.8583221 , 0.86034367, 0.84883199,
+        0.84978661, 0.85096586, 0.85051662, 0.85135894, 0.85130279,
+        0.8434973 , 0.84467655, 0.8458558 , 0.8428796 , 0.84366577,
+        0.84546271, 0.83928571, 0.8409142 , 0.84158805, 0.83838724,
+        0.84040881, 0.8410265 , 0.83805031, 0.83821878, 0.83894879]),
+ &#39;split5_train_score&#39;: array([0.87022686, 0.87179919, 0.87382075, 0.8570867 , 0.85764825,
+        0.85798518, 0.85534591, 0.85792902, 0.8583221 , 0.84776505,
+        0.84900045, 0.85046047, 0.84770889, 0.84978661, 0.85068509,
+        0.84332884, 0.84501348, 0.84501348, 0.84293576, 0.84529425,
+        0.84608041, 0.83911725, 0.8410265 , 0.84113881, 0.83861186,
+        0.83883648, 0.8390611 , 0.83771339, 0.83866801, 0.84035265]),
+ &#39;split6_train_score&#39;: array([0.87078841, 0.87213612, 0.87331536, 0.85686208, 0.85843441,
+        0.85877134, 0.8570867 , 0.85865903, 0.85916442, 0.84742812,
+        0.84810198, 0.84855121, 0.84652965, 0.84933738, 0.84973046,
+        0.84467655, 0.8465858 , 0.84669811, 0.84478886, 0.84501348,
+        0.84568733, 0.83833109, 0.83956649, 0.84074573, 0.83855571,
+        0.84130728, 0.84119497, 0.83805031, 0.83878032, 0.84001572]),
+ &#39;split7_train_score&#39;: array([0.87045876, 0.87130103, 0.87231175, 0.85720703, 0.8580493 ,
+        0.85827391, 0.85529788, 0.85664552, 0.85737548, 0.84816666,
+        0.84928968, 0.84884047, 0.84968274, 0.85091808, 0.85091808,
+        0.8437307 , 0.84490988, 0.84558369, 0.84075467, 0.84243922,
+        0.84170925, 0.84137234, 0.8417654 , 0.84271997, 0.83951934,
+        0.83940704, 0.84041777, 0.8377225 , 0.83789095, 0.83862092]),
+ &#39;split8_train_score&#39;: array([0.87191869, 0.87371554, 0.87427705, 0.85872312, 0.85922848,
+        0.85973384, 0.85821776, 0.85894772, 0.85962154, 0.84889663,
+        0.85013196, 0.85136729, 0.84766129, 0.84912123, 0.84895278,
+        0.84485373, 0.84485373, 0.84648212, 0.84429221, 0.84738054,
+        0.845696  , 0.84086698, 0.84243922, 0.84300073, 0.83856477,
+        0.84086698, 0.84053007, 0.83721714, 0.83940704, 0.84019316]),
+ &#39;split9_train_score&#39;: array([0.86916727, 0.87248021, 0.87371554, 0.85687012, 0.85855466,
+        0.8601269 , 0.85715088, 0.85771239, 0.85861081, 0.84878432,
+        0.84951429, 0.84962659, 0.84940199, 0.8518165 , 0.85187265,
+        0.84474142, 0.84648212, 0.84636981, 0.84305688, 0.84294458,
+        0.84457297, 0.83974395, 0.84030546, 0.84114773, 0.83648717,
+        0.83890168, 0.83929474, 0.83895783, 0.84002471, 0.83940704]),
+ &#39;mean_train_score&#39;: array([0.87091975, 0.87275035, 0.87396889, 0.85739234, 0.85876249,
+        0.85959918, 0.85763943, 0.8588355 , 0.85950935, 0.84858746,
+        0.84951399, 0.85011484, 0.84889069, 0.85058091, 0.85081114,
+        0.8441457 , 0.84553832, 0.84591454, 0.84361788, 0.8449431 ,
+        0.84560011, 0.84046203, 0.84113025, 0.84189394, 0.83889536,
+        0.84036097, 0.8407035 , 0.83845736, 0.83942881, 0.83994543]),
+ &#39;std_train_score&#39;: array([0.00100489, 0.00092328, 0.0010564 , 0.00105765, 0.00106623,
+        0.00122523, 0.00150615, 0.00131269, 0.00123183, 0.00079232,
+        0.0011108 , 0.00128011, 0.00149441, 0.00099273, 0.00099089,
+        0.00065375, 0.00096872, 0.00075793, 0.0012819 , 0.00158711,
+        0.00165396, 0.00149862, 0.00133829, 0.00110082, 0.00106214,
+        0.00133877, 0.00130163, 0.0009465 , 0.00104918, 0.00077256])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Covert the results in data format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_rfc</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">rfc_grid_fit</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_rfc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_fit_time</th>
+      <th>std_fit_time</th>
+      <th>mean_score_time</th>
+      <th>std_score_time</th>
+      <th>param_min_samples_leaf</th>
+      <th>param_min_samples_split</th>
+      <th>param_n_estimators</th>
+      <th>params</th>
+      <th>split0_test_score</th>
+      <th>split1_test_score</th>
+      <th>...</th>
+      <th>split2_train_score</th>
+      <th>split3_train_score</th>
+      <th>split4_train_score</th>
+      <th>split5_train_score</th>
+      <th>split6_train_score</th>
+      <th>split7_train_score</th>
+      <th>split8_train_score</th>
+      <th>split9_train_score</th>
+      <th>mean_train_score</th>
+      <th>std_train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.456680</td>
+      <td>0.112972</td>
+      <td>0.019945</td>
+      <td>0.005834</td>
+      <td>1</td>
+      <td>8</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 1, 'min_samples_split': 8...</td>
+      <td>0.790803</td>
+      <td>0.792319</td>
+      <td>...</td>
+      <td>0.869834</td>
+      <td>0.872642</td>
+      <td>0.870845</td>
+      <td>0.870227</td>
+      <td>0.870788</td>
+      <td>0.870459</td>
+      <td>0.871919</td>
+      <td>0.869167</td>
+      <td>0.870920</td>
+      <td>0.001005</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.662929</td>
+      <td>0.150593</td>
+      <td>0.031313</td>
+      <td>0.009652</td>
+      <td>1</td>
+      <td>8</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 1, 'min_samples_split': 8...</td>
+      <td>0.797372</td>
+      <td>0.796362</td>
+      <td>...</td>
+      <td>0.872248</td>
+      <td>0.873596</td>
+      <td>0.873821</td>
+      <td>0.871799</td>
+      <td>0.872136</td>
+      <td>0.871301</td>
+      <td>0.873716</td>
+      <td>0.872480</td>
+      <td>0.872750</td>
+      <td>0.000923</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.814331</td>
+      <td>0.095977</td>
+      <td>0.049066</td>
+      <td>0.016139</td>
+      <td>1</td>
+      <td>8</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 1, 'min_samples_split': 8...</td>
+      <td>0.798888</td>
+      <td>0.791814</td>
+      <td>...</td>
+      <td>0.872642</td>
+      <td>0.875449</td>
+      <td>0.874775</td>
+      <td>0.873821</td>
+      <td>0.873315</td>
+      <td>0.872312</td>
+      <td>0.874277</td>
+      <td>0.873716</td>
+      <td>0.873969</td>
+      <td>0.001056</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.453613</td>
+      <td>0.049417</td>
+      <td>0.022341</td>
+      <td>0.007222</td>
+      <td>1</td>
+      <td>16</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 1, 'min_samples_split': 1...</td>
+      <td>0.801920</td>
+      <td>0.799899</td>
+      <td>...</td>
+      <td>0.856357</td>
+      <td>0.859614</td>
+      <td>0.856974</td>
+      <td>0.857087</td>
+      <td>0.856862</td>
+      <td>0.857207</td>
+      <td>0.858723</td>
+      <td>0.856870</td>
+      <td>0.857392</td>
+      <td>0.001058</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.601403</td>
+      <td>0.055034</td>
+      <td>0.029021</td>
+      <td>0.008303</td>
+      <td>1</td>
+      <td>16</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 1, 'min_samples_split': 1...</td>
+      <td>0.803436</td>
+      <td>0.798888</td>
+      <td>...</td>
+      <td>0.857143</td>
+      <td>0.859894</td>
+      <td>0.858827</td>
+      <td>0.857648</td>
+      <td>0.858434</td>
+      <td>0.858049</td>
+      <td>0.859228</td>
+      <td>0.858555</td>
+      <td>0.858762</td>
+      <td>0.001066</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.820105</td>
+      <td>0.084816</td>
+      <td>0.038198</td>
+      <td>0.010298</td>
+      <td>1</td>
+      <td>16</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 1, 'min_samples_split': 1...</td>
+      <td>0.800910</td>
+      <td>0.801415</td>
+      <td>...</td>
+      <td>0.859277</td>
+      <td>0.860961</td>
+      <td>0.859558</td>
+      <td>0.857985</td>
+      <td>0.858771</td>
+      <td>0.858274</td>
+      <td>0.859734</td>
+      <td>0.860127</td>
+      <td>0.859599</td>
+      <td>0.001225</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.394447</td>
+      <td>0.050224</td>
+      <td>0.025631</td>
+      <td>0.007937</td>
+      <td>2</td>
+      <td>8</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 2, 'min_samples_split': 8...</td>
+      <td>0.805457</td>
+      <td>0.798383</td>
+      <td>...</td>
+      <td>0.857536</td>
+      <td>0.860400</td>
+      <td>0.857480</td>
+      <td>0.855346</td>
+      <td>0.857087</td>
+      <td>0.855298</td>
+      <td>0.858218</td>
+      <td>0.857151</td>
+      <td>0.857639</td>
+      <td>0.001506</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.579649</td>
+      <td>0.048231</td>
+      <td>0.025335</td>
+      <td>0.004420</td>
+      <td>2</td>
+      <td>8</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 2, 'min_samples_split': 8...</td>
+      <td>0.799899</td>
+      <td>0.800910</td>
+      <td>...</td>
+      <td>0.858322</td>
+      <td>0.860961</td>
+      <td>0.858322</td>
+      <td>0.857929</td>
+      <td>0.858659</td>
+      <td>0.856646</td>
+      <td>0.858948</td>
+      <td>0.857712</td>
+      <td>0.858836</td>
+      <td>0.001313</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.661152</td>
+      <td>0.096084</td>
+      <td>0.034258</td>
+      <td>0.011579</td>
+      <td>2</td>
+      <td>8</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 2, 'min_samples_split': 8...</td>
+      <td>0.804952</td>
+      <td>0.803941</td>
+      <td>...</td>
+      <td>0.858715</td>
+      <td>0.860624</td>
+      <td>0.860344</td>
+      <td>0.858322</td>
+      <td>0.859164</td>
+      <td>0.857375</td>
+      <td>0.859622</td>
+      <td>0.858611</td>
+      <td>0.859509</td>
+      <td>0.001232</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.449508</td>
+      <td>0.132031</td>
+      <td>0.028425</td>
+      <td>0.013594</td>
+      <td>2</td>
+      <td>16</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 2, 'min_samples_split': 1...</td>
+      <td>0.813037</td>
+      <td>0.799394</td>
+      <td>...</td>
+      <td>0.848327</td>
+      <td>0.849450</td>
+      <td>0.848832</td>
+      <td>0.847765</td>
+      <td>0.847428</td>
+      <td>0.848167</td>
+      <td>0.848897</td>
+      <td>0.848784</td>
+      <td>0.848587</td>
+      <td>0.000792</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.865386</td>
+      <td>0.230142</td>
+      <td>0.047672</td>
+      <td>0.023994</td>
+      <td>2</td>
+      <td>16</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 2, 'min_samples_split': 1...</td>
+      <td>0.814553</td>
+      <td>0.804952</td>
+      <td>...</td>
+      <td>0.848214</td>
+      <td>0.851584</td>
+      <td>0.849787</td>
+      <td>0.849000</td>
+      <td>0.848102</td>
+      <td>0.849290</td>
+      <td>0.850132</td>
+      <td>0.849514</td>
+      <td>0.849514</td>
+      <td>0.001111</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.794175</td>
+      <td>0.140766</td>
+      <td>0.038202</td>
+      <td>0.012747</td>
+      <td>2</td>
+      <td>16</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 2, 'min_samples_split': 1...</td>
+      <td>0.815058</td>
+      <td>0.806468</td>
+      <td>...</td>
+      <td>0.847877</td>
+      <td>0.851584</td>
+      <td>0.850966</td>
+      <td>0.850460</td>
+      <td>0.848551</td>
+      <td>0.848840</td>
+      <td>0.851367</td>
+      <td>0.849627</td>
+      <td>0.850115</td>
+      <td>0.001280</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.389456</td>
+      <td>0.065922</td>
+      <td>0.019746</td>
+      <td>0.006522</td>
+      <td>3</td>
+      <td>8</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 3, 'min_samples_split': 8...</td>
+      <td>0.814553</td>
+      <td>0.801920</td>
+      <td>...</td>
+      <td>0.850460</td>
+      <td>0.851190</td>
+      <td>0.850517</td>
+      <td>0.847709</td>
+      <td>0.846530</td>
+      <td>0.849683</td>
+      <td>0.847661</td>
+      <td>0.849402</td>
+      <td>0.848891</td>
+      <td>0.001494</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.491684</td>
+      <td>0.077240</td>
+      <td>0.023238</td>
+      <td>0.004907</td>
+      <td>3</td>
+      <td>8</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 3, 'min_samples_split': 8...</td>
+      <td>0.807984</td>
+      <td>0.805963</td>
+      <td>...</td>
+      <td>0.850685</td>
+      <td>0.851864</td>
+      <td>0.851359</td>
+      <td>0.849787</td>
+      <td>0.849337</td>
+      <td>0.850918</td>
+      <td>0.849121</td>
+      <td>0.851816</td>
+      <td>0.850581</td>
+      <td>0.000993</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.649170</td>
+      <td>0.086499</td>
+      <td>0.028720</td>
+      <td>0.007516</td>
+      <td>3</td>
+      <td>8</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 3, 'min_samples_split': 8...</td>
+      <td>0.818595</td>
+      <td>0.805457</td>
+      <td>...</td>
+      <td>0.850910</td>
+      <td>0.852650</td>
+      <td>0.851303</td>
+      <td>0.850685</td>
+      <td>0.849730</td>
+      <td>0.850918</td>
+      <td>0.848953</td>
+      <td>0.851873</td>
+      <td>0.850811</td>
+      <td>0.000991</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.373115</td>
+      <td>0.066688</td>
+      <td>0.021349</td>
+      <td>0.007915</td>
+      <td>3</td>
+      <td>16</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 3, 'min_samples_split': 1...</td>
+      <td>0.810510</td>
+      <td>0.802931</td>
+      <td>...</td>
+      <td>0.844340</td>
+      <td>0.845013</td>
+      <td>0.843497</td>
+      <td>0.843329</td>
+      <td>0.844677</td>
+      <td>0.843731</td>
+      <td>0.844854</td>
+      <td>0.844741</td>
+      <td>0.844146</td>
+      <td>0.000654</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.512334</td>
+      <td>0.072054</td>
+      <td>0.024235</td>
+      <td>0.006479</td>
+      <td>3</td>
+      <td>16</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 3, 'min_samples_split': 1...</td>
+      <td>0.808994</td>
+      <td>0.806468</td>
+      <td>...</td>
+      <td>0.844620</td>
+      <td>0.847428</td>
+      <td>0.844677</td>
+      <td>0.845013</td>
+      <td>0.846586</td>
+      <td>0.844910</td>
+      <td>0.844854</td>
+      <td>0.846482</td>
+      <td>0.845538</td>
+      <td>0.000969</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.685023</td>
+      <td>0.091781</td>
+      <td>0.040693</td>
+      <td>0.011308</td>
+      <td>3</td>
+      <td>16</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 3, 'min_samples_split': 1...</td>
+      <td>0.812026</td>
+      <td>0.807479</td>
+      <td>...</td>
+      <td>0.844452</td>
+      <td>0.846867</td>
+      <td>0.845856</td>
+      <td>0.845013</td>
+      <td>0.846698</td>
+      <td>0.845584</td>
+      <td>0.846482</td>
+      <td>0.846370</td>
+      <td>0.845915</td>
+      <td>0.000758</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.346077</td>
+      <td>0.057748</td>
+      <td>0.017250</td>
+      <td>0.005029</td>
+      <td>4</td>
+      <td>8</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 4, 'min_samples_split': 8...</td>
+      <td>0.813542</td>
+      <td>0.802425</td>
+      <td>...</td>
+      <td>0.843497</td>
+      <td>0.845743</td>
+      <td>0.842880</td>
+      <td>0.842936</td>
+      <td>0.844789</td>
+      <td>0.840755</td>
+      <td>0.844292</td>
+      <td>0.843057</td>
+      <td>0.843618</td>
+      <td>0.001282</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.534474</td>
+      <td>0.070677</td>
+      <td>0.022138</td>
+      <td>0.004806</td>
+      <td>4</td>
+      <td>8</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 4, 'min_samples_split': 8...</td>
+      <td>0.815058</td>
+      <td>0.805963</td>
+      <td>...</td>
+      <td>0.843722</td>
+      <td>0.846305</td>
+      <td>0.843666</td>
+      <td>0.845294</td>
+      <td>0.845013</td>
+      <td>0.842439</td>
+      <td>0.847381</td>
+      <td>0.842945</td>
+      <td>0.844943</td>
+      <td>0.001587</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.674227</td>
+      <td>0.097629</td>
+      <td>0.033008</td>
+      <td>0.011142</td>
+      <td>4</td>
+      <td>8</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 4, 'min_samples_split': 8...</td>
+      <td>0.811521</td>
+      <td>0.806468</td>
+      <td>...</td>
+      <td>0.844620</td>
+      <td>0.847821</td>
+      <td>0.845463</td>
+      <td>0.846080</td>
+      <td>0.845687</td>
+      <td>0.841709</td>
+      <td>0.845696</td>
+      <td>0.844573</td>
+      <td>0.845600</td>
+      <td>0.001654</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.344773</td>
+      <td>0.059305</td>
+      <td>0.016355</td>
+      <td>0.001278</td>
+      <td>4</td>
+      <td>16</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 4, 'min_samples_split': 1...</td>
+      <td>0.817585</td>
+      <td>0.802931</td>
+      <td>...</td>
+      <td>0.839791</td>
+      <td>0.842150</td>
+      <td>0.839286</td>
+      <td>0.839117</td>
+      <td>0.838331</td>
+      <td>0.841372</td>
+      <td>0.840867</td>
+      <td>0.839744</td>
+      <td>0.840462</td>
+      <td>0.001499</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.482218</td>
+      <td>0.071231</td>
+      <td>0.024834</td>
+      <td>0.007796</td>
+      <td>4</td>
+      <td>16</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 4, 'min_samples_split': 1...</td>
+      <td>0.818595</td>
+      <td>0.803941</td>
+      <td>...</td>
+      <td>0.838949</td>
+      <td>0.841757</td>
+      <td>0.840914</td>
+      <td>0.841027</td>
+      <td>0.839566</td>
+      <td>0.841765</td>
+      <td>0.842439</td>
+      <td>0.840305</td>
+      <td>0.841130</td>
+      <td>0.001338</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0.687462</td>
+      <td>0.207572</td>
+      <td>0.043284</td>
+      <td>0.023539</td>
+      <td>4</td>
+      <td>16</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 4, 'min_samples_split': 1...</td>
+      <td>0.820616</td>
+      <td>0.807984</td>
+      <td>...</td>
+      <td>0.840577</td>
+      <td>0.842206</td>
+      <td>0.841588</td>
+      <td>0.841139</td>
+      <td>0.840746</td>
+      <td>0.842720</td>
+      <td>0.843001</td>
+      <td>0.841148</td>
+      <td>0.841894</td>
+      <td>0.001101</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.472838</td>
+      <td>0.144073</td>
+      <td>0.026631</td>
+      <td>0.012716</td>
+      <td>5</td>
+      <td>8</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 5, 'min_samples_split': 8...</td>
+      <td>0.817585</td>
+      <td>0.799394</td>
+      <td>...</td>
+      <td>0.838668</td>
+      <td>0.840521</td>
+      <td>0.838387</td>
+      <td>0.838612</td>
+      <td>0.838556</td>
+      <td>0.839519</td>
+      <td>0.838565</td>
+      <td>0.836487</td>
+      <td>0.838895</td>
+      <td>0.001062</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0.726155</td>
+      <td>0.173137</td>
+      <td>0.035404</td>
+      <td>0.015041</td>
+      <td>5</td>
+      <td>8</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 5, 'min_samples_split': 8...</td>
+      <td>0.821122</td>
+      <td>0.800404</td>
+      <td>...</td>
+      <td>0.839679</td>
+      <td>0.843160</td>
+      <td>0.840409</td>
+      <td>0.838836</td>
+      <td>0.841307</td>
+      <td>0.839407</td>
+      <td>0.840867</td>
+      <td>0.838902</td>
+      <td>0.840361</td>
+      <td>0.001339</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0.918740</td>
+      <td>0.149600</td>
+      <td>0.041988</td>
+      <td>0.014606</td>
+      <td>5</td>
+      <td>8</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 5, 'min_samples_split': 8...</td>
+      <td>0.817079</td>
+      <td>0.801415</td>
+      <td>...</td>
+      <td>0.839623</td>
+      <td>0.843722</td>
+      <td>0.841027</td>
+      <td>0.839061</td>
+      <td>0.841195</td>
+      <td>0.840418</td>
+      <td>0.840530</td>
+      <td>0.839295</td>
+      <td>0.840704</td>
+      <td>0.001302</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0.427357</td>
+      <td>0.050854</td>
+      <td>0.030622</td>
+      <td>0.017521</td>
+      <td>5</td>
+      <td>16</td>
+      <td>10</td>
+      <td>{'min_samples_leaf': 5, 'min_samples_split': 1...</td>
+      <td>0.817079</td>
+      <td>0.805963</td>
+      <td>...</td>
+      <td>0.838443</td>
+      <td>0.838836</td>
+      <td>0.838050</td>
+      <td>0.837713</td>
+      <td>0.838050</td>
+      <td>0.837722</td>
+      <td>0.837217</td>
+      <td>0.838958</td>
+      <td>0.838457</td>
+      <td>0.000946</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.670865</td>
+      <td>0.149941</td>
+      <td>0.036503</td>
+      <td>0.013691</td>
+      <td>5</td>
+      <td>16</td>
+      <td>15</td>
+      <td>{'min_samples_leaf': 5, 'min_samples_split': 1...</td>
+      <td>0.819101</td>
+      <td>0.806973</td>
+      <td>...</td>
+      <td>0.839623</td>
+      <td>0.840858</td>
+      <td>0.838219</td>
+      <td>0.838668</td>
+      <td>0.838780</td>
+      <td>0.837891</td>
+      <td>0.839407</td>
+      <td>0.840025</td>
+      <td>0.839429</td>
+      <td>0.001049</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0.778427</td>
+      <td>0.147023</td>
+      <td>0.028922</td>
+      <td>0.007515</td>
+      <td>5</td>
+      <td>16</td>
+      <td>20</td>
+      <td>{'min_samples_leaf': 5, 'min_samples_split': 1...</td>
+      <td>0.815563</td>
+      <td>0.804952</td>
+      <td>...</td>
+      <td>0.840409</td>
+      <td>0.841195</td>
+      <td>0.838949</td>
+      <td>0.840353</td>
+      <td>0.840016</td>
+      <td>0.838621</td>
+      <td>0.840193</td>
+      <td>0.839407</td>
+      <td>0.839945</td>
+      <td>0.000773</td>
+    </tr>
+  </tbody>
+</table>
+<p>30 rows × 33 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_rfc</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30, 33)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_result_rfc</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;cv_result_rfc.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We exported the result in csv and short the rank_test_score in ascending order in csv file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Implement the GridSearch for Logistic Regression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lrc_param</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+            <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;l2&#39;</span><span class="p">],</span>
+          <span class="s1">&#39;solver&#39;</span><span class="p">:[</span><span class="s1">&#39;liblinear&#39;</span><span class="p">,</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span><span class="s1">&#39;saga&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#number of combinations= 7*1*3=21</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Number of jobs= 21*10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the grid search objects</span>
+<span class="n">lrc_grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">lrc</span><span class="p">,</span> 
+                        <span class="n">param_grid</span><span class="o">=</span><span class="n">lrc_param</span><span class="p">,</span>
+                        <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+                        <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data to grid search</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lrc_grid_fit</span><span class="o">=</span><span class="n">lrc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_lrc</span><span class="o">=</span><span class="n">lrc_grid_fit</span><span class="o">.</span><span class="n">cv_results_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_lrc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.28104825, 0.69414241, 2.01503353, 0.27067676, 0.7547797 ,
+        2.12504284, 0.42716384, 0.81452684, 2.61601517, 0.50085835,
+        0.88180466, 2.09092236, 0.41401324, 0.5605083 , 1.74503152,
+        0.38527086, 0.56552169, 1.80409346, 0.36981058, 0.57176945,
+        1.63814776]),
+ &#39;std_fit_time&#39;: array([0.02768776, 0.08957076, 0.32239874, 0.0336067 , 0.06334647,
+        0.37392686, 0.1516348 , 0.1749037 , 0.34654121, 0.12150061,
+        0.11714403, 0.19616348, 0.07532369, 0.03307782, 0.227293  ,
+        0.05832584, 0.03427507, 0.24272811, 0.0469753 , 0.03715675,
+        0.29424509]),
+ &#39;mean_score_time&#39;: array([0.02094481, 0.00618327, 0.00668273, 0.00658424, 0.00698123,
+        0.00598278, 0.01136973, 0.00927484, 0.0109709 , 0.0117681 ,
+        0.00997198, 0.00578675, 0.00638223, 0.00538528, 0.0053853 ,
+        0.00628402, 0.00614898, 0.00528724, 0.00678375, 0.00588677,
+        0.005088  ]),
+ &#39;std_score_time&#39;: array([0.01505338, 0.00116371, 0.0033692 , 0.00260808, 0.00413625,
+        0.00204101, 0.00552065, 0.00401376, 0.00948289, 0.00527498,
+        0.00614812, 0.00198096, 0.00127762, 0.00101729, 0.001277  ,
+        0.0006372 , 0.00208578, 0.00077984, 0.00132173, 0.00129836,
+        0.00246027]),
+ &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.5, 0.5, 0.5, 1, 1,
+                    1, 2, 2, 2, 5, 5, 5, 10, 10, 10],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;param_penalty&#39;: masked_array(data=[&#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;,
+                    &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;,
+                    &#39;l2&#39;, &#39;l2&#39;, &#39;l2&#39;],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;param_solver&#39;: masked_array(data=[&#39;liblinear&#39;, &#39;lbfgs&#39;, &#39;saga&#39;, &#39;liblinear&#39;, &#39;lbfgs&#39;,
+                    &#39;saga&#39;, &#39;liblinear&#39;, &#39;lbfgs&#39;, &#39;saga&#39;, &#39;liblinear&#39;,
+                    &#39;lbfgs&#39;, &#39;saga&#39;, &#39;liblinear&#39;, &#39;lbfgs&#39;, &#39;saga&#39;,
+                    &#39;liblinear&#39;, &#39;lbfgs&#39;, &#39;saga&#39;, &#39;liblinear&#39;, &#39;lbfgs&#39;,
+                    &#39;saga&#39;],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;params&#39;: [{&#39;C&#39;: 0.01, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 0.01, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 0.01, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;},
+  {&#39;C&#39;: 0.1, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 0.1, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 0.1, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;},
+  {&#39;C&#39;: 0.5, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 0.5, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 0.5, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;},
+  {&#39;C&#39;: 1, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 1, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 1, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;},
+  {&#39;C&#39;: 2, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 2, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 2, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;},
+  {&#39;C&#39;: 5, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 5, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 5, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;},
+  {&#39;C&#39;: 10, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;liblinear&#39;},
+  {&#39;C&#39;: 10, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;lbfgs&#39;},
+  {&#39;C&#39;: 10, &#39;penalty&#39;: &#39;l2&#39;, &#39;solver&#39;: &#39;saga&#39;}],
+ &#39;split0_test_score&#39;: array([0.8054573 , 0.80899444, 0.80646791, 0.80899444, 0.80697322,
+        0.80697322, 0.80848914, 0.80899444, 0.80798383, 0.80848914,
+        0.81051036, 0.80798383, 0.80899444, 0.81202628, 0.80798383,
+        0.80899444, 0.80899444, 0.80798383, 0.80899444, 0.81152097,
+        0.80798383]),
+ &#39;split1_test_score&#39;: array([0.79181405, 0.80040424, 0.79029813, 0.79838302, 0.79737241,
+        0.79282466, 0.79888833, 0.79737241, 0.79231935, 0.79939363,
+        0.79939363, 0.79231935, 0.80040424, 0.79939363, 0.79231935,
+        0.79989894, 0.79838302, 0.79231935, 0.79888833, 0.79888833,
+        0.79231935]),
+ &#39;split2_test_score&#39;: array([0.82162708, 0.81303689, 0.81960586, 0.81758464, 0.82011117,
+        0.81758464, 0.81657403, 0.81960586, 0.81808994, 0.81657403,
+        0.82162708, 0.81758464, 0.81707933, 0.82061647, 0.81758464,
+        0.81758464, 0.82162708, 0.81758464, 0.81758464, 0.82162708,
+        0.81758464]),
+ &#39;split3_test_score&#39;: array([0.80141486, 0.79787772, 0.79838302, 0.79888833, 0.79939363,
+        0.7968671 , 0.79888833, 0.80141486, 0.79737241, 0.79989894,
+        0.80040424, 0.79737241, 0.80090955, 0.80090955, 0.7968671 ,
+        0.80090955, 0.79939363, 0.7968671 , 0.80090955, 0.80090955,
+        0.7968671 ]),
+ &#39;split4_test_score&#39;: array([0.81707933, 0.82112178, 0.81808994, 0.82465892, 0.8226377 ,
+        0.81960586, 0.82011117, 0.823143  , 0.81910056, 0.82011117,
+        0.82516422, 0.81859525, 0.82011117, 0.8226377 , 0.81859525,
+        0.82162708, 0.823143  , 0.81859525, 0.82112178, 0.82011117,
+        0.81859525]),
+ &#39;split5_test_score&#39;: array([0.81606872, 0.81505811, 0.81707933, 0.81758464, 0.81505811,
+        0.8145528 , 0.81606872, 0.81556342, 0.81505811, 0.81606872,
+        0.81556342, 0.81505811, 0.81606872, 0.8140475 , 0.81505811,
+        0.81657403, 0.8145528 , 0.81505811, 0.81707933, 0.81505811,
+        0.81505811]),
+ &#39;split6_test_score&#39;: array([0.82061647, 0.81303689, 0.82213239, 0.82516422, 0.81859525,
+        0.82364831, 0.82011117, 0.81758464, 0.8226377 , 0.81960586,
+        0.82011117, 0.8226377 , 0.82011117, 0.81808994, 0.8226377 ,
+        0.82011117, 0.82011117, 0.8226377 , 0.82011117, 0.81910056,
+        0.8226377 ]),
+ &#39;split7_test_score&#39;: array([0.81597573, 0.82153691, 0.81597573, 0.82608696, 0.82305359,
+        0.81799798, 0.82406471, 0.82406471, 0.81799798, 0.82406471,
+        0.82457027, 0.81799798, 0.82406471, 0.82305359, 0.81799798,
+        0.82406471, 0.82608696, 0.81799798, 0.82406471, 0.82406471,
+        0.81799798]),
+ &#39;split8_test_score&#39;: array([0.81193124, 0.81749242, 0.81294237, 0.81597573, 0.8190091 ,
+        0.81142568, 0.81799798, 0.81951466, 0.81193124, 0.8190091 ,
+        0.81799798, 0.81193124, 0.8190091 , 0.81951466, 0.81193124,
+        0.8190091 , 0.81951466, 0.81193124, 0.8190091 , 0.81648129,
+        0.81193124]),
+ &#39;split9_test_score&#39;: array([0.80738119, 0.80788675, 0.80839232, 0.8124368 , 0.80839232,
+        0.80535895, 0.81041456, 0.80889788, 0.80485339, 0.81041456,
+        0.80788675, 0.80485339, 0.809909  , 0.80738119, 0.80485339,
+        0.81041456, 0.80637007, 0.80485339, 0.81041456, 0.80889788,
+        0.80485339]),
+ &#39;mean_test_score&#39;: array([0.8109366 , 0.81164461, 0.8109367 , 0.81457577, 0.81305965,
+        0.81068392, 0.81316081, 0.81361559, 0.81073445, 0.81336299,
+        0.81432291, 0.81063339, 0.81366614, 0.81376705, 0.81058286,
+        0.81391882, 0.81381768, 0.81058286, 0.81381776, 0.81366596,
+        0.81058286]),
+ &#39;std_test_score&#39;: array([0.00892995, 0.00757904, 0.00963744, 0.00954142, 0.00896132,
+        0.00957232, 0.00834139, 0.00864   , 0.00947882, 0.00810814,
+        0.00892757, 0.00939681, 0.00782129, 0.00824235, 0.00946906,
+        0.00805871, 0.00946626, 0.00946906, 0.00821029, 0.00812953,
+        0.00946906]),
+ &#39;rank_test_score&#39;: array([15, 13, 14,  1, 12, 17, 11,  9, 16, 10,  2, 18,  7,  6, 19,  3,  5,
+        19,  4,  8, 19]),
+ &#39;split0_train_score&#39;: array([0.81165768, 0.81294924, 0.81092767, 0.81564465, 0.81396002,
+        0.81103998, 0.81519542, 0.81457772, 0.81070305, 0.81474618,
+        0.81480234, 0.81059075, 0.81519542, 0.81469003, 0.81059075,
+        0.81502695, 0.81469003, 0.81053459, 0.81525157, 0.81457772,
+        0.81053459]),
+ &#39;split1_train_score&#39;: array([0.81272462, 0.81345463, 0.81317385, 0.81676774, 0.81513926,
+        0.81238769, 0.8162062 , 0.81553235, 0.81255615, 0.81598158,
+        0.81575696, 0.81255615, 0.81536388, 0.81586927, 0.81255615,
+        0.81530773, 0.81530773, 0.81255615, 0.81536388, 0.81570081,
+        0.81255615]),
+ &#39;split2_train_score&#39;: array([0.81008535, 0.81154537, 0.80924304, 0.81452156, 0.81272462,
+        0.8100292 , 0.81412848, 0.81424079, 0.8100292 , 0.81429695,
+        0.81384771, 0.80997305, 0.81424079, 0.81317385, 0.8100292 ,
+        0.8143531 , 0.81356694, 0.8100292 , 0.81446541, 0.81384771,
+        0.8100292 ]),
+ &#39;split3_train_score&#39;: array([0.81244385, 0.81283693, 0.81193845, 0.81643082, 0.81491465,
+        0.81233154, 0.81553235, 0.81564465, 0.81233154, 0.81553235,
+        0.81542004, 0.81238769, 0.81530773, 0.8155885 , 0.81238769,
+        0.81598158, 0.81643082, 0.81238769, 0.81603774, 0.81609389,
+        0.81238769]),
+ &#39;split4_train_score&#39;: array([0.8106469 , 0.80884996, 0.80974843, 0.81345463, 0.81323001,
+        0.81014151, 0.81396002, 0.81283693, 0.81036613, 0.81362309,
+        0.81221923, 0.81036613, 0.81334232, 0.81266846, 0.81042228,
+        0.81367925, 0.81412848, 0.81053459, 0.81379155, 0.81199461,
+        0.81053459]),
+ &#39;split5_train_score&#39;: array([0.81070305, 0.80969227, 0.81014151, 0.81485849, 0.81351078,
+        0.81030997, 0.81379155, 0.81306155, 0.81030997, 0.81351078,
+        0.81384771, 0.81042228, 0.81356694, 0.81429695, 0.81047844,
+        0.81345463, 0.81255615, 0.81042228, 0.81339847, 0.81446541,
+        0.81042228]),
+ &#39;split6_train_score&#39;: array([0.80980458, 0.81210692, 0.80935535, 0.81356694, 0.81328616,
+        0.80952381, 0.81356694, 0.81345463, 0.80924304, 0.81339847,
+        0.81362309, 0.80924304, 0.81334232, 0.81306155, 0.80924304,
+        0.81334232, 0.81345463, 0.80924304, 0.8131177 , 0.81396002,
+        0.80929919]),
+ &#39;split7_train_score&#39;: array([0.81020832, 0.8111629 , 0.81003987, 0.8133528 , 0.81110674,
+        0.80981526, 0.81307204, 0.81133135, 0.81003987, 0.81273513,
+        0.81312819, 0.81003987, 0.81301589, 0.81307204, 0.81003987,
+        0.8132405 , 0.81413892, 0.80998372, 0.8133528 , 0.81402662,
+        0.80998372]),
+ &#39;split8_train_score&#39;: array([0.81082599, 0.81037678, 0.81043293, 0.81447583, 0.81312819,
+        0.81082599, 0.81397046, 0.81436352, 0.81071368, 0.81374586,
+        0.81402662, 0.81065753, 0.81295974, 0.8133528 , 0.81065753,
+        0.81301589, 0.81397046, 0.81071368, 0.81279129, 0.81340895,
+        0.81071368]),
+ &#39;split9_train_score&#39;: array([0.8113875 , 0.81234207, 0.81133135, 0.81503734, 0.81464428,
+        0.81133135, 0.81447583, 0.81458813, 0.81133135, 0.81391431,
+        0.81503734, 0.8112752 , 0.81447583, 0.81413892, 0.8112752 ,
+        0.81520579, 0.81514964, 0.8111629 , 0.81503734, 0.81425122,
+        0.8111629 ]),
+ &#39;mean_train_score&#39;: array([0.81104878, 0.81153171, 0.81063324, 0.81481108, 0.81356447,
+        0.81077363, 0.81438993, 0.81396316, 0.8107624 , 0.81414847,
+        0.81417092, 0.81075117, 0.81408108, 0.81399124, 0.81076801,
+        0.81426077, 0.81433938, 0.81075678, 0.81426078, 0.81423269,
+        0.8107624 ]),
+ &#39;std_train_score&#39;: array([0.0009356 , 0.00142981, 0.00117111, 0.00113627, 0.00112932,
+        0.00095217, 0.00091986, 0.00124747, 0.00098687, 0.00095469,
+        0.00103206, 0.00099436, 0.00091221, 0.00105908, 0.00098624,
+        0.00099841, 0.00104266, 0.00098455, 0.00106091, 0.00108377,
+        0.00097603])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Covert the results in data format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_lrc</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">lrc_grid_fit</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_lrc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_fit_time</th>
+      <th>std_fit_time</th>
+      <th>mean_score_time</th>
+      <th>std_score_time</th>
+      <th>param_C</th>
+      <th>param_penalty</th>
+      <th>param_solver</th>
+      <th>params</th>
+      <th>split0_test_score</th>
+      <th>split1_test_score</th>
+      <th>...</th>
+      <th>split2_train_score</th>
+      <th>split3_train_score</th>
+      <th>split4_train_score</th>
+      <th>split5_train_score</th>
+      <th>split6_train_score</th>
+      <th>split7_train_score</th>
+      <th>split8_train_score</th>
+      <th>split9_train_score</th>
+      <th>mean_train_score</th>
+      <th>std_train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.281048</td>
+      <td>0.027688</td>
+      <td>0.020945</td>
+      <td>0.015053</td>
+      <td>0.01</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 0.01, 'penalty': 'l2', 'solver': 'liblin...</td>
+      <td>0.805457</td>
+      <td>0.791814</td>
+      <td>...</td>
+      <td>0.810085</td>
+      <td>0.812444</td>
+      <td>0.810647</td>
+      <td>0.810703</td>
+      <td>0.809805</td>
+      <td>0.810208</td>
+      <td>0.810826</td>
+      <td>0.811388</td>
+      <td>0.811049</td>
+      <td>0.000936</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.694142</td>
+      <td>0.089571</td>
+      <td>0.006183</td>
+      <td>0.001164</td>
+      <td>0.01</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 0.01, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.808994</td>
+      <td>0.800404</td>
+      <td>...</td>
+      <td>0.811545</td>
+      <td>0.812837</td>
+      <td>0.808850</td>
+      <td>0.809692</td>
+      <td>0.812107</td>
+      <td>0.811163</td>
+      <td>0.810377</td>
+      <td>0.812342</td>
+      <td>0.811532</td>
+      <td>0.001430</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.015034</td>
+      <td>0.322399</td>
+      <td>0.006683</td>
+      <td>0.003369</td>
+      <td>0.01</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 0.01, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.806468</td>
+      <td>0.790298</td>
+      <td>...</td>
+      <td>0.809243</td>
+      <td>0.811938</td>
+      <td>0.809748</td>
+      <td>0.810142</td>
+      <td>0.809355</td>
+      <td>0.810040</td>
+      <td>0.810433</td>
+      <td>0.811331</td>
+      <td>0.810633</td>
+      <td>0.001171</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.270677</td>
+      <td>0.033607</td>
+      <td>0.006584</td>
+      <td>0.002608</td>
+      <td>0.1</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 0.1, 'penalty': 'l2', 'solver': 'libline...</td>
+      <td>0.808994</td>
+      <td>0.798383</td>
+      <td>...</td>
+      <td>0.814522</td>
+      <td>0.816431</td>
+      <td>0.813455</td>
+      <td>0.814858</td>
+      <td>0.813567</td>
+      <td>0.813353</td>
+      <td>0.814476</td>
+      <td>0.815037</td>
+      <td>0.814811</td>
+      <td>0.001136</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.754780</td>
+      <td>0.063346</td>
+      <td>0.006981</td>
+      <td>0.004136</td>
+      <td>0.1</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 0.1, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.806973</td>
+      <td>0.797372</td>
+      <td>...</td>
+      <td>0.812725</td>
+      <td>0.814915</td>
+      <td>0.813230</td>
+      <td>0.813511</td>
+      <td>0.813286</td>
+      <td>0.811107</td>
+      <td>0.813128</td>
+      <td>0.814644</td>
+      <td>0.813564</td>
+      <td>0.001129</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.125043</td>
+      <td>0.373927</td>
+      <td>0.005983</td>
+      <td>0.002041</td>
+      <td>0.1</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 0.1, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.806973</td>
+      <td>0.792825</td>
+      <td>...</td>
+      <td>0.810029</td>
+      <td>0.812332</td>
+      <td>0.810142</td>
+      <td>0.810310</td>
+      <td>0.809524</td>
+      <td>0.809815</td>
+      <td>0.810826</td>
+      <td>0.811331</td>
+      <td>0.810774</td>
+      <td>0.000952</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.427164</td>
+      <td>0.151635</td>
+      <td>0.011370</td>
+      <td>0.005521</td>
+      <td>0.5</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 0.5, 'penalty': 'l2', 'solver': 'libline...</td>
+      <td>0.808489</td>
+      <td>0.798888</td>
+      <td>...</td>
+      <td>0.814128</td>
+      <td>0.815532</td>
+      <td>0.813960</td>
+      <td>0.813792</td>
+      <td>0.813567</td>
+      <td>0.813072</td>
+      <td>0.813970</td>
+      <td>0.814476</td>
+      <td>0.814390</td>
+      <td>0.000920</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.814527</td>
+      <td>0.174904</td>
+      <td>0.009275</td>
+      <td>0.004014</td>
+      <td>0.5</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 0.5, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.808994</td>
+      <td>0.797372</td>
+      <td>...</td>
+      <td>0.814241</td>
+      <td>0.815645</td>
+      <td>0.812837</td>
+      <td>0.813062</td>
+      <td>0.813455</td>
+      <td>0.811331</td>
+      <td>0.814364</td>
+      <td>0.814588</td>
+      <td>0.813963</td>
+      <td>0.001247</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.616015</td>
+      <td>0.346541</td>
+      <td>0.010971</td>
+      <td>0.009483</td>
+      <td>0.5</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 0.5, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.807984</td>
+      <td>0.792319</td>
+      <td>...</td>
+      <td>0.810029</td>
+      <td>0.812332</td>
+      <td>0.810366</td>
+      <td>0.810310</td>
+      <td>0.809243</td>
+      <td>0.810040</td>
+      <td>0.810714</td>
+      <td>0.811331</td>
+      <td>0.810762</td>
+      <td>0.000987</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.500858</td>
+      <td>0.121501</td>
+      <td>0.011768</td>
+      <td>0.005275</td>
+      <td>1</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 1, 'penalty': 'l2', 'solver': 'liblinear'}</td>
+      <td>0.808489</td>
+      <td>0.799394</td>
+      <td>...</td>
+      <td>0.814297</td>
+      <td>0.815532</td>
+      <td>0.813623</td>
+      <td>0.813511</td>
+      <td>0.813398</td>
+      <td>0.812735</td>
+      <td>0.813746</td>
+      <td>0.813914</td>
+      <td>0.814148</td>
+      <td>0.000955</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.881805</td>
+      <td>0.117144</td>
+      <td>0.009972</td>
+      <td>0.006148</td>
+      <td>1</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 1, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.810510</td>
+      <td>0.799394</td>
+      <td>...</td>
+      <td>0.813848</td>
+      <td>0.815420</td>
+      <td>0.812219</td>
+      <td>0.813848</td>
+      <td>0.813623</td>
+      <td>0.813128</td>
+      <td>0.814027</td>
+      <td>0.815037</td>
+      <td>0.814171</td>
+      <td>0.001032</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2.090922</td>
+      <td>0.196163</td>
+      <td>0.005787</td>
+      <td>0.001981</td>
+      <td>1</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 1, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.807984</td>
+      <td>0.792319</td>
+      <td>...</td>
+      <td>0.809973</td>
+      <td>0.812388</td>
+      <td>0.810366</td>
+      <td>0.810422</td>
+      <td>0.809243</td>
+      <td>0.810040</td>
+      <td>0.810658</td>
+      <td>0.811275</td>
+      <td>0.810751</td>
+      <td>0.000994</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.414013</td>
+      <td>0.075324</td>
+      <td>0.006382</td>
+      <td>0.001278</td>
+      <td>2</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 2, 'penalty': 'l2', 'solver': 'liblinear'}</td>
+      <td>0.808994</td>
+      <td>0.800404</td>
+      <td>...</td>
+      <td>0.814241</td>
+      <td>0.815308</td>
+      <td>0.813342</td>
+      <td>0.813567</td>
+      <td>0.813342</td>
+      <td>0.813016</td>
+      <td>0.812960</td>
+      <td>0.814476</td>
+      <td>0.814081</td>
+      <td>0.000912</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.560508</td>
+      <td>0.033078</td>
+      <td>0.005385</td>
+      <td>0.001017</td>
+      <td>2</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 2, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.812026</td>
+      <td>0.799394</td>
+      <td>...</td>
+      <td>0.813174</td>
+      <td>0.815588</td>
+      <td>0.812668</td>
+      <td>0.814297</td>
+      <td>0.813062</td>
+      <td>0.813072</td>
+      <td>0.813353</td>
+      <td>0.814139</td>
+      <td>0.813991</td>
+      <td>0.001059</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.745032</td>
+      <td>0.227293</td>
+      <td>0.005385</td>
+      <td>0.001277</td>
+      <td>2</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 2, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.807984</td>
+      <td>0.792319</td>
+      <td>...</td>
+      <td>0.810029</td>
+      <td>0.812388</td>
+      <td>0.810422</td>
+      <td>0.810478</td>
+      <td>0.809243</td>
+      <td>0.810040</td>
+      <td>0.810658</td>
+      <td>0.811275</td>
+      <td>0.810768</td>
+      <td>0.000986</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.385271</td>
+      <td>0.058326</td>
+      <td>0.006284</td>
+      <td>0.000637</td>
+      <td>5</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 5, 'penalty': 'l2', 'solver': 'liblinear'}</td>
+      <td>0.808994</td>
+      <td>0.799899</td>
+      <td>...</td>
+      <td>0.814353</td>
+      <td>0.815982</td>
+      <td>0.813679</td>
+      <td>0.813455</td>
+      <td>0.813342</td>
+      <td>0.813240</td>
+      <td>0.813016</td>
+      <td>0.815206</td>
+      <td>0.814261</td>
+      <td>0.000998</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.565522</td>
+      <td>0.034275</td>
+      <td>0.006149</td>
+      <td>0.002086</td>
+      <td>5</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 5, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.808994</td>
+      <td>0.798383</td>
+      <td>...</td>
+      <td>0.813567</td>
+      <td>0.816431</td>
+      <td>0.814128</td>
+      <td>0.812556</td>
+      <td>0.813455</td>
+      <td>0.814139</td>
+      <td>0.813970</td>
+      <td>0.815150</td>
+      <td>0.814339</td>
+      <td>0.001043</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1.804093</td>
+      <td>0.242728</td>
+      <td>0.005287</td>
+      <td>0.000780</td>
+      <td>5</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 5, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.807984</td>
+      <td>0.792319</td>
+      <td>...</td>
+      <td>0.810029</td>
+      <td>0.812388</td>
+      <td>0.810535</td>
+      <td>0.810422</td>
+      <td>0.809243</td>
+      <td>0.809984</td>
+      <td>0.810714</td>
+      <td>0.811163</td>
+      <td>0.810757</td>
+      <td>0.000985</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.369811</td>
+      <td>0.046975</td>
+      <td>0.006784</td>
+      <td>0.001322</td>
+      <td>10</td>
+      <td>l2</td>
+      <td>liblinear</td>
+      <td>{'C': 10, 'penalty': 'l2', 'solver': 'liblinear'}</td>
+      <td>0.808994</td>
+      <td>0.798888</td>
+      <td>...</td>
+      <td>0.814465</td>
+      <td>0.816038</td>
+      <td>0.813792</td>
+      <td>0.813398</td>
+      <td>0.813118</td>
+      <td>0.813353</td>
+      <td>0.812791</td>
+      <td>0.815037</td>
+      <td>0.814261</td>
+      <td>0.001061</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.571769</td>
+      <td>0.037157</td>
+      <td>0.005887</td>
+      <td>0.001298</td>
+      <td>10</td>
+      <td>l2</td>
+      <td>lbfgs</td>
+      <td>{'C': 10, 'penalty': 'l2', 'solver': 'lbfgs'}</td>
+      <td>0.811521</td>
+      <td>0.798888</td>
+      <td>...</td>
+      <td>0.813848</td>
+      <td>0.816094</td>
+      <td>0.811995</td>
+      <td>0.814465</td>
+      <td>0.813960</td>
+      <td>0.814027</td>
+      <td>0.813409</td>
+      <td>0.814251</td>
+      <td>0.814233</td>
+      <td>0.001084</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1.638148</td>
+      <td>0.294245</td>
+      <td>0.005088</td>
+      <td>0.002460</td>
+      <td>10</td>
+      <td>l2</td>
+      <td>saga</td>
+      <td>{'C': 10, 'penalty': 'l2', 'solver': 'saga'}</td>
+      <td>0.807984</td>
+      <td>0.792319</td>
+      <td>...</td>
+      <td>0.810029</td>
+      <td>0.812388</td>
+      <td>0.810535</td>
+      <td>0.810422</td>
+      <td>0.809299</td>
+      <td>0.809984</td>
+      <td>0.810714</td>
+      <td>0.811163</td>
+      <td>0.810762</td>
+      <td>0.000976</td>
+    </tr>
+  </tbody>
+</table>
+<p>21 rows × 33 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_result_lrc</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;cv_result_lrc.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Implement the GridSearch for Support Vector Machine</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define parameter for support Vector Classifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc_param</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+            <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span><span class="s1">&#39;linear&#39;</span><span class="p">],</span>
+          <span class="s1">&#39;gamma&#39;</span><span class="p">:[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#the parameter results in 7*2*5=70 different combinations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#CV=10 for 70 different combinations mean 700 jobs/models</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the grid search objects</span>
+<span class="n">svc_grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">svc</span><span class="p">,</span> 
+                        <span class="n">param_grid</span><span class="o">=</span><span class="n">svc_param</span><span class="p">,</span>
+                        <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+                        <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data to grid search</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc_grid_fit</span><span class="o">=</span><span class="n">svc_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_svc</span><span class="o">=</span><span class="n">svc_grid_fit</span><span class="o">.</span><span class="n">cv_results_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_svc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([   41.70601852,    37.57959447,    40.05763092,    38.58436844,
+           57.38280053,    37.22357903,    72.92646639,    34.58094566,
+           89.98974562,    33.82671378,    35.5294312 ,    46.16309614,
+           41.64465389,    46.34740345,    63.94713244,    43.67934613,
+           90.85779889,    41.71572883,   133.61181278,    40.08246064,
+           31.60671899,    76.82221236,    36.58339827,    76.47803891,
+           73.5399507 ,    76.51566916,   105.22790399,    71.66398299,
+          149.65542171,    72.3970345 ,    30.13881729,   113.56551971,
+           53.14344594,   109.70718751,    79.27706966,   117.68642011,
+          115.55160491,   114.71986372,   151.34661772,   117.90265114,
+           33.48799736,   212.32206838,    68.51880541,   213.9950022 ,
+          101.25822172,   212.52162554,   115.00451655,   211.30782766,
+          155.43856766,   201.78652396,    38.34449923,   418.52680507,
+           87.88139217,   413.40430143,   106.83136601,   410.6645689 ,
+          113.7412204 ,   414.21583145,   151.65303469, 21876.15069182,
+           65.40538487,   650.06214166,    96.49824524,   638.5281702 ,
+          100.97979546,   643.09750693,    98.03335001,   654.04651937,
+          131.02412174,   639.16869931]),
+ &#39;std_fit_time&#39;: array([1.61996758e+00, 1.39051388e+00, 2.15776561e+00, 4.62883258e+00,
+        8.02205707e+00, 3.72521961e+00, 5.30891557e+00, 2.38882993e+00,
+        6.58907196e+00, 2.29117919e+00, 2.36346717e+00, 2.12099597e+00,
+        9.49292082e-01, 2.92061350e+00, 5.74094093e+00, 2.82648108e+00,
+        4.27777987e+00, 2.29864308e+00, 8.74213280e+00, 2.52114639e+00,
+        1.14518958e+00, 4.58339641e+00, 1.97075197e+00, 4.45661263e+00,
+        5.73536183e+00, 4.62153892e+00, 2.84249659e+00, 2.88383049e+00,
+        6.06925317e+00, 3.86060671e+00, 2.77522018e+00, 4.95491270e+00,
+        7.40931946e+00, 3.15150065e+00, 3.27444820e+00, 4.99680703e+00,
+        4.71309879e+00, 5.16465009e+00, 4.81594005e+00, 5.08649085e+00,
+        2.02940719e+00, 1.00456668e+01, 8.92454259e+00, 1.03219590e+01,
+        3.85022164e+00, 1.02924096e+01, 3.34847640e+00, 9.96004848e+00,
+        1.24885193e+01, 8.27449348e+00, 1.52909861e+00, 9.15705562e+00,
+        7.69890537e+00, 1.30084647e+01, 4.43602758e+00, 1.16301736e+01,
+        4.65406322e+00, 7.87539713e+00, 8.11452101e+00, 8.98199858e+03,
+        8.47893943e+00, 1.88777042e+01, 8.48447132e+00, 1.39350171e+01,
+        1.20801478e+01, 1.74603489e+01, 4.72120913e+00, 2.60452987e+01,
+        1.03752852e+01, 9.48958483e+01]),
+ &#39;mean_score_time&#39;: array([1.96954739, 1.18645275, 2.42386458, 1.41263311, 3.1330833 ,
+        1.27225561, 3.21284709, 1.14136562, 4.56594782, 1.12916286,
+        2.03498344, 1.02134094, 2.27860925, 1.04772303, 2.58366966,
+        0.88599265, 3.03760834, 0.86085961, 5.08521905, 0.82810838,
+        1.6478019 , 0.77568905, 1.88632646, 0.81657596, 2.34763796,
+        0.81960707, 3.03699934, 0.74077759, 4.24303017, 0.71824598,
+        1.52623384, 0.73503606, 1.71842339, 0.75937645, 2.31245332,
+        0.71340091, 3.01077135, 0.73057547, 4.51409435, 0.75555561,
+        1.56415722, 0.77487404, 1.79005432, 0.76341002, 2.28056672,
+        0.75788352, 3.12357435, 0.71145015, 4.28955748, 0.72494657,
+        1.35480363, 0.7120384 , 1.63435111, 0.72610471, 2.06625383,
+        0.70729053, 2.92515626, 0.67334237, 4.26433291, 0.70657315,
+        1.30088446, 0.61576169, 1.40076866, 0.60170047, 1.74003026,
+        0.59621234, 2.53584573, 0.59376287, 3.70256424, 0.52256176]),
+ &#39;std_score_time&#39;: array([0.20110904, 0.08567388, 0.40638579, 0.36793248, 0.93487023,
+        0.2373859 , 0.38117348, 0.19523834, 0.2561168 , 0.11930762,
+        0.15440387, 0.09902544, 0.13356123, 0.13333492, 0.07281209,
+        0.10715079, 0.11081602, 0.12921398, 0.686471  , 0.10912028,
+        0.11204183, 0.08373248, 0.13440521, 0.06147851, 0.11992139,
+        0.07759267, 0.19701171, 0.08339846, 0.21351568, 0.05007346,
+        0.10702472, 0.09376578, 0.10538471, 0.11357498, 0.23511638,
+        0.04956238, 0.15429787, 0.0625072 , 0.17978299, 0.06377684,
+        0.10360833, 0.05365126, 0.1042851 , 0.05372885, 0.0885863 ,
+        0.02851928, 0.12704589, 0.03774325, 0.15509571, 0.01389118,
+        0.04475254, 0.04617163, 0.0485057 , 0.08796401, 0.05277957,
+        0.04642591, 0.10936858, 0.0308375 , 0.19924098, 0.10677904,
+        0.11720913, 0.04322193, 0.10354883, 0.02432396, 0.06315602,
+        0.0276808 , 0.12262704, 0.03474852, 0.14355634, 0.14011112]),
+ &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+                    0.01, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+                    0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                    5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 10, 10, 10, 10, 10,
+                    10, 10, 10, 10],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;param_gamma&#39;: masked_array(data=[0.1, 0.1, 0.25, 0.25, 0.5, 0.5, 1, 1, 5, 5, 0.1, 0.1,
+                    0.25, 0.25, 0.5, 0.5, 1, 1, 5, 5, 0.1, 0.1, 0.25, 0.25,
+                    0.5, 0.5, 1, 1, 5, 5, 0.1, 0.1, 0.25, 0.25, 0.5, 0.5,
+                    1, 1, 5, 5, 0.1, 0.1, 0.25, 0.25, 0.5, 0.5, 1, 1, 5, 5,
+                    0.1, 0.1, 0.25, 0.25, 0.5, 0.5, 1, 1, 5, 5, 0.1, 0.1,
+                    0.25, 0.25, 0.5, 0.5, 1, 1, 5, 5],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;param_kernel&#39;: masked_array(data=[&#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;,
+                    &#39;rbf&#39;, &#39;linear&#39;, &#39;rbf&#39;, &#39;linear&#39;],
+              mask=[False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False, False, False,
+                    False, False, False, False, False, False],
+        fill_value=&#39;?&#39;,
+             dtype=object),
+ &#39;params&#39;: [{&#39;C&#39;: 0.01, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.01, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.1, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 0.5, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 1, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 2, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 5, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 0.25, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;rbf&#39;},
+  {&#39;C&#39;: 10, &#39;gamma&#39;: 5, &#39;kernel&#39;: &#39;linear&#39;}],
+ &#39;split0_test_score&#39;: array([0.73673573, 0.80394138, 0.73673573, 0.80394138, 0.73673573,
+        0.80394138, 0.73673573, 0.80394138, 0.73673573, 0.80394138,
+        0.77968671, 0.80343608, 0.77362304, 0.80343608, 0.76402223,
+        0.80343608, 0.75442142, 0.80343608, 0.74077817, 0.80343608,
+        0.80192016, 0.80343608, 0.80242547, 0.80343608, 0.79484588,
+        0.80343608, 0.78322385, 0.80343608, 0.76250632, 0.80343608,
+        0.80242547, 0.80343608, 0.80394138, 0.80343608, 0.79939363,
+        0.80343608, 0.79181405, 0.80343608, 0.77311774, 0.80343608,
+        0.80646791, 0.80343608, 0.80040424, 0.80343608, 0.79737241,
+        0.80343608, 0.79434058, 0.80343608, 0.77311774, 0.80343608,
+        0.80949975, 0.80343608, 0.79787772, 0.80343608, 0.79231935,
+        0.80343608, 0.79383527, 0.80343608, 0.77311774, 0.80343608,
+        0.80242547, 0.80343608, 0.79181405, 0.80343608, 0.78928752,
+        0.80343608, 0.79383527, 0.80343608, 0.77311774, 0.80343608]),
+ &#39;split1_test_score&#39;: array([0.73673573, 0.79383527, 0.73673573, 0.79383527, 0.73673573,
+        0.79383527, 0.73673573, 0.79383527, 0.73673573, 0.79383527,
+        0.77513896, 0.7968671 , 0.77564426, 0.7968671 , 0.76402223,
+        0.7968671 , 0.74987367, 0.7968671 , 0.73572511, 0.7968671 ,
+        0.7968671 , 0.7968671 , 0.79989894, 0.7968671 , 0.79585649,
+        0.7968671 , 0.7786761 , 0.7968671 , 0.7614957 , 0.7968671 ,
+        0.79888833, 0.7968671 , 0.79888833, 0.7968671 , 0.79080344,
+        0.7968671 , 0.78372916, 0.7968671 , 0.76452754, 0.7968671 ,
+        0.80293077, 0.7968671 , 0.79535119, 0.7968671 , 0.78827691,
+        0.7968671 , 0.7791814 , 0.7968671 , 0.76452754, 0.7968671 ,
+        0.80040424, 0.7968671 , 0.78575038, 0.7968671 , 0.77665488,
+        0.7968671 , 0.7791814 , 0.7968671 , 0.76452754, 0.7968671 ,
+        0.79484588, 0.7968671 , 0.78120263, 0.7968671 , 0.77261243,
+        0.7968671 , 0.77968671, 0.7968671 , 0.76452754, 0.7968671 ]),
+ &#39;split2_test_score&#39;: array([0.73673573, 0.81556342, 0.73673573, 0.81556342, 0.73673573,
+        0.81556342, 0.73673573, 0.81556342, 0.73673573, 0.81556342,
+        0.7872663 , 0.81758464, 0.77564426, 0.81758464, 0.77059121,
+        0.81758464, 0.75543204, 0.81758464, 0.74279939, 0.81758464,
+        0.81202628, 0.81758464, 0.81354219, 0.81758464, 0.80596261,
+        0.81758464, 0.79535119, 0.81758464, 0.77665488, 0.81758464,
+        0.81556342, 0.81758464, 0.81707933, 0.81758464, 0.81202628,
+        0.81758464, 0.80242547, 0.81758464, 0.77968671, 0.81758464,
+        0.81808994, 0.81758464, 0.8145528 , 0.81758464, 0.81051036,
+        0.81758464, 0.80141486, 0.81758464, 0.77968671, 0.81758464,
+        0.81910056, 0.81758464, 0.80798383, 0.81758464, 0.79838302,
+        0.81758464, 0.79939363, 0.81758464, 0.77968671, 0.81758464,
+        0.81505811, 0.81758464, 0.80444669, 0.81758464, 0.79787772,
+        0.81758464, 0.79939363, 0.81758464, 0.77968671, 0.81758464]),
+ &#39;split3_test_score&#39;: array([0.73673573, 0.79888833, 0.73673573, 0.79888833, 0.73673573,
+        0.79888833, 0.73673573, 0.79888833, 0.73673573, 0.79888833,
+        0.78928752, 0.80040424, 0.78019202, 0.80040424, 0.77160182,
+        0.80040424, 0.75138959, 0.80040424, 0.73875695, 0.80040424,
+        0.80848914, 0.80040424, 0.80646791, 0.80040424, 0.79282466,
+        0.80040424, 0.78372916, 0.80040424, 0.76200101, 0.80040424,
+        0.80899444, 0.80040424, 0.79888833, 0.80040424, 0.79332996,
+        0.80040424, 0.77210712, 0.80040424, 0.75846387, 0.80040424,
+        0.81354219, 0.80040424, 0.79888833, 0.80040424, 0.78676099,
+        0.80040424, 0.77210712, 0.80040424, 0.75846387, 0.80040424,
+        0.80596261, 0.80040424, 0.79080344, 0.80040424, 0.77412835,
+        0.80040424, 0.7700859 , 0.80040424, 0.75846387, 0.80040424,
+        0.79484588, 0.80040424, 0.78221324, 0.80040424, 0.76907529,
+        0.80040424, 0.7700859 , 0.80040424, 0.75846387, 0.80040424]),
+ &#39;split4_test_score&#39;: array([0.73673573, 0.81960586, 0.73673573, 0.81960586, 0.73673573,
+        0.81960586, 0.73673573, 0.81960586, 0.73673573, 0.81960586,
+        0.78928752, 0.81859525, 0.78069732, 0.81859525, 0.77463365,
+        0.81859525, 0.75997979, 0.81859525, 0.7433047 , 0.81859525,
+        0.81051036, 0.81859525, 0.81253158, 0.81859525, 0.81101566,
+        0.81859525, 0.78928752, 0.81859525, 0.76856998, 0.81859525,
+        0.82011117, 0.81859525, 0.81758464, 0.81859525, 0.81758464,
+        0.81859525, 0.79737241, 0.81859525, 0.7786761 , 0.81859525,
+        0.82465892, 0.81859525, 0.81707933, 0.81859525, 0.80697322,
+        0.81859525, 0.79939363, 0.81859525, 0.7786761 , 0.81859525,
+        0.82061647, 0.81859525, 0.81707933, 0.81859525, 0.804952  ,
+        0.81859525, 0.79939363, 0.81859525, 0.7786761 , 0.81859525,
+        0.81960586, 0.81859525, 0.8140475 , 0.81859525, 0.7963618 ,
+        0.81859525, 0.79939363, 0.81859525, 0.7786761 , 0.81859525]),
+ &#39;split5_test_score&#39;: array([0.73623042, 0.81303689, 0.73623042, 0.81303689, 0.73623042,
+        0.81303689, 0.73623042, 0.81303689, 0.73623042, 0.81303689,
+        0.7786761 , 0.81202628, 0.77261243, 0.81202628, 0.76604346,
+        0.81202628, 0.75088428, 0.81202628, 0.73825164, 0.81202628,
+        0.81253158, 0.81202628, 0.8140475 , 0.81202628, 0.804952  ,
+        0.81202628, 0.78928752, 0.81202628, 0.77109651, 0.81202628,
+        0.81910056, 0.81202628, 0.81303689, 0.81202628, 0.81101566,
+        0.81202628, 0.79383527, 0.81202628, 0.77210712, 0.81202628,
+        0.82061647, 0.81202628, 0.80697322, 0.81202628, 0.79939363,
+        0.81202628, 0.78575038, 0.81202628, 0.77210712, 0.81202628,
+        0.81606872, 0.81202628, 0.80242547, 0.81202628, 0.79282466,
+        0.81202628, 0.78271854, 0.81202628, 0.77210712, 0.81202628,
+        0.81354219, 0.81202628, 0.79130874, 0.81202628, 0.7877716 ,
+        0.81202628, 0.78271854, 0.81202628, 0.77210712, 0.81202628]),
+ &#39;split6_test_score&#39;: array([0.73623042, 0.81707933, 0.73623042, 0.81707933, 0.73623042,
+        0.81707933, 0.73623042, 0.81707933, 0.73623042, 0.81707933,
+        0.78170793, 0.81910056, 0.77412835, 0.81910056, 0.76200101,
+        0.81910056, 0.74886306, 0.81910056, 0.73976756, 0.81910056,
+        0.80444669, 0.81910056, 0.79939363, 0.81910056, 0.79888833,
+        0.81910056, 0.7872663 , 0.81910056, 0.7695806 , 0.81910056,
+        0.80596261, 0.81910056, 0.80798383, 0.81910056, 0.79838302,
+        0.81910056, 0.79231935, 0.81910056, 0.77513896, 0.81910056,
+        0.8054573 , 0.81910056, 0.80040424, 0.81910056, 0.79484588,
+        0.81910056, 0.7877716 , 0.81910056, 0.77513896, 0.81910056,
+        0.80596261, 0.81910056, 0.79737241, 0.81910056, 0.79383527,
+        0.81910056, 0.78524507, 0.81910056, 0.77513896, 0.81910056,
+        0.80343608, 0.81910056, 0.79231935, 0.81910056, 0.78878221,
+        0.81910056, 0.78575038, 0.81910056, 0.77513896, 0.81910056]),
+ &#39;split7_test_score&#39;: array([0.73660263, 0.81395349, 0.73660263, 0.81395349, 0.73660263,
+        0.81395349, 0.73660263, 0.81395349, 0.73660263, 0.81395349,
+        0.79575329, 0.81496461, 0.78463094, 0.81496461, 0.77906977,
+        0.81496461, 0.760364  , 0.81496461, 0.74165824, 0.81496461,
+        0.81344793, 0.81496461, 0.81496461, 0.81496461, 0.81142568,
+        0.81496461, 0.79828109, 0.81496461, 0.77553084, 0.81496461,
+        0.81799798, 0.81496461, 0.81344793, 0.81496461, 0.81294237,
+        0.81496461, 0.80182002, 0.81496461, 0.78058645, 0.81496461,
+        0.82204247, 0.81496461, 0.81395349, 0.81496461, 0.81092012,
+        0.81496461, 0.7942366 , 0.81496461, 0.78058645, 0.81496461,
+        0.8190091 , 0.81496461, 0.81597573, 0.81496461, 0.80485339,
+        0.81496461, 0.79373104, 0.81496461, 0.78058645, 0.81496461,
+        0.81951466, 0.81496461, 0.81294237, 0.81496461, 0.79929221,
+        0.81496461, 0.79373104, 0.81496461, 0.78058645, 0.81496461]),
+ &#39;split8_test_score&#39;: array([0.73660263, 0.81041456, 0.73660263, 0.81041456, 0.73660263,
+        0.81041456, 0.73660263, 0.81041456, 0.73660263, 0.81041456,
+        0.78210313, 0.8124368 , 0.77805865, 0.8124368 , 0.76541962,
+        0.8124368 , 0.75025278, 0.8124368 , 0.739636  , 0.8124368 ,
+        0.81597573, 0.8124368 , 0.8124368 , 0.8124368 , 0.80131446,
+        0.8124368 , 0.7851365 , 0.8124368 , 0.7669363 , 0.8124368 ,
+        0.81951466, 0.8124368 , 0.81850354, 0.8124368 , 0.80283114,
+        0.8124368 , 0.79019211, 0.8124368 , 0.76592518, 0.8124368 ,
+        0.81850354, 0.8124368 , 0.81092012, 0.8124368 , 0.80182002,
+        0.8124368 , 0.78159757, 0.8124368 , 0.76592518, 0.8124368 ,
+        0.81547017, 0.8124368 , 0.80586451, 0.8124368 , 0.78816987,
+        0.8124368 , 0.78109201, 0.8124368 , 0.76592518, 0.8124368 ,
+        0.81445905, 0.8124368 , 0.79221436, 0.8124368 , 0.77654196,
+        0.8124368 , 0.78109201, 0.8124368 , 0.76592518, 0.8124368 ]),
+ &#39;split9_test_score&#39;: array([0.73660263, 0.80283114, 0.73660263, 0.80283114, 0.73660263,
+        0.80283114, 0.73660263, 0.80283114, 0.73660263, 0.80283114,
+        0.77451972, 0.8033367 , 0.77350859, 0.8033367 , 0.76744186,
+        0.8033367 , 0.75025278, 0.8033367 , 0.74165824, 0.8033367 ,
+        0.79777553, 0.8033367 , 0.79929221, 0.8033367 , 0.79474216,
+        0.8033367 , 0.78159757, 0.8033367 , 0.76137513, 0.8033367 ,
+        0.80839232, 0.8033367 , 0.80839232, 0.8033367 , 0.79777553,
+        0.8033367 , 0.78715875, 0.8033367 , 0.76845298, 0.8033367 ,
+        0.81142568, 0.8033367 , 0.80889788, 0.8033367 , 0.79929221,
+        0.8033367 , 0.78665319, 0.8033367 , 0.76845298, 0.8033367 ,
+        0.80889788, 0.8033367 , 0.79979778, 0.8033367 , 0.79221436,
+        0.8033367 , 0.78766431, 0.8033367 , 0.76845298, 0.8033367 ,
+        0.80637007, 0.8033367 , 0.79777553, 0.8033367 , 0.78918099,
+        0.8033367 , 0.78766431, 0.8033367 , 0.76845298, 0.8033367 ]),
+ &#39;mean_test_score&#39;: array([0.73659474, 0.80891497, 0.73659474, 0.80891497, 0.73659474,
+        0.80891497, 0.73659474, 0.80891497, 0.73659474, 0.80891497,
+        0.78334272, 0.80987523, 0.77687399, 0.80987523, 0.76848469,
+        0.80987523, 0.75317134, 0.80987523, 0.7402336 , 0.80987523,
+        0.80739905, 0.80987523, 0.80750009, 0.80987523, 0.80118279,
+        0.80987523, 0.78718368, 0.80987523, 0.76757473, 0.80987523,
+        0.81169509, 0.80987523, 0.80977465, 0.80987523, 0.80360857,
+        0.80987523, 0.79127737, 0.80987523, 0.77166827, 0.80987523,
+        0.81437352, 0.80987523, 0.80674248, 0.80987523, 0.79961658,
+        0.80987523, 0.78824469, 0.80987523, 0.77166827, 0.80987523,
+        0.81209921, 0.80987523, 0.80209306, 0.80987523, 0.79183351,
+        0.80987523, 0.78723408, 0.80987523, 0.77166827, 0.80987523,
+        0.80841033, 0.80987523, 0.79602845, 0.80987523, 0.78667837,
+        0.80987523, 0.78733514, 0.80987523, 0.77166827, 0.80987523]),
+ &#39;std_test_score&#39;: array([0.00019106, 0.00812071, 0.00019106, 0.00812071, 0.00019106,
+        0.00812071, 0.00019106, 0.00812071, 0.00019106, 0.00812071,
+        0.00651612, 0.00775111, 0.0037124 , 0.00775111, 0.00512166,
+        0.00775111, 0.0039955 , 0.00775111, 0.0021767 , 0.00775111,
+        0.00641124, 0.00775111, 0.00634398, 0.00775111, 0.00651002,
+        0.00775111, 0.00578021, 0.00775111, 0.005438  , 0.00775111,
+        0.00736552, 0.00775111, 0.00700608, 0.00775111, 0.00870342,
+        0.00775111, 0.00850358, 0.00775111, 0.00689888, 0.00775111,
+        0.0071886 , 0.00775111, 0.00716797, 0.00775111, 0.00791975,
+        0.00775111, 0.00875524, 0.00775111, 0.00689888, 0.00775111,
+        0.00652322, 0.00775111, 0.00951952, 0.00775111, 0.00973224,
+        0.00775111, 0.00895912, 0.00775111, 0.00689888, 0.00775111,
+        0.00887961, 0.00775111, 0.01078746, 0.00775111, 0.01003724,
+        0.00775111, 0.00890459, 0.00775111, 0.00689888, 0.00775111]),
+ &#39;rank_test_score&#39;: array([66, 35, 66, 35, 66, 35, 66, 35, 66, 35, 56,  4, 57,  4, 62,  4, 64,
+         4, 65,  4, 42,  4, 41,  4, 46,  4, 54,  4, 63,  4,  3,  4, 34,  4,
+        44,  4, 50,  4, 58,  4,  1,  4, 43,  4, 47,  4, 51,  4, 58,  4,  2,
+         4, 45,  4, 49,  4, 53,  4, 58,  4, 40,  4, 48,  4, 55,  4, 52,  4,
+        58,  4]),
+ &#39;split0_train_score&#39;: array([0.73657907, 0.80969227, 0.73657907, 0.80969227, 0.73657907,
+        0.80969227, 0.73657907, 0.80969227, 0.73657907, 0.80969227,
+        0.79009434, 0.81059075, 0.78694969, 0.81059075, 0.77723495,
+        0.81059075, 0.75977089, 0.81059075, 0.74275606, 0.81059075,
+        0.82249551, 0.81059075, 0.83361411, 0.81059075, 0.83894879,
+        0.81059075, 0.83445642, 0.81059075, 0.80362758, 0.81059075,
+        0.83209793, 0.81059075, 0.85298742, 0.81059075, 0.87432615,
+        0.81059075, 0.89549641, 0.81059075, 0.90408805, 0.81059075,
+        0.84428347, 0.81059075, 0.86798068, 0.81059075, 0.89100404,
+        0.81059075, 0.9035265 , 0.81059075, 0.90408805, 0.81059075,
+        0.85686208, 0.81059075, 0.88387242, 0.81059075, 0.90010108,
+        0.81059075, 0.90408805, 0.81059075, 0.90408805, 0.81059075,
+        0.86506065, 0.81059075, 0.89179021, 0.81059075, 0.90307727,
+        0.81059075, 0.90408805, 0.81059075, 0.90408805, 0.81059075]),
+ &#39;split1_train_score&#39;: array([0.73657907, 0.81047844, 0.73657907, 0.81047844, 0.73657907,
+        0.81047844, 0.73657907, 0.81047844, 0.73657907, 0.81047844,
+        0.79278976, 0.81132075, 0.78885894, 0.81132075, 0.77936882,
+        0.81132075, 0.7611186 , 0.81132075, 0.74286837, 0.81132075,
+        0.82137242, 0.81132075, 0.83479335, 0.81132075, 0.84192498,
+        0.81132075, 0.83715184, 0.81132075, 0.8057053 , 0.81132075,
+        0.83221024, 0.81132075, 0.85315588, 0.81132075, 0.87707772,
+        0.81132075, 0.89830413, 0.81132075, 0.90571653, 0.81132075,
+        0.84327269, 0.81132075, 0.87039533, 0.81132075, 0.89347484,
+        0.81132075, 0.90504268, 0.81132075, 0.90571653, 0.81132075,
+        0.85916442, 0.81132075, 0.88606244, 0.81132075, 0.90184187,
+        0.81132075, 0.90571653, 0.81132075, 0.90571653, 0.81132075,
+        0.86725067, 0.81132075, 0.89336253, 0.81132075, 0.90487421,
+        0.81132075, 0.90571653, 0.81132075, 0.90571653, 0.81132075]),
+ &#39;split2_train_score&#39;: array([0.73657907, 0.8087938 , 0.73657907, 0.8087938 , 0.73657907,
+        0.8087938 , 0.73657907, 0.8087938 , 0.73657907, 0.8087938 ,
+        0.78986972, 0.80901842, 0.78919587, 0.80901842, 0.77818958,
+        0.80901842, 0.75859164, 0.80901842, 0.74202606, 0.80901842,
+        0.82204627, 0.80901842, 0.83372642, 0.80901842, 0.8384434 ,
+        0.80901842, 0.83299641, 0.80901842, 0.80390836, 0.80901842,
+        0.83176101, 0.80901842, 0.85265049, 0.80901842, 0.87342767,
+        0.80901842, 0.89499102, 0.80901842, 0.90380728, 0.80901842,
+        0.84203729, 0.80901842, 0.86854223, 0.80901842, 0.89033019,
+        0.80901842, 0.90307727, 0.80901842, 0.90380728, 0.80901842,
+        0.85674978, 0.80901842, 0.88347934, 0.80901842, 0.89965184,
+        0.80901842, 0.90380728, 0.80901842, 0.90380728, 0.80901842,
+        0.86517296, 0.80901842, 0.89128482, 0.80901842, 0.90257188,
+        0.80901842, 0.90380728, 0.80901842, 0.90380728, 0.80901842]),
+ &#39;split3_train_score&#39;: array([0.73657907, 0.81036613, 0.73657907, 0.81036613, 0.73657907,
+        0.81036613, 0.73657907, 0.81036613, 0.73657907, 0.81036613,
+        0.79093666, 0.81092767, 0.78666891, 0.81092767, 0.77818958,
+        0.81092767, 0.76005166, 0.81092767, 0.7425876 , 0.81092767,
+        0.82373091, 0.81092767, 0.83529874, 0.81092767, 0.84237421,
+        0.81092767, 0.83557951, 0.81092767, 0.80727763, 0.81092767,
+        0.83361411, 0.81092767, 0.8552336 , 0.81092767, 0.87578616,
+        0.81092767, 0.8978549 , 0.81092767, 0.90571653, 0.81092767,
+        0.8434973 , 0.81092767, 0.87140611, 0.81092767, 0.89190252,
+        0.81092767, 0.90504268, 0.81092767, 0.90571653, 0.81092767,
+        0.85966981, 0.81092767, 0.88409704, 0.81092767, 0.90111186,
+        0.81092767, 0.90571653, 0.81092767, 0.90571653, 0.81092767,
+        0.86736298, 0.81092767, 0.89207098, 0.81092767, 0.90487421,
+        0.81092767, 0.90571653, 0.81092767, 0.90571653, 0.81092767]),
+ &#39;split4_train_score&#39;: array([0.73657907, 0.80851303, 0.73657907, 0.80851303, 0.73657907,
+        0.80851303, 0.73657907, 0.80851303, 0.73657907, 0.80851303,
+        0.79082435, 0.80890611, 0.78728661, 0.80890611, 0.7785265 ,
+        0.80890611, 0.75982704, 0.80890611, 0.74303684, 0.80890611,
+        0.81968778, 0.80890611, 0.83181716, 0.80890611, 0.83821878,
+        0.80890611, 0.83221024, 0.80890611, 0.80317835, 0.80890611,
+        0.83063792, 0.80890611, 0.85141509, 0.80890611, 0.87387691,
+        0.80890611, 0.8953841 , 0.80890611, 0.90358266, 0.80890611,
+        0.84130728, 0.80890611, 0.86747529, 0.80890611, 0.88954403,
+        0.80890611, 0.90268419, 0.80890611, 0.90358266, 0.80890611,
+        0.85618823, 0.80890611, 0.88274933, 0.80890611, 0.89925876,
+        0.80890611, 0.90358266, 0.80890611, 0.90358266, 0.80890611,
+        0.86595912, 0.80890611, 0.89027403, 0.80890611, 0.90245957,
+        0.80890611, 0.90358266, 0.80890611, 0.90358266, 0.80890611]),
+ &#39;split5_train_score&#39;: array([0.73663522, 0.80851303, 0.73663522, 0.80851303, 0.73663522,
+        0.80851303, 0.73663522, 0.80851303, 0.73663522, 0.80851303,
+        0.7896451 , 0.80963612, 0.78582659, 0.80963612, 0.77751572,
+        0.80963612, 0.76055705, 0.80963612, 0.7419699 , 0.80963612,
+        0.82019317, 0.80963612, 0.83159254, 0.80963612, 0.8402965 ,
+        0.80963612, 0.83338949, 0.80963612, 0.80463836, 0.80963612,
+        0.83080638, 0.80963612, 0.85304358, 0.80963612, 0.87404537,
+        0.80963612, 0.89532794, 0.80963612, 0.90380728, 0.80963612,
+        0.84248652, 0.80963612, 0.86803684, 0.80963612, 0.89072327,
+        0.80963612, 0.90296496, 0.80963612, 0.90380728, 0.80963612,
+        0.85674978, 0.80963612, 0.88387242, 0.80963612, 0.8990903 ,
+        0.80963612, 0.90380728, 0.80963612, 0.90380728, 0.80963612,
+        0.8644991 , 0.80963612, 0.89128482, 0.80963612, 0.9027965 ,
+        0.80963612, 0.90380728, 0.80963612, 0.90380728, 0.80963612]),
+ &#39;split6_train_score&#39;: array([0.73663522, 0.80823226, 0.73663522, 0.80823226, 0.73663522,
+        0.80823226, 0.73663522, 0.80823226, 0.73663522, 0.80823226,
+        0.79132974, 0.80884996, 0.78919587, 0.80884996, 0.77785265,
+        0.80884996, 0.76139937, 0.80884996, 0.74410377, 0.80884996,
+        0.82249551, 0.80884996, 0.83338949, 0.80884996, 0.84052111,
+        0.80884996, 0.83395103, 0.80884996, 0.80418913, 0.80884996,
+        0.83209793, 0.80884996, 0.85287511, 0.80884996, 0.87415768,
+        0.80884996, 0.89544025, 0.80884996, 0.90380728, 0.80884996,
+        0.84327269, 0.80884996, 0.8682053 , 0.80884996, 0.88971249,
+        0.80884996, 0.90313342, 0.80884996, 0.90380728, 0.80884996,
+        0.85742363, 0.80884996, 0.88314241, 0.80884996, 0.899708  ,
+        0.80884996, 0.90380728, 0.80884996, 0.90380728, 0.80884996,
+        0.8651168 , 0.80884996, 0.89038634, 0.80884996, 0.9027965 ,
+        0.80884996, 0.90380728, 0.80884996, 0.90380728, 0.80884996]),
+ &#39;split7_train_score&#39;: array([0.73659386, 0.80857993, 0.73659386, 0.80857993, 0.73659386,
+        0.80857993, 0.73659386, 0.80857993, 0.73659386, 0.80857993,
+        0.79038688, 0.8093099 , 0.78808468, 0.8093099 , 0.77814588,
+        0.8093099 , 0.75714526, 0.8093099 , 0.74102982, 0.8093099 ,
+        0.82138245, 0.8093099 , 0.8337919 , 0.8093099 , 0.83895783,
+        0.8093099 , 0.83289348, 0.8093099 , 0.80217867, 0.8093099 ,
+        0.8318266 , 0.8093099 , 0.85277107, 0.8093099 , 0.87394014,
+        0.8093099 , 0.89572688, 0.8093099 , 0.90414959, 0.8093099 ,
+        0.84288843, 0.8093099 , 0.86720198, 0.8093099 , 0.88977483,
+        0.8093099 , 0.90302656, 0.8093099 , 0.90414959, 0.8093099 ,
+        0.85698242, 0.8093099 , 0.882419  , 0.8093099 , 0.90021899,
+        0.8093099 , 0.90414959, 0.8093099 , 0.90414959, 0.8093099 ,
+        0.86461901, 0.8093099 , 0.88988714, 0.8093099 , 0.90302656,
+        0.8093099 , 0.90414959, 0.8093099 , 0.90414959, 0.8093099 ]),
+ &#39;split8_train_score&#39;: array([0.73659386, 0.80869223, 0.73659386, 0.80869223, 0.73659386,
+        0.80869223, 0.73659386, 0.80869223, 0.73659386, 0.80869223,
+        0.79072379, 0.80959066, 0.78673704, 0.80959066, 0.778932  ,
+        0.80959066, 0.75989668, 0.80959066, 0.74423045, 0.80959066,
+        0.82031557, 0.80959066, 0.83339884, 0.80959066, 0.83918244,
+        0.80959066, 0.83407266, 0.80959066, 0.803414  , 0.80959066,
+        0.83053512, 0.80959066, 0.85338874, 0.80959066, 0.87517547,
+        0.80959066, 0.89668145, 0.80959066, 0.90532877, 0.80959066,
+        0.84300073, 0.80959066, 0.86860576, 0.80959066, 0.89078556,
+        0.80959066, 0.90437419, 0.80959066, 0.90532877, 0.80959066,
+        0.857937  , 0.80959066, 0.88275591, 0.80959066, 0.90089281,
+        0.80959066, 0.90532877, 0.80959066, 0.90532877, 0.80959066,
+        0.86591049, 0.80959066, 0.8925824 , 0.80959066, 0.90409344,
+        0.80959066, 0.90532877, 0.80959066, 0.90532877, 0.80959066]),
+ &#39;split9_train_score&#39;: array([0.73659386, 0.80959066, 0.73659386, 0.80959066, 0.73659386,
+        0.80959066, 0.73659386, 0.80959066, 0.73659386, 0.80959066,
+        0.7909484 , 0.81060138, 0.7871301 , 0.81060138, 0.77837049,
+        0.81060138, 0.75995283, 0.81060138, 0.74400584, 0.81060138,
+        0.82076478, 0.81060138, 0.83244427, 0.81060138, 0.83828401,
+        0.81060138, 0.83440957, 0.81060138, 0.80493009, 0.81060138,
+        0.83126509, 0.81060138, 0.85215341, 0.81060138, 0.87298557,
+        0.81060138, 0.89527767, 0.81060138, 0.90353192, 0.81060138,
+        0.84277612, 0.81060138, 0.86793194, 0.81060138, 0.88994329,
+        0.81060138, 0.90280195, 0.81060138, 0.90353192, 0.81060138,
+        0.85591555, 0.81060138, 0.88309282, 0.81060138, 0.89937672,
+        0.81060138, 0.90353192, 0.81060138, 0.90353192, 0.81060138,
+        0.86478747, 0.81060138, 0.89016789, 0.81060138, 0.90268965,
+        0.81060138, 0.90353192, 0.81060138, 0.90353192, 0.81060138]),
+ &#39;mean_train_score&#39;: array([0.73659473, 0.80914518, 0.73659473, 0.80914518, 0.73659473,
+        0.80914518, 0.73659473, 0.80914518, 0.73659473, 0.80914518,
+        0.79075487, 0.80987517, 0.78759343, 0.80987517, 0.77823262,
+        0.80987517, 0.7598311 , 0.80987517, 0.74286147, 0.80987517,
+        0.82144844, 0.80987517, 0.83338668, 0.80987517, 0.8397152 ,
+        0.80987517, 0.83411107, 0.80987517, 0.80430475, 0.80987517,
+        0.83168523, 0.80987517, 0.85296744, 0.80987517, 0.87447988,
+        0.80987517, 0.89604847, 0.80987517, 0.90435359, 0.80987517,
+        0.84288225, 0.80987517, 0.86857815, 0.80987517, 0.89071951,
+        0.80987517, 0.90356744, 0.80987517, 0.90435359, 0.80987517,
+        0.85736427, 0.80987517, 0.88355431, 0.80987517, 0.90012522,
+        0.80987517, 0.90435359, 0.80987517, 0.90435359, 0.80987517,
+        0.86557393, 0.80987517, 0.89130912, 0.80987517, 0.90332598,
+        0.80987517, 0.90435359, 0.80987517, 0.90435359, 0.80987517]),
+ &#39;std_train_score&#39;: array([2.12321820e-05, 7.77614565e-04, 2.12321820e-05, 7.77614565e-04,
+        2.12321820e-05, 7.77614565e-04, 2.12321820e-05, 7.77614565e-04,
+        2.12321820e-05, 7.77614565e-04, 8.44648981e-04, 8.61318753e-04,
+        1.11406911e-03, 8.61318753e-04, 5.95848731e-04, 8.61318753e-04,
+        1.16040988e-03, 8.61318753e-04, 9.84463126e-04, 8.61318753e-04,
+        1.19148213e-03, 8.61318753e-04, 1.11967254e-03, 8.61318753e-04,
+        1.42445663e-03, 8.61318753e-04, 1.36003331e-03, 8.61318753e-04,
+        1.36063816e-03, 8.61318753e-04, 8.79266077e-04, 8.61318753e-04,
+        9.25994654e-04, 8.61318753e-04, 1.15109623e-03, 8.61318753e-04,
+        1.10466654e-03, 8.61318753e-04, 8.33256399e-04, 8.61318753e-04,
+        7.76081494e-04, 8.61318753e-04, 1.24973107e-03, 8.61318753e-04,
+        1.14538469e-03, 8.61318753e-04, 8.63449736e-04, 8.61318753e-04,
+        8.33256399e-04, 8.61318753e-04, 1.16287023e-03, 8.61318753e-04,
+        9.87435863e-04, 8.61318753e-04, 8.54350131e-04, 8.61318753e-04,
+        8.33256399e-04, 8.61318753e-04, 8.33256399e-04, 8.61318753e-04,
+        9.79422296e-04, 8.61318753e-04, 1.09078731e-03, 8.61318753e-04,
+        8.84280160e-04, 8.61318753e-04, 8.33256399e-04, 8.61318753e-04,
+        8.33256399e-04, 8.61318753e-04])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Covert the results in data format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_svc</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">svc_grid_fit</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_result_svc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_fit_time</th>
+      <th>std_fit_time</th>
+      <th>mean_score_time</th>
+      <th>std_score_time</th>
+      <th>param_C</th>
+      <th>param_gamma</th>
+      <th>param_kernel</th>
+      <th>params</th>
+      <th>split0_test_score</th>
+      <th>split1_test_score</th>
+      <th>...</th>
+      <th>split2_train_score</th>
+      <th>split3_train_score</th>
+      <th>split4_train_score</th>
+      <th>split5_train_score</th>
+      <th>split6_train_score</th>
+      <th>split7_train_score</th>
+      <th>split8_train_score</th>
+      <th>split9_train_score</th>
+      <th>mean_train_score</th>
+      <th>std_train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>41.706019</td>
+      <td>1.619968</td>
+      <td>1.969547</td>
+      <td>0.201109</td>
+      <td>0.01</td>
+      <td>0.1</td>
+      <td>rbf</td>
+      <td>{'C': 0.01, 'gamma': 0.1, 'kernel': 'rbf'}</td>
+      <td>0.736736</td>
+      <td>0.736736</td>
+      <td>...</td>
+      <td>0.736579</td>
+      <td>0.736579</td>
+      <td>0.736579</td>
+      <td>0.736635</td>
+      <td>0.736635</td>
+      <td>0.736594</td>
+      <td>0.736594</td>
+      <td>0.736594</td>
+      <td>0.736595</td>
+      <td>0.000021</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>37.579594</td>
+      <td>1.390514</td>
+      <td>1.186453</td>
+      <td>0.085674</td>
+      <td>0.01</td>
+      <td>0.1</td>
+      <td>linear</td>
+      <td>{'C': 0.01, 'gamma': 0.1, 'kernel': 'linear'}</td>
+      <td>0.803941</td>
+      <td>0.793835</td>
+      <td>...</td>
+      <td>0.808794</td>
+      <td>0.810366</td>
+      <td>0.808513</td>
+      <td>0.808513</td>
+      <td>0.808232</td>
+      <td>0.808580</td>
+      <td>0.808692</td>
+      <td>0.809591</td>
+      <td>0.809145</td>
+      <td>0.000778</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>40.057631</td>
+      <td>2.157766</td>
+      <td>2.423865</td>
+      <td>0.406386</td>
+      <td>0.01</td>
+      <td>0.25</td>
+      <td>rbf</td>
+      <td>{'C': 0.01, 'gamma': 0.25, 'kernel': 'rbf'}</td>
+      <td>0.736736</td>
+      <td>0.736736</td>
+      <td>...</td>
+      <td>0.736579</td>
+      <td>0.736579</td>
+      <td>0.736579</td>
+      <td>0.736635</td>
+      <td>0.736635</td>
+      <td>0.736594</td>
+      <td>0.736594</td>
+      <td>0.736594</td>
+      <td>0.736595</td>
+      <td>0.000021</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>38.584368</td>
+      <td>4.628833</td>
+      <td>1.412633</td>
+      <td>0.367932</td>
+      <td>0.01</td>
+      <td>0.25</td>
+      <td>linear</td>
+      <td>{'C': 0.01, 'gamma': 0.25, 'kernel': 'linear'}</td>
+      <td>0.803941</td>
+      <td>0.793835</td>
+      <td>...</td>
+      <td>0.808794</td>
+      <td>0.810366</td>
+      <td>0.808513</td>
+      <td>0.808513</td>
+      <td>0.808232</td>
+      <td>0.808580</td>
+      <td>0.808692</td>
+      <td>0.809591</td>
+      <td>0.809145</td>
+      <td>0.000778</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.382801</td>
+      <td>8.022057</td>
+      <td>3.133083</td>
+      <td>0.934870</td>
+      <td>0.01</td>
+      <td>0.5</td>
+      <td>rbf</td>
+      <td>{'C': 0.01, 'gamma': 0.5, 'kernel': 'rbf'}</td>
+      <td>0.736736</td>
+      <td>0.736736</td>
+      <td>...</td>
+      <td>0.736579</td>
+      <td>0.736579</td>
+      <td>0.736579</td>
+      <td>0.736635</td>
+      <td>0.736635</td>
+      <td>0.736594</td>
+      <td>0.736594</td>
+      <td>0.736594</td>
+      <td>0.736595</td>
+      <td>0.000021</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>643.097507</td>
+      <td>17.460349</td>
+      <td>0.596212</td>
+      <td>0.027681</td>
+      <td>10</td>
+      <td>0.5</td>
+      <td>linear</td>
+      <td>{'C': 10, 'gamma': 0.5, 'kernel': 'linear'}</td>
+      <td>0.803436</td>
+      <td>0.796867</td>
+      <td>...</td>
+      <td>0.809018</td>
+      <td>0.810928</td>
+      <td>0.808906</td>
+      <td>0.809636</td>
+      <td>0.808850</td>
+      <td>0.809310</td>
+      <td>0.809591</td>
+      <td>0.810601</td>
+      <td>0.809875</td>
+      <td>0.000861</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>98.033350</td>
+      <td>4.721209</td>
+      <td>2.535846</td>
+      <td>0.122627</td>
+      <td>10</td>
+      <td>1</td>
+      <td>rbf</td>
+      <td>{'C': 10, 'gamma': 1, 'kernel': 'rbf'}</td>
+      <td>0.793835</td>
+      <td>0.779687</td>
+      <td>...</td>
+      <td>0.903807</td>
+      <td>0.905717</td>
+      <td>0.903583</td>
+      <td>0.903807</td>
+      <td>0.903807</td>
+      <td>0.904150</td>
+      <td>0.905329</td>
+      <td>0.903532</td>
+      <td>0.904354</td>
+      <td>0.000833</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>654.046519</td>
+      <td>26.045299</td>
+      <td>0.593763</td>
+      <td>0.034749</td>
+      <td>10</td>
+      <td>1</td>
+      <td>linear</td>
+      <td>{'C': 10, 'gamma': 1, 'kernel': 'linear'}</td>
+      <td>0.803436</td>
+      <td>0.796867</td>
+      <td>...</td>
+      <td>0.809018</td>
+      <td>0.810928</td>
+      <td>0.808906</td>
+      <td>0.809636</td>
+      <td>0.808850</td>
+      <td>0.809310</td>
+      <td>0.809591</td>
+      <td>0.810601</td>
+      <td>0.809875</td>
+      <td>0.000861</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>131.024122</td>
+      <td>10.375285</td>
+      <td>3.702564</td>
+      <td>0.143556</td>
+      <td>10</td>
+      <td>5</td>
+      <td>rbf</td>
+      <td>{'C': 10, 'gamma': 5, 'kernel': 'rbf'}</td>
+      <td>0.773118</td>
+      <td>0.764528</td>
+      <td>...</td>
+      <td>0.903807</td>
+      <td>0.905717</td>
+      <td>0.903583</td>
+      <td>0.903807</td>
+      <td>0.903807</td>
+      <td>0.904150</td>
+      <td>0.905329</td>
+      <td>0.903532</td>
+      <td>0.904354</td>
+      <td>0.000833</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>639.168699</td>
+      <td>94.895848</td>
+      <td>0.522562</td>
+      <td>0.140111</td>
+      <td>10</td>
+      <td>5</td>
+      <td>linear</td>
+      <td>{'C': 10, 'gamma': 5, 'kernel': 'linear'}</td>
+      <td>0.803436</td>
+      <td>0.796867</td>
+      <td>...</td>
+      <td>0.809018</td>
+      <td>0.810928</td>
+      <td>0.808906</td>
+      <td>0.809636</td>
+      <td>0.808850</td>
+      <td>0.809310</td>
+      <td>0.809591</td>
+      <td>0.810601</td>
+      <td>0.809875</td>
+      <td>0.000861</td>
+    </tr>
+  </tbody>
+</table>
+<p>70 rows × 33 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_result_svc</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;cv_result_svc.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the top ranked test score for all the three classifiers</span>
+<span class="n">rfc_top_rank</span> <span class="o">=</span> <span class="n">cv_result_rfc</span><span class="p">[</span><span class="n">cv_result_rfc</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lrc_top_rank</span> <span class="o">=</span> <span class="n">cv_result_lrc</span><span class="p">[</span><span class="n">cv_result_lrc</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">svc_top_rank</span> <span class="o">=</span> <span class="n">cv_result_svc</span><span class="p">[</span><span class="n">cv_result_svc</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Print the train and test score for three classifiers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;                    &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;  Random Forest    &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;  Logistic Regression  &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;  Support Vector   &#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;                    &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;  ---------------- &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;  -------------------- &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;  ---------------- &#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;  Mean Test Score   : &#39;</span><span class="p">,</span> 
+       <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">rfc_top_rank</span>[&#39;mean_test_score&#39;]),
+       <span class="s1">&#39;            &#39;</span><span class="p">,</span>
+       <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">lrc_top_rank</span>[&#39;mean_test_score&#39;]),
+       <span class="s1">&#39;                &#39;</span><span class="p">,</span>
+       <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">svc_top_rank</span>[&#39;mean_test_score&#39;])
+       <span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;  Mean Train Score  : &#39;</span><span class="p">,</span> 
+       <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">rfc_top_rank</span>[&#39;mean_train_score&#39;]),
+       <span class="s1">&#39;            &#39;</span><span class="p">,</span>
+       <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">lrc_top_rank</span>[&#39;mean_train_score&#39;]),
+       <span class="s1">&#39;                &#39;</span><span class="p">,</span>
+       <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">svc_top_rank</span>[&#39;mean_train_score&#39;])
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       Random Forest       Logistic Regression     Support Vector   
+                       ----------------    --------------------    ---------------- 
+  Mean Test Score   :  0.8184              0.8146                  0.8144
+  Mean Train Score  :  0.8385              0.8148                  0.8429
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is Random Forest which gives us the better accuracy among all others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the best parameters of the Random Forest Classifier</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> The best Parameters are : &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rfc_grid_fit</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> The best Parameters are : 
+{&#39;min_samples_leaf&#39;: 5, &#39;min_samples_split&#39;: 16, &#39;n_estimators&#39;: 10}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="perform-randomizedsearchcv-for-hyperparameter-tuning">
+<h1>Perform RandomizedSearchCV for hyperparameter tuning<a class="headerlink" href="#perform-randomizedsearchcv-for-hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;04+-+decisiontreeAdultIncome.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Dummy variables</span>
+<span class="n">data_prep</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create X and Y Variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data_prep</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">data_prep</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import and create Random Forest Classifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import RandomizedSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define parameters for Random Forest</span>
+<span class="n">rfc_param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> 
+            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:[</span><span class="mi">8</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+            <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The parameters results in 3 x 2 x 5 = 30 different combinations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the RandomizedSearchCV object</span>
+<span class="n">rfc_rs</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfc</span><span class="p">,</span> 
+                        <span class="n">param_distributions</span><span class="o">=</span><span class="n">rfc_param</span><span class="p">,</span>
+                        <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+                        <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#n_iter selects 10 combinations out of 30 possible</span>
+<span class="c1">#Now 10 x 10 = 100 jobs will be executed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the data to RandomizedSearchCV object</span>
+<span class="n">rfc_rs_fit</span> <span class="o">=</span> <span class="n">rfc_rs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the results of RandomizedSearch</span>
+<span class="n">cv_results_rfc_rs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">rfc_rs_fit</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the best parameters of Randomized Search for Random Forest</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> The best Parameters are : &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rfc_rs_fit</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> The best Parameters are : 
+{&#39;n_estimators&#39;: 15, &#39;min_samples_split&#39;: 16, &#39;min_samples_leaf&#39;: 5}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Machine Learning/Hyperparameter Tuning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Shivam Gupta<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

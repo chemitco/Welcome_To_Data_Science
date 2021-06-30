@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Learning</title>
+    <title>Evaluate Classification models &#8212; Learning</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -89,91 +89,13 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Python
+  Get started
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../Python/Python%20Basics.html">
-   Python Basics
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Numpy
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Numpy/Numpy.html">
-   Numpy
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Pandas
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Pandas/Pandas%20Basics.html">
-   Pandas Basics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Pandas/Pandas%20Explanatory.html">
-   Pandas Explanatory
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data Visualisation
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Data%20Visualisation/Matplotlib.html">
-   Matplotlib
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Data%20Visualisation/Seaborn.html">
-   Seaborn
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Machine Learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Data%20Pre%20Processing/Data%20Pre%20Processing.html">
-   Data Processing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Simple%20Linear%20Regression.html">
-   Simple Linear  Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
-   Multiple Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
-   Kaggle Bike Demand Prediction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Logistic%20Regression/Logistics%20Regression.html">
-   Logistics Regression
+   1. Python Basics
   </a>
  </li>
 </ul>
@@ -217,7 +139,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Machine Learning/Simple Linear Regression/Multiple Linear Regression.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Machine Learning/Evalaute Classification Models/Evaluate Classification models.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -255,7 +177,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Learning/Simple Linear Regression/Multiple Linear Regression.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Learning/Evalaute Classification Models/Evaluate Classification models.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -263,7 +185,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Learning/Simple Linear Regression/Multiple Linear Regression.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Learning/Evalaute Classification Models/Evaluate Classification models.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -277,14 +199,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -293,8 +207,17 @@
         
               <div>
                 
-  <p>In multiple linear regression, there are many independent variable i.e. features.
-y=b0+b1x1+b2x2+b3x3+……..</p>
+  <div class="section" id="evaluate-classification-models">
+<h1>Evaluate Classification models<a class="headerlink" href="#evaluate-classification-models" title="Permalink to this headline">¶</a></h1>
+<p>Evaluation- How good is the model in predicting diffrent classes?</p>
+<ol class="simple">
+<li><p>Loan Approval Prediction</p></li>
+<li><p>Adult Income Class Prediction</p></li>
+<li><p>Fraud prediction (Hypothetical)</p></li>
+</ol>
+<p><img alt="" src="../../_images/12.png" /></p>
+<p><img alt="" src="../../_images/13.png" /></p>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -309,7 +232,7 @@ y=b0+b1x1+b2x2+b3x3+……..</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Machine Learning/Simple Linear Regression"
+            path: "./Machine Learning/Evalaute Classification Models"
         },
         predefinedOutput: true
     }
@@ -332,7 +255,7 @@ y=b0+b1x1+b2x2+b3x3+……..</p>
         
           By Shivam Gupta<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>

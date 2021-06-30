@@ -1,0 +1,1997 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Selection &#8212; Learning</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to Data Science
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Python/Python%20Basics.html">
+   1. Python Basics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Machine Learning/Feature Selection/Feature Selection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/chemitco/Welcome_To_Data_Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/chemitco/Welcome_To_Data_Science/master?urlpath=tree/book/Machine Learning/Feature Selection/Feature Selection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/chemitco/Welcome_To_Data_Science/blob/master/book/Machine Learning/Feature Selection/Feature Selection.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Feature Selection
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#univariate-features-selection">
+   1) Univariate Features Selection-
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chi-square-feature-selection-method">
+   2) Chi Square feature selection method-
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selection-transform">
+   Selection Transform
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="feature-selection">
+<h1>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
+<p>This can help us to high performance model with very features.</p>
+<p>If there are thousands of features in data set, then it will be impossible to deal with them manually using just the domain and our business understanding.</p>
+<p>Then the automatic feature selection or automatic features elemination becoem the key.</p>
+<p>This is the where the knowledge of statistics is going to play a key role in undertanding the process.</p>
+<p>Curse of Dimensionality- In order to increase the performance of model, we add the features but there will be an optimum point from which the performance of model will be going down.</p>
+<p><img alt="" src="../../_images/15.png" /></p>
+<p>If the quality of the data is not good, the output will also be bad. It can have a bad effect on the R-squared value. There are numerous benifits that we can get by selecting or rejecting some of the features. Having fewer features simplifies the model and we will be in a better position to explain the prediction power or the behaviour of our model. Secondly removing the unwanted features, it will remove all the noise. The training time will be much shorter. It will also reduce overfitting. We will also avoid the curse of dimensionality.</p>
+<p>Scikit Learn provides multiple ways of features selection.</p>
+<p><img alt="" src="../../_images/16.png" /></p>
+</div>
+<div class="section" id="univariate-features-selection">
+<h1>1) Univariate Features Selection-<a class="headerlink" href="#univariate-features-selection" title="Permalink to this headline">¶</a></h1>
+<p>Step1- get all independent features</p>
+<p>Step2- Apply relevant statistical method.</p>
+<p>Step3- Get P value and compare with the significance level.</p>
+<p>Step4- Select the feature if P&lt; alpha value.</p>
+<p><img alt="" src="../../_images/17.png" /></p>
+<p><img alt="" src="../../_images/19.png" />
+<img alt="" src="../../_images/20.png" />
+<img alt="" src="../../_images/211.png" />
+<img alt="" src="../../_images/22.png" />
+<img alt="" src="../../_images/23.png" /></p>
+<p>F-Test for Regression and Classification</p>
+<p><img alt="" src="../../_images/24.png" /></p>
+<p><img alt="" src="../../_images/25.png" /></p>
+<p>Hands on F Test</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the file</span>
+<span class="n">f</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Students2.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hours</th>
+      <th>sHours</th>
+      <th>hoursplayed</th>
+      <th>income</th>
+      <th>distance</th>
+      <th>calories</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>6</td>
+      <td>6</td>
+      <td>146</td>
+      <td>9</td>
+      <td>2491</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>7</td>
+      <td>2</td>
+      <td>112</td>
+      <td>5</td>
+      <td>2303</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>6</td>
+      <td>1</td>
+      <td>84</td>
+      <td>7</td>
+      <td>2475</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>8</td>
+      <td>5</td>
+      <td>134</td>
+      <td>0</td>
+      <td>2282</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>8</td>
+      <td>5</td>
+      <td>104</td>
+      <td>8</td>
+      <td>2359</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>80</td>
+      <td>1</td>
+      <td>2354</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>6</td>
+      <td>3</td>
+      <td>93</td>
+      <td>0</td>
+      <td>2943</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3</td>
+      <td>6</td>
+      <td>3</td>
+      <td>83</td>
+      <td>7</td>
+      <td>2119</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3</td>
+      <td>7</td>
+      <td>6</td>
+      <td>139</td>
+      <td>1</td>
+      <td>2511</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3</td>
+      <td>7</td>
+      <td>5</td>
+      <td>138</td>
+      <td>10</td>
+      <td>2666</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>8</td>
+      <td>5</td>
+      <td>98</td>
+      <td>2</td>
+      <td>2934</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>4</td>
+      <td>8</td>
+      <td>1</td>
+      <td>90</td>
+      <td>0</td>
+      <td>2838</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4</td>
+      <td>7</td>
+      <td>3</td>
+      <td>140</td>
+      <td>7</td>
+      <td>2102</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4</td>
+      <td>7</td>
+      <td>6</td>
+      <td>144</td>
+      <td>3</td>
+      <td>2560</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5</td>
+      <td>8</td>
+      <td>2</td>
+      <td>144</td>
+      <td>5</td>
+      <td>2068</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>119</td>
+      <td>6</td>
+      <td>2541</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>6</td>
+      <td>6</td>
+      <td>1</td>
+      <td>140</td>
+      <td>6</td>
+      <td>2690</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6</td>
+      <td>7</td>
+      <td>1</td>
+      <td>85</td>
+      <td>3</td>
+      <td>2956</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7</td>
+      <td>8</td>
+      <td>2</td>
+      <td>140</td>
+      <td>8</td>
+      <td>2239</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7</td>
+      <td>8</td>
+      <td>6</td>
+      <td>107</td>
+      <td>0</td>
+      <td>2703</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>85</td>
+      <td>7</td>
+      <td>2603</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7</td>
+      <td>6</td>
+      <td>3</td>
+      <td>109</td>
+      <td>0</td>
+      <td>2031</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>8</td>
+      <td>7</td>
+      <td>5</td>
+      <td>108</td>
+      <td>0</td>
+      <td>2885</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>8</td>
+      <td>8</td>
+      <td>1</td>
+      <td>150</td>
+      <td>8</td>
+      <td>2153</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>9</td>
+      <td>8</td>
+      <td>4</td>
+      <td>150</td>
+      <td>9</td>
+      <td>2384</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>9</td>
+      <td>5</td>
+      <td>5</td>
+      <td>84</td>
+      <td>10</td>
+      <td>2882</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>9</td>
+      <td>8</td>
+      <td>5</td>
+      <td>127</td>
+      <td>5</td>
+      <td>2271</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>10</td>
+      <td>8</td>
+      <td>6</td>
+      <td>95</td>
+      <td>6</td>
+      <td>2264</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>10</td>
+      <td>8</td>
+      <td>5</td>
+      <td>72</td>
+      <td>5</td>
+      <td>2522</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>11</td>
+      <td>7</td>
+      <td>3</td>
+      <td>89</td>
+      <td>3</td>
+      <td>2279</td>
+      <td>79</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Prediction - Marks Obtained</p>
+<p>Discription of the dataset</p>
+<p>Hours- Number of hours of study</p>
+<p>sHours- Number of hours slept</p>
+<p>hoursplayed- Number of hours the student played during the day.</p>
+<p>income- family income</p>
+<p>distnace- how far the student stay from the school.</p>
+<p>calories- eating habit of the student</p>
+<p>We will use f_regression here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the coulmn into Dependent (Y) and independent(X) features</span>
+<span class="n">X</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Y</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create and train the simple linear regression model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create Regressor</span>
+<span class="n">std_reg</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the dataset by rows into training and test datasets.</span>
+<span class="n">x_train</span><span class="p">,</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#predict Y value from test data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predict</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([37.4304362 , 56.8479958 , 38.85467354, 38.975673  , 82.86947672,
+       59.67634562, 52.29968093, 81.17290759, 67.77562938, 63.7577854 ,
+       82.18209854, 86.65908659])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slr_rmse</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_predict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slr_rmse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.9822067153575125
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import f_regreesion from sklearn</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">f_regression</span> <span class="k">as</span> <span class="n">fr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.41905913e+02, 4.57019756e+00, 1.44882087e-03, 1.59990513e-01,
+        3.16606568e-03, 4.04208927e-01]),
+ array([1.77038466e-12, 4.14028344e-02, 9.69907241e-01, 6.92200477e-01,
+        9.55528076e-01, 5.30086171e-01]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">=</span> <span class="n">fr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.41905913e+02, 4.57019756e+00, 1.44882087e-03, 1.59990513e-01,
+        3.16606568e-03, 4.04208927e-01]),
+ array([1.77038466e-12, 4.14028344e-02, 9.69907241e-01, 6.92200477e-01,
+        9.55528076e-01, 5.30086171e-01]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_formatter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:.2f}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.41905913e+02, 4.57019756e+00, 1.44882087e-03, 1.59990513e-01,
+       3.16606568e-03, 4.04208927e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.77038466e-12, 4.14028344e-02, 9.69907241e-01, 6.92200477e-01,
+       9.55528076e-01, 5.30086171e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score_output</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span><span class="n">f_score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score_output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;141.91%&#39;, &#39;4.57%&#39;, &#39;0.00%&#39;, &#39;0.16%&#39;, &#39;0.00%&#39;, &#39;0.40%&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values_output</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span><span class="n">p_values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values_output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;0.00%&#39;, &#39;0.04%&#39;, &#39;0.97%&#39;, &#39;0.69%&#39;, &#39;0.96%&#39;, &#39;0.53%&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first feature of number of hours of study as well as the second the number of hours slept have a P value less tha 0.05 while others have P value much higher than 0.05. We will drop the feature except hours and shours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Print the table of Features, F-Score and P-values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hours&#39;, &#39;sHours&#39;, &#39;hoursplayed&#39;, &#39;income&#39;, &#39;distance&#39;, &#39;calories&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Feature &quot;</span><span class="p">,</span> <span class="s2">&quot;        F-score &quot;</span><span class="p">,</span><span class="s2">&quot;   P-Values &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------          -------    --------&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+    <span class="n">f1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%4.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f_score</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">p1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.6f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="n">f1</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s2">&quot;   &quot;</span><span class="p">,</span><span class="n">p1</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ 
+ 
+ Feature          F-score     P-Values 
+ -------          -------    --------
+   Hours          141.91     0.000000
+   sHours           4.57     0.041403
+   hoursplayed      0.00     0.969907
+   income           0.16     0.692200
+   distance         0.00     0.955528
+   calories         0.40     0.530086
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#will it have an impact after dropping </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Perform the m=linear regression with reduced features</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train_n</span> <span class="o">=</span><span class="n">x_train</span><span class="p">[[</span><span class="s1">&#39;Hours&#39;</span><span class="p">,</span><span class="s1">&#39;sHours&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_test_n</span> <span class="o">=</span><span class="n">x_test</span><span class="p">[[</span><span class="s1">&#39;Hours&#39;</span><span class="p">,</span><span class="s1">&#39;sHours&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data nd predict Y for the new model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_reg</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_n</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#predict the new Y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predict_n</span><span class="o">=</span><span class="n">std_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the RMSE with reduced features</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rmse_n</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_predict_n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rmse_n</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0972172810811305
+</pre></div>
+</div>
+</div>
+</div>
+<p>The removal of irrelevant feature, and those with higher p value has resulted in a reduction of our error.</p>
+</div>
+<div class="section" id="chi-square-feature-selection-method">
+<h1>2) Chi Square feature selection method-<a class="headerlink" href="#chi-square-feature-selection-method" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="../../_images/30.png" /></p>
+<p>This is data set. It has two variables- flight status and weather.
+<img alt="" src="../../_images/31.png" /></p>
+<p><img alt="" src="../../_images/32.png" /></p>
+<p><img alt="" src="../../_images/33.png" /></p>
+<p><img alt="" src="../../_images/34.png" /></p>
+<p><img alt="" src="../../_images/35.png" /></p>
+<p><img alt="" src="../../_images/36.png" /></p>
+<p><img alt="" src="../../_images/37.png" /></p>
+<p><img alt="" src="../../_images/38.png" /></p>
+<p><img alt="" src="../../_images/39.png" /></p>
+</div>
+<div class="section" id="selection-transform">
+<h1>Selection Transform<a class="headerlink" href="#selection-transform" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="../../_images/40.png" />
+<img alt="" src="../../_images/41.png" />
+<img alt="" src="../../_images/42.png" />
+<img alt="" src="../../_images/43.png" />
+<img alt="" src="../../_images/44.png" />
+<img alt="" src="../../_images/45.png" />
+<img alt="" src="../../_images/46.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Implement various features selections using Select Transform</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import pandas, read the file and split into X and Y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Students2.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hours</th>
+      <th>sHours</th>
+      <th>hoursplayed</th>
+      <th>income</th>
+      <th>distance</th>
+      <th>calories</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>6</td>
+      <td>6</td>
+      <td>146</td>
+      <td>9</td>
+      <td>2491</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>7</td>
+      <td>2</td>
+      <td>112</td>
+      <td>5</td>
+      <td>2303</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>6</td>
+      <td>1</td>
+      <td>84</td>
+      <td>7</td>
+      <td>2475</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>8</td>
+      <td>5</td>
+      <td>134</td>
+      <td>0</td>
+      <td>2282</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>8</td>
+      <td>5</td>
+      <td>104</td>
+      <td>8</td>
+      <td>2359</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>80</td>
+      <td>1</td>
+      <td>2354</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>6</td>
+      <td>3</td>
+      <td>93</td>
+      <td>0</td>
+      <td>2943</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3</td>
+      <td>6</td>
+      <td>3</td>
+      <td>83</td>
+      <td>7</td>
+      <td>2119</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3</td>
+      <td>7</td>
+      <td>6</td>
+      <td>139</td>
+      <td>1</td>
+      <td>2511</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3</td>
+      <td>7</td>
+      <td>5</td>
+      <td>138</td>
+      <td>10</td>
+      <td>2666</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>8</td>
+      <td>5</td>
+      <td>98</td>
+      <td>2</td>
+      <td>2934</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>4</td>
+      <td>8</td>
+      <td>1</td>
+      <td>90</td>
+      <td>0</td>
+      <td>2838</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4</td>
+      <td>7</td>
+      <td>3</td>
+      <td>140</td>
+      <td>7</td>
+      <td>2102</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4</td>
+      <td>7</td>
+      <td>6</td>
+      <td>144</td>
+      <td>3</td>
+      <td>2560</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5</td>
+      <td>8</td>
+      <td>2</td>
+      <td>144</td>
+      <td>5</td>
+      <td>2068</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>119</td>
+      <td>6</td>
+      <td>2541</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>6</td>
+      <td>6</td>
+      <td>1</td>
+      <td>140</td>
+      <td>6</td>
+      <td>2690</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6</td>
+      <td>7</td>
+      <td>1</td>
+      <td>85</td>
+      <td>3</td>
+      <td>2956</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7</td>
+      <td>8</td>
+      <td>2</td>
+      <td>140</td>
+      <td>8</td>
+      <td>2239</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7</td>
+      <td>8</td>
+      <td>6</td>
+      <td>107</td>
+      <td>0</td>
+      <td>2703</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>85</td>
+      <td>7</td>
+      <td>2603</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7</td>
+      <td>6</td>
+      <td>3</td>
+      <td>109</td>
+      <td>0</td>
+      <td>2031</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>8</td>
+      <td>7</td>
+      <td>5</td>
+      <td>108</td>
+      <td>0</td>
+      <td>2885</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>8</td>
+      <td>8</td>
+      <td>1</td>
+      <td>150</td>
+      <td>8</td>
+      <td>2153</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>9</td>
+      <td>8</td>
+      <td>4</td>
+      <td>150</td>
+      <td>9</td>
+      <td>2384</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>9</td>
+      <td>5</td>
+      <td>5</td>
+      <td>84</td>
+      <td>10</td>
+      <td>2882</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>9</td>
+      <td>8</td>
+      <td>5</td>
+      <td>127</td>
+      <td>5</td>
+      <td>2271</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>10</td>
+      <td>8</td>
+      <td>6</td>
+      <td>95</td>
+      <td>6</td>
+      <td>2264</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>10</td>
+      <td>8</td>
+      <td>5</td>
+      <td>72</td>
+      <td>5</td>
+      <td>2522</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>11</td>
+      <td>7</td>
+      <td>3</td>
+      <td>89</td>
+      <td>3</td>
+      <td>2279</td>
+      <td>79</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split into X and Y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import various select transform along with the f_regression mode</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">SelectPercentile</span><span class="p">,</span><span class="n">GenericUnivariateSelect</span><span class="p">,</span> <span class="n">f_regression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectorK</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_regression</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_k</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_k</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[   0,    6, 2491],
+       [   1,    7, 2303],
+       [   1,    6, 2475],
+       [   1,    8, 2282],
+       [   1,    8, 2359],
+       [   2,    8, 2354],
+       [   2,    6, 2943],
+       [   3,    6, 2119],
+       [   3,    7, 2511],
+       [   3,    7, 2666],
+       [   3,    8, 2934],
+       [   4,    8, 2838],
+       [   4,    7, 2102],
+       [   4,    7, 2560],
+       [   5,    8, 2068],
+       [   5,    6, 2541],
+       [   6,    6, 2690],
+       [   6,    7, 2956],
+       [   7,    8, 2239],
+       [   7,    8, 2703],
+       [   7,    6, 2603],
+       [   7,    6, 2031],
+       [   8,    7, 2885],
+       [   8,    8, 2153],
+       [   9,    8, 2384],
+       [   9,    5, 2882],
+       [   9,    8, 2271],
+       [  10,    8, 2264],
+       [  10,    8, 2522],
+       [  11,    7, 2279]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_k</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the f_score and p_values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">scores_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.41905913e+02, 4.57019756e+00, 1.44882087e-03, 1.59990513e-01,
+       3.16606568e-03, 4.04208927e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">pvalues_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.77038466e-12, 4.14028344e-02, 9.69907241e-01, 6.92200477e-01,
+       9.55528076e-01, 5.30086171e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Print the column name with fscore and pvalues</span>
+<span class="c1">#print the table of features, F-score and P-Values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Feature &quot;</span><span class="p">,</span> <span class="s2">&quot;        F-score &quot;</span><span class="p">,</span><span class="s2">&quot;   P-Values &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------          -------    --------&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+    <span class="n">f1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%4.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f_score</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">p1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.6f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="n">f1</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s2">&quot;   &quot;</span><span class="p">,</span><span class="n">p1</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ 
+ 
+ Feature          F-score     P-Values 
+ -------          -------    --------
+   Hours          141.91     0.000000
+   sHours           4.57     0.041403
+   hoursplayed      0.00     0.969907
+   income           0.16     0.692200
+   distance         0.00     0.955528
+   calories         0.40     0.530086
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the selected column name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">get_support</span><span class="p">(</span><span class="n">indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_cols</span><span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_cols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hours&#39;, &#39;sHours&#39;, &#39;calories&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#SelectPercentile</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectorP</span><span class="o">=</span><span class="n">SelectPercentile</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_regression</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_p</span><span class="o">=</span><span class="n">selectorP</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[   0,    6, 2491],
+       [   1,    7, 2303],
+       [   1,    6, 2475],
+       [   1,    8, 2282],
+       [   1,    8, 2359],
+       [   2,    8, 2354],
+       [   2,    6, 2943],
+       [   3,    6, 2119],
+       [   3,    7, 2511],
+       [   3,    7, 2666],
+       [   3,    8, 2934],
+       [   4,    8, 2838],
+       [   4,    7, 2102],
+       [   4,    7, 2560],
+       [   5,    8, 2068],
+       [   5,    6, 2541],
+       [   6,    6, 2690],
+       [   6,    7, 2956],
+       [   7,    8, 2239],
+       [   7,    8, 2703],
+       [   7,    6, 2603],
+       [   7,    6, 2031],
+       [   8,    7, 2885],
+       [   8,    8, 2153],
+       [   9,    8, 2384],
+       [   9,    5, 2882],
+       [   9,    8, 2271],
+       [  10,    8, 2264],
+       [  10,    8, 2522],
+       [  11,    7, 2279]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the f_score and p_values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">scores_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.41905913e+02, 4.57019756e+00, 1.44882087e-03, 1.59990513e-01,
+       3.16606568e-03, 4.04208927e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">pvalues_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.77038466e-12, 4.14028344e-02, 9.69907241e-01, 6.92200477e-01,
+       9.55528076e-01, 5.30086171e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Print the column name with fscore and pvalues</span>
+<span class="c1">#print the table of features, F-score and P-Values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Feature &quot;</span><span class="p">,</span> <span class="s2">&quot;        F-score &quot;</span><span class="p">,</span><span class="s2">&quot;   P-Values &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -------          -------    --------&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+    <span class="n">f1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%4.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f_score</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">p1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.6f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="n">f1</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s2">&quot;   &quot;</span><span class="p">,</span><span class="n">p1</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ 
+ 
+ Feature          F-score     P-Values 
+ -------          -------    --------
+   Hours          141.91     0.000000
+   sHours           4.57     0.041403
+   hoursplayed      0.00     0.969907
+   income           0.16     0.692200
+   distance         0.00     0.955528
+   calories         0.40     0.530086
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the selected column name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span><span class="o">=</span> <span class="n">selectorK</span><span class="o">.</span><span class="n">get_support</span><span class="p">(</span><span class="n">indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_cols</span><span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_cols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hours&#39;, &#39;sHours&#39;, &#39;calories&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Implement GenericUnivariateSelect transform</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectorG1</span> <span class="o">=</span> <span class="n">GenericUnivariateSelect</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_regression</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span><span class="s1">&#39;k_best&#39;</span><span class="p">,</span><span class="n">param</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_g1</span><span class="o">=</span><span class="n">selectorG1</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_g1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[   0,    6, 2491],
+       [   1,    7, 2303],
+       [   1,    6, 2475],
+       [   1,    8, 2282],
+       [   1,    8, 2359],
+       [   2,    8, 2354],
+       [   2,    6, 2943],
+       [   3,    6, 2119],
+       [   3,    7, 2511],
+       [   3,    7, 2666],
+       [   3,    8, 2934],
+       [   4,    8, 2838],
+       [   4,    7, 2102],
+       [   4,    7, 2560],
+       [   5,    8, 2068],
+       [   5,    6, 2541],
+       [   6,    6, 2690],
+       [   6,    7, 2956],
+       [   7,    8, 2239],
+       [   7,    8, 2703],
+       [   7,    6, 2603],
+       [   7,    6, 2031],
+       [   8,    7, 2885],
+       [   8,    8, 2153],
+       [   9,    8, 2384],
+       [   9,    5, 2882],
+       [   9,    8, 2271],
+       [  10,    8, 2264],
+       [  10,    8, 2522],
+       [  11,    7, 2279]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectorG2</span> <span class="o">=</span> <span class="n">GenericUnivariateSelect</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_regression</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span><span class="s1">&#39;percentile&#39;</span><span class="p">,</span><span class="n">param</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_g2</span><span class="o">=</span><span class="n">selectorG2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_g2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[   0,    6, 2491],
+       [   1,    7, 2303],
+       [   1,    6, 2475],
+       [   1,    8, 2282],
+       [   1,    8, 2359],
+       [   2,    8, 2354],
+       [   2,    6, 2943],
+       [   3,    6, 2119],
+       [   3,    7, 2511],
+       [   3,    7, 2666],
+       [   3,    8, 2934],
+       [   4,    8, 2838],
+       [   4,    7, 2102],
+       [   4,    7, 2560],
+       [   5,    8, 2068],
+       [   5,    6, 2541],
+       [   6,    6, 2690],
+       [   6,    7, 2956],
+       [   7,    8, 2239],
+       [   7,    8, 2703],
+       [   7,    6, 2603],
+       [   7,    6, 2031],
+       [   8,    7, 2885],
+       [   8,    8, 2153],
+       [   9,    8, 2384],
+       [   9,    5, 2882],
+       [   9,    8, 2271],
+       [  10,    8, 2264],
+       [  10,    8, 2522],
+       [  11,    7, 2279]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Machine Learning/Feature Selection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Shivam Gupta<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

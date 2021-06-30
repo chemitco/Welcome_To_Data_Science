@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. Support Vector Machine &#8212; Learning</title>
+    <title>Support Vector Machine &#8212; Learning</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. Decision Tree" href="../Decision%20Tree/Decision%20Tree.html" />
-    <link rel="prev" title="5. Logistics Regression" href="../Logistic%20Regression/Logistics%20Regression.html" />
+    <link rel="next" title="Decision Tree" href="../Decision%20Tree/Decision%20Tree.html" />
+    <link rel="prev" title="Logistics Regression" href="../Logistic%20Regression/Logistics%20Regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -97,62 +97,62 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../Data%20Pre%20Processing/Data%20Pre%20Processing.html">
-   1. Data Processing
+   Data Processing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Simple%20Linear%20Regression/Simple%20Linear%20Regression.html">
-   2. Simple Linear  Regression
+   Simple Linear  Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
-   3. Multiple Linear Regression
+   Multiple Linear Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
-   4. Kaggle Bike Demand Prediction
+   Kaggle Bike Demand Prediction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Logistic%20Regression/Logistics%20Regression.html">
-   5. Logistics Regression
+   Logistics Regression
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. Support Vector Machine
+   Support Vector Machine
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Decision%20Tree/Decision%20Tree.html">
-   10. Decision Tree
+   Decision Tree
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Random%20forest/Random%20Forest.html">
-   11. Ensemble Learning and Random Forest
+   Ensemble Learning and Random Forest
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Feature%20Selection/Feature%20Selection.html">
-   12. Feature Selection
+   Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Feature%20Elimination/Feature%20Elimination.html">
-   16. Recursive Feature Eliminations
+   Recursive Feature Eliminations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Cross%20validations/Cross%20Validations.html">
-   17. Cross Validations
+   Cross Validations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Hyperparameter%20Tuning/Hyperparameter%20Tuning.html">
-   18. Hyperparameter Tuning
+   Hyperparameter Tuning
   </a>
  </li>
 </ul>
@@ -263,17 +263,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   7. Support Vector Machine
+   Support Vector Machine
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loan-approval-prediction">
-   8. Loan Approval Prediction
+   Loan Approval Prediction
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#kernal-functions">
-   9. Kernal Functions
+   Kernal Functions
   </a>
  </li>
 </ul>
@@ -288,7 +288,7 @@
               <div>
                 
   <div class="section" id="support-vector-machine">
-<h1><span class="section-number">7. </span>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h1>
+<h1>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h1>
 <p>What is SVM?</p>
 <ol class="simple">
 <li><p>Supervised Learning Machine</p></li>
@@ -297,7 +297,7 @@
 </ol>
 </div>
 <div class="section" id="loan-approval-prediction">
-<h1><span class="section-number">8. </span>Loan Approval Prediction<a class="headerlink" href="#loan-approval-prediction" title="Permalink to this headline">¶</a></h1>
+<h1>Loan Approval Prediction<a class="headerlink" href="#loan-approval-prediction" title="Permalink to this headline">¶</a></h1>
 <p>Statement of the problem-</p>
 <ol class="simple">
 <li><p>Automate loan eligibility process</p></li>
@@ -507,7 +507,7 @@ dtype: int64
 <p>The classes was linealy seperable. The relationship was such that we could pass the line and sepearte them. If we can pass the line between them then we can very well distiguish between the two classes. But if our two classes are not linearly seperable as we will not get any seperate line that seperated the two plane. We will change the perspective. and in this case ,changing the perspective could very well mean changing those dimensions. We will add another dimensions. We will project one class on to this dimension and now we can draw a hyper plane passing through the classes and perfectly seperate them.</p>
 </div>
 <div class="section" id="kernal-functions">
-<h1><span class="section-number">9. </span>Kernal Functions<a class="headerlink" href="#kernal-functions" title="Permalink to this headline">¶</a></h1>
+<h1>Kernal Functions<a class="headerlink" href="#kernal-functions" title="Permalink to this headline">¶</a></h1>
 <p>We have IRIS Dataset…</p>
 <p>Dataset Attributes are-</p>
 <ol class="simple">
@@ -1279,8 +1279,8 @@ dtype: int64
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../Logistic%20Regression/Logistics%20Regression.html" title="previous page"><span class="section-number">5. </span>Logistics Regression</a>
-    <a class='right-next' id="next-link" href="../Decision%20Tree/Decision%20Tree.html" title="next page"><span class="section-number">10. </span>Decision Tree</a>
+    <a class='left-prev' id="prev-link" href="../Logistic%20Regression/Logistics%20Regression.html" title="previous page">Logistics Regression</a>
+    <a class='right-next' id="next-link" href="../Decision%20Tree/Decision%20Tree.html" title="next page">Decision Tree</a>
 
         </div>
         

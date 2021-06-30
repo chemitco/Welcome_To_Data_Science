@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>12. Feature Selection &#8212; Learning</title>
+    <title>Feature Selection &#8212; Learning</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="16. Recursive Feature Eliminations" href="../Feature%20Elimination/Feature%20Elimination.html" />
-    <link rel="prev" title="11. Ensemble Learning and Random Forest" href="../Random%20forest/Random%20Forest.html" />
+    <link rel="next" title="Recursive Feature Eliminations" href="../Feature%20Elimination/Feature%20Elimination.html" />
+    <link rel="prev" title="Ensemble Learning and Random Forest" href="../Random%20forest/Random%20Forest.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -97,62 +97,62 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../Data%20Pre%20Processing/Data%20Pre%20Processing.html">
-   1. Data Processing
+   Data Processing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Simple%20Linear%20Regression/Simple%20Linear%20Regression.html">
-   2. Simple Linear  Regression
+   Simple Linear  Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
-   3. Multiple Linear Regression
+   Multiple Linear Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
-   4. Kaggle Bike Demand Prediction
+   Kaggle Bike Demand Prediction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Logistic%20Regression/Logistics%20Regression.html">
-   5. Logistics Regression
+   Logistics Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Support%20Vector%20Machine/Support%20Vector%20Machine.html">
-   7. Support Vector Machine
+   Support Vector Machine
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Decision%20Tree/Decision%20Tree.html">
-   10. Decision Tree
+   Decision Tree
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Random%20forest/Random%20Forest.html">
-   11. Ensemble Learning and Random Forest
+   Ensemble Learning and Random Forest
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   12. Feature Selection
+   Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Feature%20Elimination/Feature%20Elimination.html">
-   16. Recursive Feature Eliminations
+   Recursive Feature Eliminations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Cross%20validations/Cross%20Validations.html">
-   17. Cross Validations
+   Cross Validations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Hyperparameter%20Tuning/Hyperparameter%20Tuning.html">
-   18. Hyperparameter Tuning
+   Hyperparameter Tuning
   </a>
  </li>
 </ul>
@@ -263,22 +263,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   12. Feature Selection
+   Feature Selection
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#univariate-features-selection">
-   13. 1) Univariate Features Selection-
+   1) Univariate Features Selection-
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chi-square-feature-selection-method">
-   14. 2) Chi Square feature selection method-
+   2) Chi Square feature selection method-
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#selection-transform">
-   15. Selection Transform
+   Selection Transform
   </a>
  </li>
 </ul>
@@ -293,7 +293,7 @@
               <div>
                 
   <div class="section" id="feature-selection">
-<h1><span class="section-number">12. </span>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
+<h1>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
 <p>This can help us to high performance model with very features.</p>
 <p>If there are thousands of features in data set, then it will be impossible to deal with them manually using just the domain and our business understanding.</p>
 <p>Then the automatic feature selection or automatic features elemination becoem the key.</p>
@@ -305,7 +305,7 @@
 <p><img alt="" src="../../_images/16.png" /></p>
 </div>
 <div class="section" id="univariate-features-selection">
-<h1><span class="section-number">13. </span>1) Univariate Features Selection-<a class="headerlink" href="#univariate-features-selection" title="Permalink to this headline">¶</a></h1>
+<h1>1) Univariate Features Selection-<a class="headerlink" href="#univariate-features-selection" title="Permalink to this headline">¶</a></h1>
 <p>Step1- get all independent features</p>
 <p>Step2- Apply relevant statistical method.</p>
 <p>Step3- Get P value and compare with the significance level.</p>
@@ -1089,7 +1089,7 @@
 <p>The removal of irrelevant feature, and those with higher p value has resulted in a reduction of our error.</p>
 </div>
 <div class="section" id="chi-square-feature-selection-method">
-<h1><span class="section-number">14. </span>2) Chi Square feature selection method-<a class="headerlink" href="#chi-square-feature-selection-method" title="Permalink to this headline">¶</a></h1>
+<h1>2) Chi Square feature selection method-<a class="headerlink" href="#chi-square-feature-selection-method" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="../../_images/30.png" /></p>
 <p>This is data set. It has two variables- flight status and weather.
 <img alt="" src="../../_images/31.png" /></p>
@@ -1103,7 +1103,7 @@
 <p><img alt="" src="../../_images/39.png" /></p>
 </div>
 <div class="section" id="selection-transform">
-<h1><span class="section-number">15. </span>Selection Transform<a class="headerlink" href="#selection-transform" title="Permalink to this headline">¶</a></h1>
+<h1>Selection Transform<a class="headerlink" href="#selection-transform" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="../../_images/40.png" />
 <img alt="" src="../../_images/41.png" />
 <img alt="" src="../../_images/42.png" />
@@ -2026,8 +2026,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../Random%20forest/Random%20Forest.html" title="previous page"><span class="section-number">11. </span>Ensemble Learning and Random Forest</a>
-    <a class='right-next' id="next-link" href="../Feature%20Elimination/Feature%20Elimination.html" title="next page"><span class="section-number">16. </span>Recursive Feature Eliminations</a>
+    <a class='left-prev' id="prev-link" href="../Random%20forest/Random%20Forest.html" title="previous page">Ensemble Learning and Random Forest</a>
+    <a class='right-next' id="next-link" href="../Feature%20Elimination/Feature%20Elimination.html" title="next page">Recursive Feature Eliminations</a>
 
         </div>
         

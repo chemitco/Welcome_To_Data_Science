@@ -51,8 +51,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Seaborn" href="Seaborn.html" />
-    <link rel="prev" title="Welcome to Data Science" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -91,18 +89,68 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Visualisation
+  Machine Learning
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Matplotlib
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Data%20Pre%20Processing/Data%20Pre%20Processing.html">
+   Data Processing
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Seaborn.html">
-   Seaborn
+  <a class="reference internal" href="../Machine%20Learning/Simple%20Linear%20Regression/Simple%20Linear%20Regression.html">
+   Simple Linear  Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Multiple%20Linear%20Regression/Multiple%20Linear%20regression.html">
+   Multiple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Kaggle%20Bike%20Demand%20Prediction/Kaggle%20Bike%20Demand%20Prediction.html">
+   Kaggle Bike Demand Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Logistic%20Regression/Logistics%20Regression.html">
+   Logistics Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Support%20Vector%20Machine/Support%20Vector%20Machine.html">
+   Support Vector Machine
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Decision%20Tree/Decision%20Tree.html">
+   Decision Tree
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Random%20forest/Random%20Forest.html">
+   Ensemble Learning and Random Forest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Feature%20Selection/Feature%20Selection.html">
+   Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Feature%20Elimination/Feature%20Elimination.html">
+   Recursive Feature Eliminations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Cross%20validations/Cross%20Validations.html">
+   Cross Validations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Machine%20Learning/Hyperparameter%20Tuning/Hyperparameter%20Tuning.html">
+   Hyperparameter Tuning
   </a>
  </li>
 </ul>
@@ -426,17 +474,17 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[32 25 24 41 28 39 27 43 32 22 35 38 43 42 29 30 32 39 23 42 40 19 42 21
- 39 44 33 29 31 25 25 22 40 29 30 22 40 43 24 19 33 21 18 33 29 19 41 33
- 44 36 20 22 35 40 34 38 38 44 34 40 40 36 21 35 29 37 32 34 36 20 31 29
- 41 32 21 36 26 30 44 18 32 33 31 20 36 39 37 33 35 21 26 22 34 23 26 35
- 19 44 24 24]
-[187  38 112  56  30 432 325 115 427 345 401 151 317 242  33 149 165 245
- 364  60 311 378  76 107 404 114 101 365 312 272 437 427 155 354 405 184
- 392 208 397  67 127 286 349 165 182 376 199  63 135 420  44 426 256  96
- 284 300 293 319 138 125  22  75 247 413 252 251 369 204 154  66 151 303
- 121  48 399 402  67 134  60 414  95 284  40 151 331 361 207 219 345  72
- 132 149 259 402 179 183 205 276 205 114]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[31 29 21 24 44 18 20 23 27 38 21 19 41 41 23 43 26 37 18 24 44 30 28 34
+ 28 26 36 36 41 22 41 22 27 31 28 38 31 43 41 23 30 26 25 23 38 44 30 43
+ 29 25 41 40 20 35 25 34 21 42 40 25 22 24 30 36 18 44 38 21 34 21 44 38
+ 31 23 19 22 38 31 26 33 44 40 18 34 27 28 44 27 32 24 39 33 24 44 20 23
+ 32 32 18 29]
+[248 170 160 140 422 287 211 378  78 256  20 433 429 397 320  77 167 359
+ 295  19 330  91 108 289 401 316 331 219 145 438 412 380  61 284 128 412
+ 242 300 413 272  89 386  68  69 129 254 295 265 192 162 166 345 145  30
+  25 412 321 388 109 152  43 316  46 300  86 149  87 102 147  58 310  87
+  58 247 222 259 105 391  73 351 308 164 194 250 398 432 324 436 376 149
+  91  44 177 318 311 366 417 423 413 404]
 </pre></div>
 </div>
 </div>
@@ -1226,7 +1274,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1736</span><span class="o">/</span><span class="mf">3744935921.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1747</span><span class="o">/</span><span class="mf">3744935921.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;mc&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -1384,8 +1432,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Welcome to Data Science</a>
-    <a class='right-next' id="next-link" href="Seaborn.html" title="next page">Seaborn</a>
 
         </div>
         

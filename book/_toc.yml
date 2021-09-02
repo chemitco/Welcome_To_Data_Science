@@ -1,9 +1,11 @@
 root: intro
 format: jb-book
+defaults:
+numbered: true
 parts:
 - caption: Python
   chapters:
-  - file: Python/Python Basics
+    - file: Python/Python Basics
 parts:
 - caption: Numpy
   chapters:
@@ -31,3 +33,5 @@ parts:
     - file: Machine Learning/Random forest/Random Forest
     - file: Machine Learning/Feature Selection/Feature Selection
     - file: Machine Learning/Feature Elimination/Feature Elimination
+    - file: Machine Learning/Cross validations/Cross Validations
+    - file: Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning

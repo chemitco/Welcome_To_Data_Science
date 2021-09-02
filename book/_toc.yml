@@ -32,4 +32,3 @@ parts:
     - file: Machine Learning/Feature Selection/Feature Selection
     - file: Machine Learning/Feature Elimination/Feature Elimination
     - file: Machine Learning/Cross validations/Cross Validations
-    - file: Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning

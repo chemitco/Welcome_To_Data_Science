@@ -3,6 +3,10 @@ format: jb-book
 defaults:
 numbered: true
 parts:
+- caption: Python
+  chapters:
+    - file: Python/Basics
+parts:
 - caption: Numpy
   chapters:
     - file: Numpy/Numpy

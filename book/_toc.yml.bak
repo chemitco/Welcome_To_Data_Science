@@ -5,7 +5,7 @@ numbered: true
 parts:
 - caption: Python
   chapters:
-    - file: Python/Python Basics
+    - file: Python/Basics
 parts:
 - caption: Numpy
   chapters:

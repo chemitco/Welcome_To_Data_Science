@@ -1,0 +1,37 @@
+root: intro
+format: jb-book
+defaults:
+numbered: true
+parts:
+- caption: Python
+  chapters:
+    - file: Python/Python Basics
+parts:
+- caption: Numpy
+  chapters:
+    - file: Numpy/Numpy
+parts:
+- caption: Pandas
+  chapters:
+    - file: Pandas/Pandas Basics
+    - file: Pandas/Pandas Explanatory
+parts:
+- caption: Data Visualisation
+  chapters:
+    - file: Data Visualisation/Matplotlib
+    - file: Data Visualisation/Seaborn
+parts:
+- caption: Machine Learning
+  chapters:
+    - file: Machine Learning/Data Pre Processing/Data Pre Processing
+    - file: Machine Learning/Simple Linear Regression/Simple Linear Regression
+    - file: Machine Learning/Multiple Linear Regression/Multiple Linear regression
+    - file: Machine Learning/Kaggle Bike Demand Prediction/Kaggle Bike Demand Prediction
+    - file: Machine Learning/Logistic Regression/Logistics Regression
+    - file: Machine Learning/Support Vector Machine/Support Vector Machine
+    - file: Machine Learning/Decision Tree/Decision Tree
+    - file: Machine Learning/Random forest/Random Forest
+    - file: Machine Learning/Feature Selection/Feature Selection
+    - file: Machine Learning/Feature Elimination/Feature Elimination
+    - file: Machine Learning/Cross validations/Cross Validations
+    - file: Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning

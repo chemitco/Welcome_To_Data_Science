@@ -20,18 +20,3 @@ parts:
   chapters:
     - file: Data Visualisation/Matplotlib
     - file: Data Visualisation/Seaborn
-parts:
-- caption: Machine Learning
-  chapters:
-    - file: Machine Learning/Data Pre Processing/Data Pre Processing
-    - file: Machine Learning/Simple Linear Regression/Simple Linear Regression
-    - file: Machine Learning/Multiple Linear Regression/Multiple Linear regression
-    - file: Machine Learning/Kaggle Bike Demand Prediction/Kaggle Bike Demand Prediction
-    - file: Machine Learning/Logistic Regression/Logistics Regression
-    - file: Machine Learning/Support Vector Machine/Support Vector Machine
-    - file: Machine Learning/Decision Tree/Decision Tree
-    - file: Machine Learning/Random forest/Random Forest
-    - file: Machine Learning/Feature Selection/Feature Selection
-    - file: Machine Learning/Feature Elimination/Feature Elimination
-    - file: Machine Learning/Cross validations/Cross Validations
-    - file: Machine Learning/Hyperparameter Tuning/Hyperparameter Tuning
